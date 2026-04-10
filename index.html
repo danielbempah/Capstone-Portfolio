@@ -254,6 +254,9 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 /* ── ABOUT ── */
 .about-grid{display:grid;grid-template-columns:280px 1fr;gap:4rem;align-items:start}
 .about-photo-slot{background:var(--rule);border-radius:var(--r);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.photo-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:2rem;text-align:center}
+.photo-placeholder-icon{width:64px;height:64px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;font-size:24px}
+.photo-placeholder-text{font-family:var(--ff-ui);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
 .about-photo-slot img{width:100%;height:100%;object-fit:cover}
 .about-name{font-family:var(--ff-display);font-size:2.2rem;color:var(--ink);line-height:1.15;margin-bottom:.4rem}
 .about-title{font-family:var(--ff-ui);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
@@ -556,11 +559,18 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   <div class="section-inner">
     <div class="section-label">About the Researcher</div>
     <div class="about-grid">
-      <img src="headshot.jpeg" alt="Daniel Quansah">
+      <div>
+        <!--
+          PHOTO SLOT — ABOUT SECTION
+          Replace the .photo-placeholder div with:
+          <img src="your-headshot.jpg" alt="Daniel Quansah">
+        -->
         <div class="about-photo-slot">
+          <div class="photo-placeholder">
+            <div class="photo-placeholder-icon">👤</div>
+            <div class="photo-placeholder-text">Photo coming soon</div>
+          </div>
         </div>
-        </div>
-      </div>
         <div class="about-credentials">
           <div class="cred-item"><div class="cred-dot"></div><span>Dual MA, Global Studies &amp; International Relations — Bard College / Central European University (exp. May 2026)</span></div>
           <div class="cred-item"><div class="cred-dot"></div><span>BSc Business Administration — Ashesi University, Ghana</span></div>
