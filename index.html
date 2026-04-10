@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyborg Enterprises & the Urban Future — Daniel Quansah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Syne:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0E0C0A;--ink-mid:#3A3530;--ink-soft:#6E675F;--ink-faint:#B0A99E;
+  --parchment:#F6F1E8;--warm-white:#FDFAF5;--rule:#DDD6CA;
+  --gold:#C4933A;--gold-light:#F5E9CF;
+  --teal:#1A6E68;--teal-light:#D5EDEB;
+  --rust:#B84030;--rust-light:#F5DDD9;
+  --slate:#2D4A6A;--slate-light:#D6E4F0;
+  --sage:#4A6B45;--sage-light:#DCE9DB;
+  --plum:#5E3D6B;--plum-light:#E8DDEF;
+  --ff-display:'Playfair Display',Georgia,serif;
+  --ff-ui:'Syne',system-ui,sans-serif;
+  --ff-body:'Source Serif 4',Georgia,serif;
+  --r:8px;--r-sm:4px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff-body);background:var(--parchment);color:var(--ink);font-size:16px;line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:0.4}
+
+/* ── NAV ── */
+.site-nav{position:sticky;top:0;z-index:100;background:rgba(246,241,232,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);padding:0 2rem}
+.nav-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-brand{font-family:var(--ff-ui);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);text-decoration:none;flex-shrink:0}
+.nav-brand span{color:var(--gold)}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links a{font-family:var(--ff-ui);font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;padding:0 .8rem;line-height:56px;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);border-bottom-color:var(--gold)}
+.nav-linkedin{font-family:var(--ff-ui);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--warm-white);background:var(--ink);padding:8px 16px;border-radius:var(--r-sm);text-decoration:none;transition:background .2s;flex-shrink:0}
+.nav-linkedin:hover{background:var(--teal)}
+
+/* ── HERO ── */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;padding:5rem 2rem 5rem;overflow:hidden}
+.hero-slideshow{position:absolute;inset:0;z-index:0}
+.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease-in-out}
+.slide.active{opacity:1}
+.hero-slideshow::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(14,12,10,.45) 0%,rgba(14,12,10,.28) 35%,rgba(14,12,10,.52) 70%,rgba(14,12,10,.72) 100%)}
+.hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 60% 80% at 85% 40%,rgba(196,147,58,.08) 0%,transparent 60%),radial-gradient(ellipse 50% 60% at 10% 70%,rgba(26,110,104,.06) 0%,transparent 55%),var(--parchment);transition:opacity .8s}
+.hero-grid-lines{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(196,147,58,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(196,147,58,.06) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 80%);transition:opacity .8s}
+.hero.has-photos .hero-bg,.hero.has-photos .hero-grid-lines{opacity:0}
+.hero-inner{position:relative;z-index:2;max-width:1080px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 380px;gap:5rem;align-items:center}
+.hero.has-photos .hero-eyebrow{color:rgba(245,233,207,.85)}
+.hero.has-photos .hero-title{color:#FDFAF5;text-shadow:0 2px 16px rgba(14,12,10,.4)}
+.hero.has-photos .hero-subtitle{color:rgba(253,250,245,.82)}
+.hero.has-photos .tag{background:rgba(14,12,10,.35);border-color:rgba(253,250,245,.2);color:rgba(253,250,245,.8);backdrop-filter:blur(4px)}
+.hero.has-photos .hero-card{background:rgba(253,250,245,.92);backdrop-filter:blur(12px)}
+.slide-controls{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:3;display:none;align-items:center;gap:1rem}
+.hero.has-photos .slide-controls{display:flex}
+.slide-dots{display:flex;gap:6px}
+.slide-dot{width:6px;height:6px;border-radius:50%;background:rgba(253,250,245,.35);cursor:pointer;transition:background .25s,transform .25s;border:none;padding:0}
+.slide-dot.active{background:var(--gold);transform:scale(1.35)}
+.slide-arrow{width:32px;height:32px;border-radius:50%;background:rgba(14,12,10,.35);border:1px solid rgba(253,250,245,.25);color:rgba(253,250,245,.85);font-size:15px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s;backdrop-filter:blur(4px)}
+.slide-arrow:hover{background:rgba(196,147,58,.65);color:white}
+.hero-eyebrow{font-family:var(--ff-ui);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:1.5rem}
+.hero-eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--gold)}
+.hero-title{font-family:var(--ff-display);font-size:clamp(2.4rem,5vw,4rem);line-height:1.1;color:var(--ink);margin-bottom:1.5rem}
+.hero-title em{font-style:italic;color:var(--teal)}
+.hero-subtitle{font-family:var(--ff-body);font-size:1.05rem;color:var(--ink-mid);line-height:1.75;max-width:540px;margin-bottom:2.5rem}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2.5rem}
+.tag{font-family:var(--ff-ui);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:20px;border:1px solid var(--rule);background:var(--warm-white);color:var(--ink-soft)}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{font-family:var(--ff-ui);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--warm-white);background:var(--ink);padding:14px 28px;border-radius:var(--r-sm);text-decoration:none;transition:background .2s,transform .1s;display:inline-block}
+.btn-primary:hover{background:var(--teal);transform:translateY(-1px)}
+.btn-secondary{font-family:var(--ff-ui);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:transparent;padding:14px 28px;border-radius:var(--r-sm);border:1.5px solid var(--ink);text-decoration:none;transition:background .2s,color .2s,transform .1s;display:inline-block}
+.btn-secondary:hover{background:var(--ink);color:var(--warm-white);transform:translateY(-1px)}
+/* EDIT 1a: Download ghost button */
+.btn-ghost{font-family:var(--ff-ui);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);background:transparent;padding:14px 22px;border-radius:var(--r-sm);border:1.5px solid var(--rule);text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-ghost:hover{color:var(--ink);border-color:var(--ink-faint)}
+.hero-card{background:var(--warm-white);border:1px solid var(--rule);border-radius:var(--r);padding:2rem;box-shadow:0 4px 32px rgba(14,12,10,.06)}
+.hero-card-label{font-family:var(--ff-ui);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1px solid var(--rule)}
+.hero-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.5rem}
+.hero-stat-num{font-family:var(--ff-display);font-size:2.4rem;font-weight:700;color:var(--ink);line-height:1;margin-bottom:4px}
+.hero-stat-num span{font-size:1.5rem;color:var(--gold)}
+.hero-stat-lbl{font-family:var(--ff-ui);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.hero-card-divider{height:1px;background:var(--rule);margin:1.25rem 0}
+.hero-card-institution{display:flex;align-items:flex-start;gap:12px}
+.inst-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px}
+.inst-text{font-family:var(--ff-ui);font-size:12px;color:var(--ink-mid);line-height:1.5}
+.inst-text a{color:var(--teal);text-decoration:none;font-weight:600}
+.inst-text a:hover{text-decoration:underline}
+
+/* ── EDIT 3: RESEARCH TIMELINE STRIP ── */
+.timeline-strip{background:var(--ink);padding:1.25rem 2rem;position:relative;z-index:1}
+.timeline-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.tl-stage{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;position:relative}
+.tl-stage:not(:last-child)::after{content:'';position:absolute;top:14px;left:calc(50% + 18px);right:calc(-50% + 18px);height:1px;background:rgba(255,255,255,.12)}
+.tl-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;position:relative;z-index:1}
+.tl-dot-done{background:var(--gold);color:var(--ink)}
+.tl-dot-active{background:rgba(196,147,58,.2);border:2px solid var(--gold);color:var(--gold)}
+.tl-dot-active::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(196,147,58,.3);animation:tlPulse 2s ease-in-out infinite}
+@keyframes tlPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
+.tl-dot-pending{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.3)}
+.tl-label{font-family:var(--ff-ui);font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);text-align:center;line-height:1.3}
+.tl-label.done{color:var(--gold)}
+.tl-label.active{color:rgba(196,147,58,.85)}
+
+/* ── SECTIONS ── */
+.section{padding:5rem 2rem;position:relative;z-index:1}
+.section-inner{max-width:1080px;margin:0 auto}
+.section-alt{background:var(--warm-white)}
+.section-label{font-family:var(--ff-ui);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px;margin-bottom:1rem}
+.section-label::before{content:'';display:block;width:24px;height:1px;background:var(--gold)}
+.section-title{font-family:var(--ff-display);font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.15;color:var(--ink);margin-bottom:1rem}
+.section-title em{font-style:italic;color:var(--teal)}
+.section-intro{font-size:1rem;color:var(--ink-mid);max-width:640px;margin-bottom:3rem;line-height:1.8}
+
+/* ── EXECUTIVE SUMMARY ── */
+.exec-full{background:var(--warm-white);padding:2rem;border-radius:var(--r);border:1px solid var(--rule);margin-bottom:2rem}
+.exec-full p{font-size:1rem;color:var(--ink-mid);line-height:1.85;margin-bottom:1rem}
+.exec-full p:last-child{margin-bottom:0}
+.exec-full p strong{color:var(--ink)}
+.rq-single{background:var(--ink);border-radius:var(--r);padding:2rem 2.5rem;margin-bottom:2.5rem}
+.rq-single-label{font-family:var(--ff-ui);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:10px}
+.rq-single-label::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.rq-single-text{font-family:var(--ff-display);font-size:clamp(1.05rem,2vw,1.4rem);font-style:italic;color:var(--parchment);line-height:1.55}
+.obj-grid{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+.obj-item{background:var(--parchment);border:1px solid var(--rule);border-left:3px solid var(--teal);border-radius:var(--r-sm);padding:1.25rem 1.5rem;display:flex;gap:1rem}
+.obj-num{font-family:var(--ff-display);font-size:2rem;font-weight:700;color:var(--rule);line-height:1;flex-shrink:0;padding-top:2px}
+.obj-label{font-family:var(--ff-ui);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:5px}
+.obj-text{font-size:.9rem;color:var(--ink-mid);line-height:1.65}
+
+/* ── SURVEY DATA ── */
+.survey-synthesis{font-size:1rem;color:var(--ink-mid);line-height:1.8;margin-bottom:.75rem}
+.survey-synthesis strong{color:var(--ink)}
+.survey-source-link{font-family:var(--ff-ui);font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--teal);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:2.5rem;border-bottom:1px solid var(--teal-light);padding-bottom:2px;transition:color .2s,border-color .2s}
+.survey-source-link:hover{color:var(--ink);border-color:var(--ink-faint)}
+.survey-source-link::before{content:'↗'}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border-radius:var(--r);overflow:hidden;margin-bottom:2rem}
+.stat-card{background:var(--parchment);padding:1.75rem 1.5rem;position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.stat-card.c-gold::before{background:var(--gold)}
+.stat-card.c-teal::before{background:var(--teal)}
+.stat-card.c-rust::before{background:var(--rust)}
+.stat-card.c-slate::before{background:var(--slate)}
+.stat-card.c-ink::before{background:var(--ink)}
+.stat-card.c-sage::before{background:var(--sage)}
+.stat-num{font-family:var(--ff-display);font-size:2.8rem;font-weight:700;color:var(--ink);line-height:1;margin-bottom:6px}
+.stat-num sup{font-size:1.1rem;color:var(--gold);vertical-align:super}
+.stat-label{font-family:var(--ff-ui);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-bottom:4px}
+.stat-sub{font-size:.82rem;color:var(--ink-soft);line-height:1.55}
+.survey-callout{background:var(--gold-light);border:1px solid rgba(196,147,58,.28);border-radius:var(--r);padding:1.5rem 2rem;display:flex;gap:1.5rem;align-items:flex-start}
+.survey-callout-icon{font-size:1.5rem;flex-shrink:0;margin-top:2px}
+.survey-callout-text{font-size:.95rem;color:var(--ink-mid);line-height:1.78}
+.survey-callout-text strong{color:var(--ink)}
+
+/* ── EDIT 2: PRACTITIONER VOICE STRIP ── */
+.voice-strip{background:var(--ink);padding:4rem 2rem;position:relative;z-index:1}
+.voice-inner{max-width:1080px;margin:0 auto}
+.voice-label{font-family:var(--ff-ui);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(196,147,58,.7);display:flex;align-items:center;gap:10px;margin-bottom:2.5rem}
+.voice-label::before{content:'';display:block;width:24px;height:1px;background:rgba(196,147,58,.5)}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.voice-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:2rem 1.75rem}
+.voice-mark{font-family:var(--ff-display);font-size:4rem;line-height:.8;color:var(--gold);opacity:.5;margin-bottom:.75rem;display:block}
+.voice-quote{font-family:var(--ff-display);font-size:1rem;font-style:italic;color:rgba(246,241,232,.85);line-height:1.7;margin-bottom:1.25rem}
+.voice-attr{font-family:var(--ff-ui);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(196,147,58,.7);padding-top:.75rem;border-top:1px solid rgba(255,255,255,.08)}
+
+/* ── CHAPTERS ── */
+.chapter-list{display:flex;flex-direction:column;gap:1px}
+.chapter-item{background:var(--warm-white);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;transition:box-shadow .2s}
+.chapter-item:hover{box-shadow:0 4px 20px rgba(14,12,10,.07)}
+.chapter-header{display:flex;align-items:center;gap:1.25rem;padding:1.25rem 1.5rem;cursor:pointer;user-select:none}
+.ch-num{font-family:var(--ff-ui);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:20px;flex-shrink:0}
+.ch-title{font-family:var(--ff-display);font-size:1.05rem;font-weight:600;color:var(--ink);flex:1;line-height:1.3}
+/* EDIT 1: .ch-words removed */
+.ch-arrow{font-size:14px;color:var(--ink-faint);transition:transform .25s;flex-shrink:0}
+.chapter-item.open .ch-arrow{transform:rotate(180deg)}
+.chapter-body{display:none;padding:0 1.5rem 1.5rem;border-top:1px solid var(--rule)}
+.chapter-item.open .chapter-body{display:block}
+.ch-job{font-size:.92rem;color:var(--ink-mid);margin:1rem 0;padding-left:1rem;border-left:2px solid var(--gold);line-height:1.72}
+.ch-outline{list-style:none;display:flex;flex-direction:column;gap:6px}
+.ch-outline li{font-size:.88rem;color:var(--ink-soft);padding:.6rem .75rem .6rem 1.5rem;background:var(--parchment);border-radius:var(--r-sm);line-height:1.55;position:relative}
+.ch-outline li::before{content:'→';position:absolute;left:.6rem;color:var(--gold);font-size:12px}
+
+/* ── CURRICULUM SCOPE ── */
+.mod-phase-label{font-family:var(--ff-ui);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);padding:.5rem 0;margin-top:1.5rem;margin-bottom:.5rem;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:8px}
+.mod-phase-label:first-child{margin-top:0}
+.mod-list{display:flex;flex-direction:column;gap:1px}
+.mod-item{background:var(--warm-white);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;transition:box-shadow .2s}
+.mod-item:hover{box-shadow:0 4px 20px rgba(14,12,10,.07)}
+.mod-header{display:flex;align-items:center;gap:1.25rem;padding:1.25rem 1.5rem;cursor:pointer;user-select:none}
+.mod-badge{font-family:var(--ff-ui);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:20px;flex-shrink:0}
+.mod-title{font-family:var(--ff-display);font-size:1.02rem;font-weight:600;color:var(--ink);flex:1;line-height:1.3}
+.mod-meta{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.mod-tag{font-family:var(--ff-ui);font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:12px;background:var(--rule);color:var(--ink-soft)}
+.mod-arrow{font-size:14px;color:var(--ink-faint);transition:transform .25s}
+.mod-item.open .mod-arrow{transform:rotate(180deg)}
+.mod-body{display:none;padding:0 1.5rem 1.75rem;border-top:1px solid var(--rule)}
+.mod-item.open .mod-body{display:block}
+.mod-tagline{font-size:.92rem;color:var(--ink-mid);font-style:italic;margin:1rem 0;padding-left:1rem;border-left:2px solid var(--gold);line-height:1.65}
+.mod-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+.mod-section-label{font-family:var(--ff-ui);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.mod-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.75rem}
+.mod-pill{font-family:var(--ff-ui);font-size:10px;font-weight:600;padding:3px 9px;border-radius:12px;border:1px solid var(--rule);background:var(--parchment);color:var(--ink-soft)}
+.mod-pill.active{background:var(--gold-light);border-color:rgba(196,147,58,.3);color:var(--gold)}
+.mod-lo-list{list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:.5rem}
+.mod-lo-list li{font-size:.85rem;color:var(--ink-soft);padding:.5rem .75rem .5rem 1.4rem;background:var(--parchment);border-radius:var(--r-sm);line-height:1.5;position:relative}
+.mod-lo-list li::before{content:'✓';position:absolute;left:.55rem;color:var(--teal);font-size:11px}
+.mod-full-row{grid-column:1/-1}
+.mod-info-card{background:var(--parchment);border:1px solid var(--rule);border-radius:var(--r-sm);padding:.85rem 1rem;font-size:.85rem;color:var(--ink-soft);line-height:1.6}
+.mod-info-card strong{display:block;font-family:var(--ff-ui);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:4px}
+.mod-deliver-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:.25rem}
+.del-chip{font-family:var(--ff-ui);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:12px}
+.del-sync{background:var(--plum-light);color:var(--plum)}
+.del-async{background:var(--teal-light);color:var(--teal)}
+.del-person{background:var(--gold-light);color:var(--gold)}
+
+/* ── THEORY OF CHANGE ── */
+.toc-section{padding:5rem 2rem;background:var(--ink)}
+.toc-inner{max-width:1080px;margin:0 auto}
+.toc-section .section-label{color:rgba(196,147,58,.8)}
+.toc-section .section-title{color:var(--parchment);font-family:var(--ff-display)}
+.toc-section .section-title em{color:var(--gold)}
+.toc-section .section-intro{color:rgba(246,241,232,.62)}
+.toc-map-container{margin:3rem 0;overflow-x:auto}
+.toc-map{display:flex;align-items:stretch;min-width:860px;gap:0}
+.toc-col{flex:1;display:flex;flex-direction:column}
+.toc-col-head{padding:.75rem 1rem;font-family:var(--ff-ui);font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-align:center;border-radius:var(--r) var(--r) 0 0;margin-bottom:1px}
+.toc-col-body{flex:1;display:flex;flex-direction:column;gap:2px}
+.toc-node{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:.75rem .9rem;flex:1;cursor:pointer;transition:background .2s,border-color .2s}
+.toc-node:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
+.toc-node.active{border-color:rgba(196,147,58,.6)!important;background:rgba(196,147,58,.08)!important}
+.toc-node-title{font-family:var(--ff-ui);font-size:11px;font-weight:600;color:rgba(246,241,232,.9);margin-bottom:3px;line-height:1.3}
+.toc-node-sub{font-size:10px;color:rgba(246,241,232,.45);line-height:1.4}
+.toc-arrow-col{display:flex;align-items:center;justify-content:center;padding:0 6px;padding-top:40px;flex-shrink:0}
+.toc-arrow-sym{font-size:20px;color:rgba(196,147,58,.4)}
+.col-inputs .toc-col-head{background:rgba(91,79,217,.25);color:#b8b0f5}
+.col-inputs .toc-node{border-left:2px solid rgba(91,79,217,.5)}
+.col-activities .toc-col-head{background:rgba(26,110,104,.25);color:#7ddbd5}
+.col-activities .toc-node{border-left:2px solid rgba(26,110,104,.5)}
+.col-outputs .toc-col-head{background:rgba(196,147,58,.25);color:#f5c97a}
+.col-outputs .toc-node{border-left:2px solid rgba(196,147,58,.5)}
+.col-short .toc-col-head{background:rgba(184,64,48,.25);color:#f5a090}
+.col-short .toc-node{border-left:2px solid rgba(184,64,48,.5)}
+.col-long .toc-col-head{background:rgba(45,74,106,.25);color:#92b8e0}
+.col-long .toc-node{border-left:2px solid rgba(45,74,106,.5)}
+.col-impact .toc-col-head{background:rgba(196,147,58,.5);color:#0E0C0A;font-weight:800}
+.col-impact .toc-node{border-left:2px solid var(--gold);background:rgba(196,147,58,.06)}
+.toc-detail{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:1.5rem 2rem;margin-top:1.5rem;min-height:80px}
+.toc-detail-label{font-family:var(--ff-ui);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.toc-detail-title{font-family:var(--ff-display);font-size:1.15rem;color:var(--parchment);margin-bottom:.5rem}
+.toc-detail-text{font-size:.92rem;color:rgba(246,241,232,.65);line-height:1.75}
+.toc-assumptions{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:2.5rem}
+.toc-assume{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r-sm);padding:1rem 1.25rem;font-size:.88rem;color:rgba(246,241,232,.6);line-height:1.65}
+.toc-assume strong{display:block;font-family:var(--ff-ui);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:280px 1fr;gap:4rem;align-items:start}
+.about-photo-slot{background:var(--rule);border-radius:var(--r);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.photo-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:2rem;text-align:center}
+.photo-placeholder-icon{width:64px;height:64px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;font-size:24px}
+.photo-placeholder-text{font-family:var(--ff-ui);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.about-photo-slot img{width:100%;height:100%;object-fit:cover}
+.about-name{font-family:var(--ff-display);font-size:2.2rem;color:var(--ink);line-height:1.15;margin-bottom:.4rem}
+.about-title{font-family:var(--ff-ui);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.about-bio p{font-size:1rem;color:var(--ink-mid);line-height:1.85;margin-bottom:1rem}
+.about-bio p:last-child{margin-bottom:0}
+.about-bio strong{color:var(--ink)}
+.about-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:1.75rem}
+.about-link{font-family:var(--ff-ui);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:9px 18px;border-radius:var(--r-sm);transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.about-link-primary{background:var(--ink);color:var(--warm-white)}
+.about-link-primary:hover{background:var(--teal)}
+.about-link-secondary{background:transparent;color:var(--ink);border:1.5px solid var(--rule)}
+.about-link-secondary:hover{background:var(--parchment);border-color:var(--ink-faint)}
+.about-credentials{margin-top:2rem;display:flex;flex-direction:column;gap:8px}
+.cred-item{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:var(--ink-soft);line-height:1.5}
+.cred-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:7px}
+
+/* ── ROADMAP ── */
+.sitemap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border-radius:var(--r);overflow:hidden;margin-top:2rem}
+.sitemap-cell{background:var(--warm-white);padding:1.75rem}
+.sitemap-cell.active-cell{background:var(--parchment)}
+.sitemap-cell.coming-cell{opacity:.6}
+.sm-status{font-family:var(--ff-ui);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;padding:3px 8px;border-radius:20px;display:inline-block}
+.sm-live{background:var(--teal-light);color:var(--teal)}
+.sm-building{background:var(--gold-light);color:var(--gold)}
+.sm-planned{background:var(--rule);color:var(--ink-faint)}
+.sm-title{font-family:var(--ff-display);font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:6px}
+.sm-desc{font-size:.85rem;color:var(--ink-soft);line-height:1.55}
+
+/* ── FOOTER ── */
+.site-footer{background:var(--ink);color:rgba(246,241,232,.5);padding:3rem 2rem;position:relative;z-index:1}
+.footer-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-brand{font-family:var(--ff-ui);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,232,.6)}
+.footer-brand strong{color:var(--gold)}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{font-family:var(--ff-ui);font-size:11px;color:rgba(246,241,232,.4);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  .hero-inner{grid-template-columns:1fr;gap:3rem}
+  .hero-card{max-width:440px}
+  .obj-grid{grid-template-columns:1fr}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .voice-grid{grid-template-columns:1fr}
+  .mod-grid{grid-template-columns:1fr}
+  .toc-assumptions{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr}
+  .sitemap-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .timeline-inner{gap:.25rem}
+  .tl-label{font-size:8px}
+}
+@media(max-width:540px){
+  .stat-grid{grid-template-columns:1fr}
+  .sitemap-grid{grid-template-columns:1fr}
+  .section{padding:3rem 1.25rem}
+  .hero{padding:3rem 1.25rem 5rem}
+  .voice-strip{padding:3rem 1.25rem}
+  .timeline-strip{padding:1rem 1.25rem}
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-eyebrow{animation:fadeUp .6s ease both}
+.hero-title{animation:fadeUp .6s .1s ease both}
+.hero-subtitle{animation:fadeUp .6s .2s ease both}
+.hero-tags{animation:fadeUp .6s .3s ease both}
+.hero-actions{animation:fadeUp .6s .4s ease both}
+.hero-card{animation:fadeUp .7s .3s ease both}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#"><span>DQ</span> · Capstone Portfolio</a>
+    <ul class="nav-links">
+      <li><a href="#executive-summary">Overview</a></li>
+      <li><a href="#survey-data">Survey Data</a></li>
+      <li><a href="#chapter-outline">Chapters</a></li>
+      <li><a href="#curriculum">Curriculum</a></li>
+      <li><a href="#theory-of-change">Theory of Change</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <a href="https://www.linkedin.com/in/daniel-bempah-quansah/" target="_blank" class="nav-linkedin">LinkedIn ↗</a>
+  </div>
+</nav>
+
+<!-- HERO
+  SLIDESHOW ACTIVATION:
+  1. Add class "has-photos" to the <section> tag below
+  2. Set background-image on each .slide div, e.g.:
+       style="background-image:url('img/workshop.jpg')"
+  3. Gradient overlay, controls, text shifts activate automatically.
+  While no photos are set, hero renders on the flat parchment bg.
+-->
+<section class="hero" id="heroSection">
+  <div class="hero-slideshow" id="heroSlideshow">
+    <!-- PHOTO SLOT 1: Workshop or training session -->
+    <div class="slide active" id="slide-0" style="background-image:none"></div>
+    <!-- PHOTO SLOT 2: EAC center or community space -->
+    <div class="slide" id="slide-1" style="background-image:none"></div>
+    <!-- PHOTO SLOT 3: Small business owner at work -->
+    <div class="slide" id="slide-2" style="background-image:none"></div>
+    <!-- PHOTO SLOT 4: NYC Chinatown streetscape or storefront -->
+    <div class="slide" id="slide-3" style="background-image:none"></div>
+  </div>
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Bard College · Master's Capstone · 2026</div>
+      <h1 class="hero-title">Cyborg Enterprises<br>and the <em>Urban Future</em></h1>
+      <p class="hero-subtitle">
+        How can AI adoption for workflow optimization be designed to enhance the economic resilience of immigrant-owned small businesses — and under what conditions can those gains scale into something larger? This research lives at that intersection, built across 25 New York State Entrepreneurship Assistance Centers, grounded in 537 real businesses.
+      </p>
+      <div class="hero-tags">
+        <span class="tag">AI Equity</span>
+        <span class="tag">Urban Resilience</span>
+        <span class="tag">Immigrant-Owned MSMEs</span>
+        <span class="tag">Curriculum Design</span>
+        <span class="tag">NYS EAC Program</span>
+        <span class="tag">Welcome to Chinatown</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#theory-of-change" class="btn-primary">Theory of Change ↓</a>
+        <a href="#survey-data" class="btn-secondary">Survey Findings</a>
+        <!-- EDIT 1a: Download one-pager CTA — replace "#" with PDF path when ready -->
+        <a href="#" class="btn-ghost">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          One-Pager PDF
+        </a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-label">Project at a glance</div>
+      <div class="hero-stat-row">
+        <div class="hero-stat">
+          <div class="hero-stat-num">537<span></span></div>
+          <div class="hero-stat-lbl">SMB respondents</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">25</div>
+          <div class="hero-stat-lbl">EACs · New York State</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">6</div>
+          <div class="hero-stat-lbl">Curriculum modules</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">3</div>
+          <div class="hero-stat-lbl">Survey languages</div>
+        </div>
+      </div>
+      <div class="hero-card-divider"></div>
+      <div class="hero-card-institution">
+        <div class="inst-dot"></div>
+        <div class="inst-text">Conducted through the <strong>NYS EAC Program</strong> with <a href="https://welcometochinatown.com/" target="_blank">Welcome to Chinatown</a> — anchoring small business resilience in NYC's Chinatown and beyond.</div>
+      </div>
+      <div style="height:12px"></div>
+      <div class="hero-card-institution">
+        <div class="inst-dot" style="background:var(--teal)"></div>
+        <div class="inst-text"><strong>Dual MA</strong> — Global Studies &amp; International Relations · Bard College / Central European University</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-controls" id="slideControls">
+    <button class="slide-arrow" id="slidePrev" aria-label="Previous">‹</button>
+    <div class="slide-dots" id="slideDots"></div>
+    <button class="slide-arrow" id="slideNext" aria-label="Next">›</button>
+  </div>
+</section>
+
+<!-- EDIT 3: RESEARCH TIMELINE STRIP -->
+<div class="timeline-strip">
+  <div class="timeline-inner">
+    <div class="tl-stage">
+      <div class="tl-dot tl-dot-done">✓</div>
+      <div class="tl-label done">Needs<br>Assessment</div>
+    </div>
+    <div class="tl-stage">
+      <div class="tl-dot tl-dot-done">✓</div>
+      <div class="tl-label done">Curriculum<br>Design</div>
+    </div>
+    <div class="tl-stage">
+      <div class="tl-dot tl-dot-active">●</div>
+      <div class="tl-label active">Pilot<br>Delivery</div>
+    </div>
+    <div class="tl-stage">
+      <div class="tl-dot tl-dot-pending">○</div>
+      <div class="tl-label">Analysis &amp;<br>Writing</div>
+    </div>
+    <div class="tl-stage">
+      <div class="tl-dot tl-dot-pending">○</div>
+      <div class="tl-label">Submission<br>May 2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- EXECUTIVE SUMMARY -->
+<section class="section section-alt" id="executive-summary">
+  <div class="section-inner">
+    <div class="section-label">Executive Summary</div>
+    <h2 class="section-title">The question behind the research</h2>
+    <div class="exec-full">
+      <p>The city has always been a site of reinvention. Immigrants arrive, build, adapt — and in doing so, become load-bearing pillars of the urban economy. <strong>New York City's immigrant-owned micro and small enterprises</strong> are no exception: they are the connective tissue of neighbourhood economies, absorbing economic shocks in ways that large firms simply cannot. But today they face a disruption unlike any that came before — not a recession, not a pandemic, but the quiet, compounding force of artificial intelligence reshaping how business is done at every level.</p>
+      <p>This project investigates how <strong>AI adoption for workflow optimization can be designed to enhance the economic resilience</strong> of immigrant-owned MSMEs in New York City, and develops a tailored AI training curriculum — designed, piloted, and refined through the NYS Entrepreneurship Assistance Centers Program with Welcome to Chinatown. It asks not just whether these businesses can adopt AI, but what institutional conditions, pedagogical frameworks, and support structures are required to make that adoption durable, equitable, and ultimately scalable into broader urban resilience.</p>
+      <p>The answer is not simply "more training." It is <strong>training designed with and for the learner</strong> — grounded in Kolb's experiential learning cycle, Fink's taxonomy of significant learning, and the lived reality of time-constrained, multilingual adult entrepreneurs who have already survived more disruptions than most. The curriculum this research produces is, in that sense, both a scholarly artifact and a practitioner's wager: that the gap between knowing AI exists and actually using it can be closed, one workflow at a time.</p>
+    </div>
+    <div class="rq-single">
+      <div class="rq-single-label">Central Research Question</div>
+      <div class="rq-single-text">How can AI adoption for workflow optimization be designed and implemented to enhance the economic resilience of immigrant-owned micro and small businesses, and under what conditions can these gains scale into broader urban resilience?</div>
+    </div>
+    <div class="section-label">Research Objectives</div>
+    <ul class="obj-grid" id="objGrid"></ul>
+  </div>
+</section>
+
+<!-- SURVEY DATA -->
+<section class="section" id="survey-data">
+  <div class="section-inner">
+    <div class="section-label">Survey Data &amp; Findings</div>
+    <h2 class="section-title">What 537 small businesses <em>actually said</em></h2>
+    <p class="survey-synthesis">Between January and April 2025, structured needs assessments reached <strong>537 small business owners</strong> across 25 NYS Entrepreneurship Assistance Centers — surveyed in English, Spanish, and Chinese. The findings map both the challenges these businesses are navigating and the specific barriers standing between them and meaningful AI adoption. Every curriculum design decision follows from this data, not from assumption.</p>
+    <!-- EDIT 2: Fixed impact study URL -->
+    <a href="https://welcometochinatown.com/impact-study" target="_blank" class="survey-source-link">Welcome to Chinatown Impact Study — further context on community need and programme reach</a>
+    <div class="stat-grid" id="statGrid"></div>
+    <div class="survey-callout">
+      <div class="survey-callout-icon">💬</div>
+      <div class="survey-callout-text">The open-text responses revealed something the checkboxes couldn't hold. The core issue isn't rejection of AI — it's a <strong>missing on-ramp</strong>. Business owners described feeling overwhelmed by the pace and volume of new tools, not afraid of the technology itself. For Spanish- and Chinese-speaking owners, the language gap is specifically about <strong>training access</strong> — not tool interfaces. They lack self-directed learning resources in their own languages: videos, guides, tutorials they can work through independently. For artisan and maker businesses, the barrier cuts deeper still: a sense that AI belongs to a corporate world that doesn't speak to their craft. These nuances don't appear in the multiple-choice data. They shaped the curriculum's design at every level.</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDIT 2b: PRACTITIONER VOICE STRIP (between Survey Data and Chapter Blueprint) -->
+<!-- Quotes sourced from open-text responses in the AI Nexus Board Brief, April 2025 -->
+<div class="voice-strip">
+  <div class="voice-inner">
+    <div class="voice-label">From the field — in their own words</div>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <span class="voice-mark">"</span>
+        <p class="voice-quote">AI is cool but I don't want to partake anymore since data centers are harmful to us. Interested in accessing AI in ways which are helpful — but not 'just because it's there.'</p>
+        <div class="voice-attr">English-speaking SMB respondent · Environmental &amp; sustainability concerns</div>
+      </div>
+      <div class="voice-card">
+        <span class="voice-mark">"</span>
+        <p class="voice-quote">Which is good AI self-learning web? Fee? Forum? — I want to learn but I don't know where to start in my own language.</p>
+        <div class="voice-attr">Chinese-speaking SMB respondent · Language access &amp; self-directed learning</div>
+      </div>
+      <div class="voice-card">
+        <span class="voice-mark">"</span>
+        <p class="voice-quote">Only 32% of EACs currently offer any AI guidance. Our clients need the on-ramp as much as we do — EAC staff need training before we can train anyone else.</p>
+        <div class="voice-attr">EAC Program Director · Institutional readiness &amp; facilitator capacity</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTER OUTLINE — EDIT 1: Word counts removed from accordion headers -->
+<section class="section section-alt" id="chapter-outline">
+  <div class="section-inner">
+    <div class="section-label">Chapter Blueprint</div>
+    <h2 class="section-title">The architecture of the argument</h2>
+    <p class="section-intro">Five chapters and an appendix, each doing a distinct piece of intellectual work. The logic moves from problem to theory to design to action to reflection — cumulative by design, not by accident.</p>
+    <div class="chapter-list" id="chapterList"></div>
+  </div>
+</section>
+
+<!-- EDIT 3: CURRICULUM SCOPE & SEQUENCE (new section between Chapters and Theory of Change) -->
+<section class="section" id="curriculum">
+  <div class="section-inner">
+    <div class="section-label">Curriculum Scope &amp; Sequence</div>
+    <h2 class="section-title">Six modules. Three phases. <em>One pathway.</em></h2>
+    <p class="section-intro">The full AI training curriculum grounded in Kolb's Experiential Learning Cycle and Fink's Taxonomy of Significant Learning. Each module maps to specific Kolb stages and Fink dimensions — chosen deliberately for this learner population, not by convention. Expand any module to see learning outcomes, tools, delivery mode, equity notes, and assessment activity.</p>
+    <div id="curriculumList"></div>
+  </div>
+</section>
+
+<!-- THEORY OF CHANGE -->
+<section class="toc-section" id="theory-of-change">
+  <div class="toc-inner">
+    <div class="section-label">Theory of Change</div>
+    <h2 class="section-title">From a single classroom to <em>urban resilience</em></h2>
+    <p class="section-intro">The causal logic connecting curriculum inputs to firm-level outcomes to citywide resilience. Click any node to explore the pathway in detail.</p>
+    <div class="toc-map-container"><div class="toc-map" id="tocMap"></div></div>
+    <div class="toc-detail" id="tocDetail">
+      <div class="toc-detail-label">Select any node above</div>
+      <div class="toc-detail-title">Explore the theory of change</div>
+      <div class="toc-detail-text">Click any element in the map to learn how it connects to the broader causal pathway — from program inputs through to urban resilience outcomes.</div>
+    </div>
+    <div style="margin-top:2.5rem"><div class="section-label" style="color:rgba(196,147,58,0.8)">Underpinning Assumptions</div></div>
+    <div class="toc-assumptions" id="tocAssumptions"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section section-alt" id="about">
+  <div class="section-inner">
+    <div class="section-label">About the Researcher</div>
+    <div class="about-grid">
+      <div>
+        <!--
+          PHOTO SLOT — ABOUT SECTION
+          Replace the .photo-placeholder div with:
+          <img src="your-headshot.jpg" alt="Daniel Quansah">
+        -->
+        <div class="about-photo-slot">
+          <div class="photo-placeholder">
+            <div class="photo-placeholder-icon">👤</div>
+            <div class="photo-placeholder-text">Photo coming soon</div>
+          </div>
+        </div>
+        <div class="about-credentials">
+          <div class="cred-item"><div class="cred-dot"></div><span>Dual MA, Global Studies &amp; International Relations — Bard College / Central European University (exp. May 2026)</span></div>
+          <div class="cred-item"><div class="cred-dot"></div><span>BSc Business Administration — Ashesi University, Ghana</span></div>
+          <div class="cred-item"><div class="cred-dot"></div><span>Google AI Professional Certificate (2026)</span></div>
+          <div class="cred-item"><div class="cred-dot"></div><span>Melton Foundation Global Solvers Accelerator (2025)</span></div>
+          <div class="cred-item"><div class="cred-dot"></div><span>OSUN Experiential Learning Institute Certificate — Bard College (2024)</span></div>
+        </div>
+      </div>
+      <div>
+        <h2 class="about-name">Daniel Kwaku<br>Bempah Quansah</h2>
+        <div class="about-title">Economic Researcher &amp; Curriculum Designer · Brooklyn, NY</div>
+        <div class="about-bio">
+          <p>Some researchers study a problem from a distance. Daniel arrived inside one. As a <strong>Research &amp; Curriculum Development Intern at Welcome to Chinatown</strong>, he has spent the past year working directly with 537 immigrant-owned small business owners across New York State — designing and delivering AI training that meets people where they are, not where the technology assumes they should be.</p>
+          <p>His capstone research, <em>Cyborg Enterprises and the Urban Future</em>, investigates how AI adoption shapes economic resilience among New York City's most vulnerable small businesses, and builds the curriculum infrastructure to close the gap between AI's potential and its actual reach. The question, at its core, is not technical. It is institutional, pedagogical, and deeply human.</p>
+          <p>Before graduate school, Daniel co-founded <strong>Munchies Grill &amp; Bar</strong> in Accra — scaling from start-up to 1,000 meals a day with 25 staff — and led a play-based education curriculum reaching 400 students in rural Ghana's cocoa communities. He has worked as a Research Assistant to Prof. Gayatri Spivak at Columbia University, and coordinated writing pedagogy for 1,400+ students annually at Ashesi University. The throughline in all of it: a conviction that good design, grounded in real context, changes what is possible.</p>
+        </div>
+        <div class="about-links">
+          <a href="https://www.linkedin.com/in/daniel-bempah-quansah/" target="_blank" class="about-link about-link-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <!-- EDIT 2: Fixed impact study URL -->
+          <a href="https://welcometochinatown.com/" target="_blank" class="about-link about-link-secondary">Welcome to Chinatown ↗</a>
+          <a href="https://welcometochinatown.com/impact-study" target="_blank" class="about-link about-link-secondary">Impact Study ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO ROADMAP -->
+<section class="section" id="coming-soon">
+  <div class="section-inner">
+    <div class="section-label">Portfolio Roadmap</div>
+    <h2 class="section-title">What's being <em>built</em></h2>
+    <p class="section-intro">This dashboard is the first layer of a public portfolio growing alongside the research itself. Each section represents a page or feature in active development.</p>
+    <div class="sitemap-grid">
+      <div class="sitemap-cell active-cell">
+        <span class="sm-status sm-live">Live</span>
+        <div class="sm-title">Overview, Survey Data &amp; Curriculum</div>
+        <div class="sm-desc">Executive summary, objectives, survey findings, chapter blueprint, full curriculum scope &amp; sequence, and interactive theory of change.</div>
+      </div>
+      <div class="sitemap-cell coming-cell">
+        <span class="sm-status sm-building">Building</span>
+        <div class="sm-title">Survey Data Dashboard</div>
+        <div class="sm-desc">Full interactive visualisations from the EAC and SMB survey — 537 businesses, 3 languages, 25 centers, across challenges, barriers, and AI readiness.</div>
+      </div>
+      <div class="sitemap-cell coming-cell">
+        <span class="sm-status sm-building">Building</span>
+        <div class="sm-title">Downloadable One-Pager</div>
+        <div class="sm-desc">A polished PDF executive summary — theory of change, key findings, and bio — designed for funders to forward and grant reviewers to attach.</div>
+      </div>
+      <div class="sitemap-cell coming-cell">
+        <span class="sm-status sm-planned">Planned</span>
+        <div class="sm-title">Field Notes &amp; Reflections</div>
+        <div class="sm-desc">Learning log and practitioner reflections — the researcher's own AI adoption journey alongside participants. The Kolb cycle, lived.</div>
+      </div>
+      <div class="sitemap-cell coming-cell">
+        <span class="sm-status sm-planned">Planned</span>
+        <div class="sm-title">Policy Recommendations</div>
+        <div class="sm-desc">Structured, evidence-grounded recommendations for EAC coordinators, city agencies, and funders considering replication.</div>
+      </div>
+      <div class="sitemap-cell coming-cell">
+        <span class="sm-status sm-planned">Planned</span>
+        <div class="sm-title">Impact Dashboard</div>
+        <div class="sm-desc">KPI tracking, outcome metrics, and the funder-facing case for scaling the model to Los Angeles, Chicago, Houston, Miami, and beyond.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER — EDIT 2: Fixed impact study URL; EDIT 1a: Download link added -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><strong>Daniel Quansah</strong> · Bard College Master's Capstone · AI for Urban Resilience · 2026</div>
+    <div class="footer-links">
+      <a href="https://welcometochinatown.com/" target="_blank">Welcome to Chinatown</a>
+      <a href="https://welcometochinatown.com/impact-study" target="_blank">Impact Study</a>
+      <a href="https://www.linkedin.com/in/daniel-bempah-quansah/" target="_blank">LinkedIn</a>
+      <!-- EDIT 1a: replace "#" with PDF path when one-pager is ready -->
+      <a href="#">Download One-Pager</a>
+      <a href="mailto:kwaku.bempah@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────
+
+const OBJECTIVES = [
+  { num:"01", label:"Barriers & Enabling Conditions", text:"To identify the barriers and enabling conditions influencing AI adoption among immigrant-owned micro and small businesses in New York City — including firm-level characteristics, the regulatory and policy environment, and the role of institutional support structures." },
+  { num:"02", label:"Institutional Factors & Firm Resilience", text:"To investigate the institutional and organizational factors that enable AI adoption for workflow optimization to translate into sustained firm-level economic resilience — and what distinguishes durable adoption from one-time exposure." },
+  { num:"03", label:"From Firm to Neighbourhood", text:"To examine how the economic resilience of immigrant-owned MSMEs contributes to broader neighbourhood and community-level urban resilience — tracing the pathway from a single business to a more resilient city." },
+  { num:"04", label:"Curriculum Design & Policy", text:"To inform the design of a tailored AI training curriculum and generate programmatic and policy recommendations that support effective, equitable, and scalable AI adoption among immigrant-owned small businesses." }
+];
+
+const SURVEY_STATS = [
+  { num:"59", sup:"%", label:"Customer acquisition", sub:"of all 537 SMBs cited getting more customers as their top challenge — the single most consistent signal across all three language communities.", color:"c-gold" },
+  { num:"78", sup:"%", label:"ChatGPT adoption", sub:"of English-speaking SMBs have tried ChatGPT — the dominant entry point. The curriculum builds on familiar tools rather than introducing new platforms.", color:"c-teal" },
+  { num:"47–76", sup:"%", label:"Cost as a barrier", sub:"cited cost as a concern — ranging from 47% among English speakers to 76% among Chinese-speaking businesses, the highest barrier for any group.", color:"c-rust" },
+  { num:"64", sup:"%", label:"Micro-enterprises", sub:"employ 5 or fewer people; 39% are solo operators. This is overwhelmingly a micro-enterprise program — a fact shaping every curriculum decision.", color:"c-slate" },
+  { num:"71", sup:"%", label:"Digitally comfortable", sub:"are comfortable with digital tools, and smartphones are near-universal. Mobile-first delivery is the right default — not a workaround.", color:"c-ink" },
+  { num:"56", sup:"%", label:"EAC pilot interest", sub:"of EAC directors expressed strong interest in an AI training pilot — a clear signal of institutional readiness the curriculum is designed to activate.", color:"c-sage" }
+];
+
+// EDIT 1: word count (ch.words) removed from CHAPTERS array and renderChapters()
+const CHAPTERS = [
+  { color:"#5B4FD9", bg:"#EAE8FA", num:"Chapter 1", title:"Introduction: AI at the Urban Frontier",
+    job:"This chapter opens at the widest frame — rapid urbanisation, the double-edged nature of AI, and the specific vulnerability of immigrant-owned small businesses navigating both — and narrows progressively to this research's particular site: New York City's Chinatown, the NYS EAC program, and the dual role of researcher and practitioner this project inhabits. It states the central research question and four objectives directly, and closes with a 300-word methodological note that explains the practice-based capstone form and establishes the researcher's positionality.",
+    outline:["Opens with a concrete scene — a specific Chinatown business owner confronting AI displacement or opportunity, not an abstraction about technology","Traces the problem cascade: rapid urbanisation → small business vulnerability → COVID disruption → AI as double-edged force → immigrant-owned MSMEs as most exposed","States the central research question and four research objectives clearly and directly","Introduces the EAC / Welcome to Chinatown context as the site of inquiry and establishes the researcher's dual practitioner role","300-word methodological note on sources, positionality, and why a practice-based capstone is the right form for this particular inquiry","Closes with a signposting paragraph that frames what follows as a cumulative argument, not a table of contents"]
+  },
+  { color:"#1A9E75", bg:"#E0F5ED", num:"Chapter 2", title:"What We Know and What's Missing: Theory, Programs, and the Case for This Project",
+    job:"This chapter builds the intellectual and programmatic case for the project in three layered movements. It begins with the theoretical frameworks — political economy of technology, digital divide theory, AI equity governance — that establish how technology benefits are distributed as a political question, not merely a technical one. It then analyses 3–4 exemplary AI training programs against a consistent evaluative matrix. It concludes by naming the gap that existing programs fail to fill, and presenting the theory of change as the direct, logical response to that gap.",
+    outline:["Section A — Theoretical foundations (600w): Political economy of technology (Autor, Winner, Jasanoff) as the master framework, layered with Digital Divide Theory and AI equity governance literature","Section B — Programmatic landscape (900w): Analysis of 3–4 exemplary programs through a consistent matrix — equity by design, tool-agnosticism, scalability, community embeddedness","Section C — What's missing (300w): Synthesis of the gap — what theory proposes that programs fail to operationalise, and what programs do well but lack scholarly grounding to explain","Section D — Theory of change (400w): The causal pathway the curriculum is designed to activate, framed as the logical 'therefore' of everything above it"]
+  },
+  { color:"#C94F2A", bg:"#FAE8E2", num:"Chapter 3", title:"Designing for Transformation: Pedagogical Framework and Curriculum Architecture",
+    job:"This chapter walks through every major design decision in the curriculum and connects it explicitly to the learner population, delivery context, and theory of change. It begins by characterising the target learner through an andragogical lens — adult, experience-rich, time-poor, multilingual, and potentially wary of technology after prior negative encounters. It then makes the case for Kolb's Experiential Learning Cycle and Fink's Taxonomy of Significant Learning as the twin design blueprints, chosen not because they are fashionable but because each directly addresses a specific feature of these learners' reality.",
+    outline:["Design premise: every pedagogical choice reflects a specific understanding of who the learners are and what they actually need","Section A — Who the learners are (400w): Andragogical portrait grounded in EAC survey data — adult, experience-rich, time-poor, multilingual, with prior technology barriers","Section B — Why Kolb (400w): Experiential Learning Cycle as design blueprint, with each of the six modules mapped to specific stages","Section C — Why Fink (400w): Fink's Taxonomy as the aspirational framework — 'caring' and 'human dimension' as especially critical for skeptical learners","Section D — Digital literacy models and blended delivery (400w): Rationale for synchronous, asynchronous, and in-person components, plus equity dimensions","Curriculum overview: one paragraph tying all four frameworks into a coherent, defensible design argument"]
+  },
+  { color:"#B06A10", bg:"#FAF0E0", num:"Chapter 4", title:"What Should Change: Recommendations for Programs, Policy, and Research",
+    job:"This chapter translates the research findings into a structured set of actionable, evidence-grounded recommendations addressed to four distinct audiences: EAC program coordinators, city and state agencies, funders, and future researchers. Each recommendation names the actor, specifies the action, and identifies one measurable indicator of success — a format designed to be immediately legible to program officers, grant reviewers, and policy advisors reading under time pressure.",
+    outline:["Brief framing: what the preceding analysis now makes it possible to recommend — and why specificity matters more than volume","Recommendations for EAC coordinators: curriculum integration, facilitator training, multilingual delivery, internal admin AI tools","Recommendations for city and state agencies: policy frameworks, language access provisions, and procurement equity","Recommendations for funders: what a scaled model looks like, what investment it requires, what success indicators to track","Recommendations for future research: longitudinal tracking, cross-city comparison, platform dependency risks, community of practice effects","Each recommendation: actor named, action specified, one measurable success indicator identified"]
+  },
+  { color:"#2068B0", bg:"#E5F0FA", num:"Chapter 5", title:"Reflective Epilogue: Learning in Public",
+    job:"This chapter closes the document by turning the research lens on the researcher. Grounded in Schön's reflective practitioner methodology — establishing this as a legitimate scholarly method, not a personal diary — it documents two parallel journeys: the researcher's own AI adoption process throughout the project, and the tensions and lessons that arose from occupying both practitioner and researcher roles simultaneously. In its very form, this chapter models the kind of reflective learning the curriculum asks of its participants.",
+    outline:["Methodological framing upfront — Schön's reflective practitioner cited to establish this as a legitimate research method","Section A — AI upskilling log (300w): Chronicles the researcher's own journey learning AI tools — honest about what surprised, frustrated, and shifted assumptions","Section B — Practitioner partnership reflections (300w): What working with Welcome to Chinatown taught that the literature simply could not — tensions between researcher and practitioner roles","Structured using the Kolb cycle as the reflective architecture — demonstrating the framework has been genuinely internalised, not just applied"]
+  }
+];
+
+// EDIT 3: Curriculum modules data — sourced from capstone_blueprint_dashboard_1.html
+const KOLB_LABELS = ["Concrete experience","Reflective observation","Abstract conceptualisation","Active experimentation"];
+const FINK_LABELS = ["Foundational knowledge","Application","Integration","Human dimension","Caring","Learning how to learn"];
+
+const CURRICULUM_MODULES = [
+  {
+    phase:"Phase 1 — Foundation",
+    color:"#5B4FD9", bg:"#EAE8FA",
+    num:"Module 1",
+    title:"AI Demystified: What It Is and Why It Matters for Your Business",
+    tagline:"Build foundational AI literacy grounded in real business challenges, not definitions.",
+    duration:"3–4 hrs", format:"Async + group workshop",
+    kolb:[0,1], fink:[0,4,5],
+    delivery:[{l:"Online async",c:"del-async"},{l:"Group workshop",c:"del-person"}],
+    outcomes:["Explain what AI is in plain language and distinguish it from automation and software","Identify at least two ways AI is already affecting their industry or neighbourhood","Articulate one personally relevant reason to engage with AI tools","Reflect on their current relationship with technology and identify comfort or anxiety points"],
+    tools:"No tools required. Discussion prompts, video case studies, and peer reflection logs.",
+    equity:"Materials available in Cantonese, Spanish, and Mandarin. Opens with a Welcome to Chinatown case study for cultural relevance.",
+    assess:"Reflection log: 'What is one thing about AI that surprised you, and one thing you're still unsure about?'"
+  },
+  {
+    phase:"Phase 1 — Foundation",
+    color:"#1A9E75", bg:"#E0F5ED",
+    num:"Module 2",
+    title:"Mapping Your Workflow: Where Does AI Fit in Your Business?",
+    tagline:"Apply a structured workflow audit to identify high-value, low-risk AI entry points.",
+    duration:"3–4 hrs", format:"1-on-1 + async",
+    kolb:[0,1,2], fink:[0,1,2],
+    delivery:[{l:"1-on-1 session",c:"del-person"},{l:"Online async",c:"del-async"}],
+    outcomes:["Map at least 5 core business tasks across marketing, operations, and customer service","Categorise tasks by repetitiveness, time cost, and AI-amenability","Identify one priority workflow domain for AI adoption in their specific business","Complete a Workflow Audit Template to use as reference across Modules 3–5"],
+    tools:"Workflow Audit Template (provided). Optional: Notion, Google Sheets.",
+    equity:"Facilitator-guided 1-on-1 option for low-digital-literacy participants. Template available in simplified and full versions.",
+    assess:"Completed Workflow Audit Template with one identified priority domain and rationale."
+  },
+  {
+    phase:"Phase 2 — Application",
+    color:"#C94F2A", bg:"#FAE8E2",
+    num:"Module 3",
+    title:"AI for Marketing: Reaching More Customers Without More Time",
+    tagline:"Practice using AI tools for content creation, social media, and customer outreach.",
+    duration:"3–4 hrs", format:"Sync + in-person workshop",
+    kolb:[0,2,3], fink:[0,1,2,3],
+    delivery:[{l:"Live sync session",c:"del-sync"},{l:"In-person workshop",c:"del-person"}],
+    outcomes:["Use an AI writing tool to draft a social media post or promotional email for their business","Evaluate AI-generated content for accuracy, tone, and cultural appropriateness","Identify one marketing workflow where AI saves measurable time or effort","Adapt AI output to reflect their brand voice and community context"],
+    tools:"ChatGPT / Claude (free tier), Canva AI, Google Gemini. Facilitator demo first, then guided practice.",
+    equity:"Multilingual prompt templates provided. Examples drawn from immigrant-owned business contexts. Peer pairing for tool-averse participants.",
+    assess:"Live practice: create one piece of marketing content using an AI tool. Group debrief: 'What worked? What needed editing? Why?'"
+  },
+  {
+    phase:"Phase 2 — Application",
+    color:"#B06A10", bg:"#FAF0E0",
+    num:"Module 4",
+    title:"AI for Operations: Working Smarter on the Back End",
+    tagline:"Explore AI tools that streamline scheduling, inventory, finance, and admin tasks.",
+    duration:"3–4 hrs", format:"Sync + 1-on-1 coaching",
+    kolb:[0,2,3], fink:[1,2,3,5],
+    delivery:[{l:"Live sync session",c:"del-sync"},{l:"1-on-1 coaching",c:"del-person"}],
+    outcomes:["Identify at least one operational task that can be partially automated using a free or low-cost AI tool","Demonstrate use of one AI-powered tool for scheduling, invoicing, or inventory management","Calculate a rough time-savings estimate for their chosen operational use case","Design a simple adoption plan: tool + task + timeline"],
+    tools:"Notion AI, Google Workspace AI features, Wave (accounting), Calendly. Tool selection guided by participant's business type.",
+    equity:"Tool recommendations tiered by cost (free / freemium / paid). 1-on-1 coaching available for setup support.",
+    assess:"Adoption plan: 'I will use [tool] to [task] by [date]. I expect this to save approximately [X hours/week].'"
+  },
+  {
+    phase:"Phase 2 — Application",
+    color:"#2068B0", bg:"#E5F0FA",
+    num:"Module 5",
+    title:"AI for Customer Service: Faster Responses, Stronger Relationships",
+    tagline:"Build confidence using AI tools to manage customer communication and feedback.",
+    duration:"3–4 hrs", format:"Sync + async",
+    kolb:[0,1,2,3], fink:[1,2,3,4],
+    delivery:[{l:"Live sync session",c:"del-sync"},{l:"Online async",c:"del-async"}],
+    outcomes:["Draft an AI-assisted customer response template for a common inquiry or complaint","Evaluate the trade-offs between AI-assisted and human-led customer interaction","Set up or configure a basic chatbot or auto-reply workflow","Reflect on how AI use in customer service affects trust, tone, and cultural nuance"],
+    tools:"Tidio, ManyChat (free tier), Gmail templates + AI, Google Business reply tools.",
+    equity:"Discussion of cultural expectations around customer communication. Emphasis on AI as support, not replacement, for relationship-based business models.",
+    assess:"Peer review: exchange and critique each other's AI-drafted customer responses for tone, accuracy, and community appropriateness."
+  },
+  {
+    phase:"Phase 3 — Integration & Reflection",
+    color:"#5E3D6B", bg:"#E8DDEF",
+    num:"Module 6",
+    title:"AI with Intention: Ethics, Equity, and Building Your AI Practice",
+    tagline:"Integrate learning across modules, address ethical dimensions, and build a personal AI adoption roadmap.",
+    duration:"3–4 hrs", format:"Group workshop + async",
+    kolb:[1,2,3], fink:[2,3,4,5],
+    delivery:[{l:"Group workshop",c:"del-person"},{l:"Online async",c:"del-async"}],
+    outcomes:["Identify at least two ethical risks of AI relevant to their business (data privacy, bias, labour displacement)","Articulate how AI adoption could affect their employees, customers, and community","Complete a Personal AI Adoption Roadmap covering tools, timelines, and learning goals","Connect their AI learning journey to a broader vision for business economic resilience"],
+    tools:"Reflection workbook (provided). Optional: revisit tools from Modules 3–5 for roadmap planning.",
+    equity:"Explicit discussion of how AI policy affects immigrant-owned and minority businesses. Policy resources and advocacy pathways shared.",
+    assess:"Personal AI Adoption Roadmap — reviewed in a final 1-on-1 coaching session."
+  }
+];
+
+const TOC_COLS = [
+  { id:"inputs", label:"Inputs", cls:"col-inputs", nodes:[
+    { title:"EAC Infrastructure", sub:"25 centers, trained facilitators, established community trust", detail:"The NYS Entrepreneurship Assistance Centers provide the institutional backbone of this program — 25 centers with pre-existing relationships with immigrant-owned small businesses across the state. This infrastructure is what makes community-embedded delivery possible at scale." },
+    { title:"Survey Research", sub:"537 SMB needs assessments across 3 languages", detail:"Structured needs assessments and multilingual survey data from 537 MSME owners provided the empirical foundation for all curriculum design decisions — ensuring the training was built around actual workflow challenges, not assumptions." },
+    { title:"Curriculum Design", sub:"6-module, Kolb/Fink framework, blended delivery", detail:"A 6-module AI training curriculum grounded in Kolb's Experiential Learning Cycle and Fink's Taxonomy of Significant Learning — designed for adult, non-technical learners, available in English, Spanish, and Chinese." },
+    { title:"Welcome to Chinatown", sub:"Nonprofit anchor, NYC Chinatown community partner", detail:"Welcome to Chinatown provides the practitioner anchor for this research — community credibility, program management infrastructure, and a direct line to the small business owners the curriculum is designed to serve." }
+  ]},
+  { id:"activities", label:"Activities", cls:"col-activities", nodes:[
+    { title:"AI Literacy Workshops", sub:"Hands-on, workflow-grounded training sessions", detail:"Six structured workshops that move through Kolb's learning cycle — beginning with concrete experience (using AI in a real business task) before introducing concepts. Each session is anchored in the participant's own workflow, not generic scenarios." },
+    { title:"Needs Assessment", sub:"1:1 onboarding interviews mapping business workflows", detail:"Before training begins, each participant undergoes a structured onboarding interview to map their specific business workflows and identify the highest-value AI opportunities for their firm." },
+    { title:"Facilitator Training", sub:"EAC coordinator capacity building", detail:"EAC coordinators receive specialised training to facilitate the curriculum — guiding adult learners through the experiential cycle and supporting the cultural and linguistic needs of diverse participant cohorts." },
+    { title:"Community of Practice", sub:"Peer learning networks across EAC cohorts", detail:"Participants are connected into peer learning networks that extend beyond individual workshops — sharing tools, troubleshooting challenges, and building the collective knowledge base that makes adoption durable." }
+  ]},
+  { id:"outputs", label:"Outputs", cls:"col-outputs", nodes:[
+    { title:"Trained Business Owners", sub:"400+ MSMEs completing curriculum modules", detail:"The primary output: immigrant-owned small business owners who have completed at least three curriculum modules and can demonstrate AI tool use in at least one core business workflow of their choosing." },
+    { title:"Trained Facilitators", sub:"25 EAC coordinators with AI facilitation capacity", detail:"25 EAC coordinators trained and equipped to deliver the curriculum independently — creating a multiplier effect that extends the program's reach beyond the initial pilot cohort." },
+    { title:"Curriculum Documentation", sub:"Replicable, open-access training materials", detail:"A fully documented, open-access curriculum package that any EAC or community organization can adapt and deliver — including facilitator guides, participant workbooks, and multilingual materials." },
+    { title:"Research Outputs", sub:"Capstone, policy brief, practitioner report", detail:"The academic and practitioner outputs of the research: a 7,500-word capstone document, a policy brief for city and state agencies, and a practitioner report for funders considering replication at scale." }
+  ]},
+  { id:"short", label:"Short-Term Outcomes", cls:"col-short", nodes:[
+    { title:"AI Tool Adoption", sub:"Regular use of ≥1 AI tool in core workflows (6 months)", detail:"Within 6 months of training completion, participants are using at least one AI tool regularly in a core business workflow — whether customer communication, inventory management, marketing, or financial record-keeping." },
+    { title:"Workflow Efficiency", sub:"Measurable reduction in time on administrative tasks", detail:"Participants report measurable reductions in time spent on administrative tasks most amenable to AI automation — freeing capacity for the higher-value work that actually grows a business." },
+    { title:"Digital Confidence", sub:"Increased comfort and agency with digital tools", detail:"Participants demonstrate increased confidence using digital tools generally — a prerequisite for the ongoing, self-directed learning that makes AI adoption durable rather than a one-time training event." }
+  ]},
+  { id:"long", label:"Long-Term Outcomes", cls:"col-long", nodes:[
+    { title:"Revenue Resilience", sub:"Measurable business performance improvement (12–18 months)", detail:"At 12–18 months, participating businesses show measurable improvements in at least one performance indicator — revenue stability, customer retention, operational efficiency, or ability to weather economic disruption." },
+    { title:"Workforce Adaptation", sub:"Staff AI capacity and reduced skill-gap vulnerability", detail:"Participating businesses demonstrate reduced exposure to AI-related workforce displacement — because the owner is directing that adoption rather than being displaced by it." },
+    { title:"Network Effects", sub:"Peer adoption spread through community networks", detail:"AI adoption spreads through community business networks beyond formal training cohorts — as trained owners share tools, practices, and confidence with peers who did not participate directly." }
+  ]},
+  { id:"impact", label:"Impact", cls:"col-impact", nodes:[
+    { title:"Urban Economic Resilience", sub:"Strengthened neighbourhood economies in AI transition", detail:"The ultimate impact: immigrant-owned small business districts that are not casualties of the AI transition, but active participants in it — contributing to the urban economic resilience cities need to survive rapid technological change." },
+    { title:"Replicable Model", sub:"Scalable across U.S. cities with immigrant MSME communities", detail:"A proof-of-concept for community-embedded, equity-centred AI adoption programming replicable across Los Angeles, Chicago, Houston, Miami, and beyond." }
+  ]}
+];
+
+const TOC_ASSUMPTIONS = [
+  { label:"Adult Learning", text:"Adult learners engage most effectively when training is anchored in their own business workflows and immediate operational challenges — not abstract definitions or generic use cases." },
+  { label:"Institutional Capacity", text:"EAC coordinators have sufficient institutional capacity and community trust to deliver blended programming to underserved MSME populations, given appropriate facilitator training and support." },
+  { label:"Tool Accessibility", text:"Free and low-cost AI tools are sufficiently accessible and stable to serve as the primary toolset without creating harmful platform dependency or compounding digital divide effects." },
+  { label:"Durability of Gains", text:"Firm-level AI adoption gains are durable enough over 12–18 months to produce measurable economic resilience effects — and that those effects can aggregate into neighbourhood-level outcomes." }
+];
+
+// ── RENDER FUNCTIONS ──────────────────────────────────────────────────────
+
+function renderObjectives() {
+  const g = document.getElementById('objGrid');
+  OBJECTIVES.forEach(o => {
+    const li = document.createElement('li');
+    li.className = 'obj-item';
+    li.innerHTML = `<div class="obj-num">${o.num}</div><div><div class="obj-label">${o.label}</div><div class="obj-text">${o.text}</div></div>`;
+    g.appendChild(li);
+  });
+}
+
+function renderStats() {
+  const g = document.getElementById('statGrid');
+  SURVEY_STATS.forEach(s => {
+    const d = document.createElement('div');
+    d.className = `stat-card ${s.color}`;
+    d.innerHTML = `<div class="stat-num">${s.num}<sup>${s.sup}</sup></div><div class="stat-label">${s.label}</div><div class="stat-sub">${s.sub}</div>`;
+    g.appendChild(d);
+  });
+}
+
+// EDIT 1: renderChapters — ch-words span removed
+function renderChapters() {
+  const list = document.getElementById('chapterList');
+  CHAPTERS.forEach((ch, i) => {
+    const item = document.createElement('div');
+    item.className = 'chapter-item';
+    item.innerHTML = `
+      <div class="chapter-header" onclick="toggleChapter(${i})">
+        <span class="ch-num" style="background:${ch.bg};color:${ch.color}">${ch.num}</span>
+        <span class="ch-title">${ch.title}</span>
+        <span class="ch-arrow">▾</span>
+      </div>
+      <div class="chapter-body">
+        <p class="ch-job">${ch.job}</p>
+        <ul class="ch-outline">${ch.outline.map(o=>`<li>${o}</li>`).join('')}</ul>
+      </div>`;
+    list.appendChild(item);
+  });
+}
+function toggleChapter(i) { document.querySelectorAll('.chapter-item')[i].classList.toggle('open'); }
+
+// EDIT 3: renderCurriculum
+function renderCurriculum() {
+  const container = document.getElementById('curriculumList');
+  let currentPhase = '';
+
+  CURRICULUM_MODULES.forEach((mod, i) => {
+    // Phase label
+    if (mod.phase !== currentPhase) {
+      currentPhase = mod.phase;
+      const phaseEl = document.createElement('div');
+      phaseEl.className = 'mod-phase-label';
+      phaseEl.textContent = mod.phase;
+      container.appendChild(phaseEl);
+    }
+
+    const kolbPills = KOLB_LABELS.map((l, idx) =>
+      `<span class="mod-pill ${mod.kolb.includes(idx) ? 'active' : ''}">${l}</span>`).join('');
+    const finkPills = FINK_LABELS.map((l, idx) =>
+      `<span class="mod-pill ${mod.fink.includes(idx) ? 'active' : ''}">${l}</span>`).join('');
+    const delivChips = mod.delivery.map(d =>
+      `<span class="del-chip ${d.c}">${d.l}</span>`).join('');
+
+    const item = document.createElement('div');
+    item.className = 'mod-item';
+    item.innerHTML = `
+      <div class="mod-header" onclick="toggleMod(${i})">
+        <span class="mod-badge" style="background:${mod.bg};color:${mod.color}">${mod.num}</span>
+        <span class="mod-title">${mod.title}</span>
+        <div class="mod-meta">
+          <span class="mod-tag">${mod.duration}</span>
+          <span class="mod-arrow">▾</span>
+        </div>
+      </div>
+      <div class="mod-body">
+        <p class="mod-tagline">${mod.tagline}</p>
+        <div class="mod-grid">
+          <div>
+            <div class="mod-section-label">Kolb Stages</div>
+            <div class="mod-pills">${kolbPills}</div>
+            <div class="mod-section-label" style="margin-top:.75rem">Fink Dimensions</div>
+            <div class="mod-pills">${finkPills}</div>
+          </div>
+          <div>
+            <div class="mod-section-label">Delivery Mode</div>
+            <div class="mod-deliver-chips">${delivChips}</div>
+            <div class="mod-info-card" style="margin-top:.75rem">
+              <strong>Format</strong>${mod.format}
+            </div>
+          </div>
+          <div class="mod-full-row">
+            <div class="mod-section-label">Learning Outcomes</div>
+            <ul class="mod-lo-list">${mod.outcomes.map(o=>`<li>${o}</li>`).join('')}</ul>
+          </div>
+          <div>
+            <div class="mod-info-card">
+              <strong>Tools &amp; Resources</strong>${mod.tools}
+            </div>
+          </div>
+          <div>
+            <div class="mod-info-card">
+              <strong>Assessment Activity</strong>${mod.assess}
+            </div>
+          </div>
+          <div class="mod-full-row">
+            <div class="mod-info-card" style="border-left:3px solid var(--teal)">
+              <strong>Equity Note</strong>${mod.equity}
+            </div>
+          </div>
+        </div>
+      </div>`;
+    container.appendChild(item);
+  });
+}
+function toggleMod(i) { document.querySelectorAll('.mod-item')[i].classList.toggle('open'); }
+
+function renderTOC() {
+  const map = document.getElementById('tocMap');
+  TOC_COLS.forEach((col, ci) => {
+    if (ci > 0) {
+      const a = document.createElement('div');
+      a.className = 'toc-arrow-col';
+      a.innerHTML = '<span class="toc-arrow-sym">→</span>';
+      map.appendChild(a);
+    }
+    const colEl = document.createElement('div');
+    colEl.className = `toc-col ${col.cls}`;
+    colEl.innerHTML = `<div class="toc-col-head">${col.label}</div><div class="toc-col-body" id="cb-${col.id}"></div>`;
+    map.appendChild(colEl);
+    const body = colEl.querySelector(`#cb-${col.id}`);
+    col.nodes.forEach(node => {
+      const el = document.createElement('div');
+      el.className = 'toc-node';
+      el.innerHTML = `<div class="toc-node-title">${node.title}</div><div class="toc-node-sub">${node.sub}</div>`;
+      el.addEventListener('click', () => {
+        document.querySelectorAll('.toc-node').forEach(n => n.classList.remove('active'));
+        el.classList.add('active');
+        document.getElementById('tocDetail').innerHTML = `
+          <div class="toc-detail-label">${col.label}</div>
+          <div class="toc-detail-title">${node.title}</div>
+          <div class="toc-detail-text">${node.detail}</div>`;
+      });
+      body.appendChild(el);
+    });
+  });
+  const ag = document.getElementById('tocAssumptions');
+  TOC_ASSUMPTIONS.forEach(a => {
+    const el = document.createElement('div');
+    el.className = 'toc-assume';
+    el.innerHTML = `<strong>${a.label}</strong>${a.text}`;
+    ag.appendChild(el);
+  });
+}
+
+// ── SLIDESHOW ─────────────────────────────────────────────────────────────
+(function initSlideshow() {
+  const hero    = document.getElementById('heroSection');
+  const slides  = Array.from(document.querySelectorAll('.slide'));
+  const dotsEl  = document.getElementById('slideDots');
+  const prevBtn = document.getElementById('slidePrev');
+  const nextBtn = document.getElementById('slideNext');
+  const DELAY   = 5000;
+  let cur = 0, timer = null;
+  const hasPhotos = slides.some(s => { const bg = s.style.backgroundImage; return bg && bg !== 'none' && bg.trim() !== ''; });
+  if (!hasPhotos) return;
+  hero.classList.add('has-photos');
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Photo ${i+1}`);
+    dot.addEventListener('click', () => go(i));
+    dotsEl.appendChild(dot);
+  });
+  function go(n) {
+    slides[cur].classList.remove('active'); dotsEl.children[cur].classList.remove('active');
+    cur = (n + slides.length) % slides.length;
+    slides[cur].classList.add('active'); dotsEl.children[cur].classList.add('active');
+    clearInterval(timer); timer = setInterval(() => go(cur + 1), DELAY);
+  }
+  prevBtn.addEventListener('click', () => go(cur - 1));
+  nextBtn.addEventListener('click', () => go(cur + 1));
+  timer = setInterval(() => go(cur + 1), DELAY);
+})();
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+renderObjectives();
+renderStats();
+renderChapters();
+renderCurriculum();
+renderTOC();
+
+// Active nav on scroll
+const sections = document.querySelectorAll('section[id], div.timeline-strip');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  document.querySelectorAll('section[id]').forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+}, { passive: true });
+</script>
+</body>
+</html>
