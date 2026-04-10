@@ -1,7 +1,7 @@
 # Cyborg Enterprises and the Urban Future
 ### AI Adoption, MSME Resilience, and the Making of Resilient Cities
 
-**Live site → danielbempah/Capstone-Portfolio**
+**Live site → [danielbempah/Capstone-Portfolio](https://danielbempah.github.io/Capstone-Portfolio/)**
 
 ---
 
@@ -43,7 +43,7 @@ Bard College / Central European University
 
 Research & Curriculum Development Intern, Welcome to Chinatown Inc.
 
-[LinkedIn](https://www.linkedin.com/in/daniel-bempah-quansah/) · danielbempah/Capstone-Portfolio · kwaku.bempah@gmail.com
+[LinkedIn](https://www.linkedin.com/in/daniel-bempah-quansah/) · [danielbempah/Capstone-Portfolio](https://danielbempah.github.io/Capstone-Portfolio/) · kwaku.bempah@gmail.com
 
 ---
 
