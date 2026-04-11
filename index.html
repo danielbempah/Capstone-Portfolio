@@ -565,9 +565,9 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
           Replace the .photo-placeholder div with:
           <img src="your-headshot.jpg" alt="Daniel Quansah">
         -->
-       <div class="about-photo-slot">
-  <img src="headshot.jpg" alt="Daniel Quansah">
-</div>
+        <div class="about-photo-slot">
+          <img src="headshot.jpg" alt="Daniel Quansah">
+        </div>
         <div class="about-credentials">
           <div class="cred-item"><div class="cred-dot"></div><span>Dual MA, Global Studies &amp; International Relations — Bard College / Central European University (exp. May 2026)</span></div>
           <div class="cred-item"><div class="cred-dot"></div><span>BSc Business Administration — Ashesi University, Ghana</span></div>
@@ -649,12 +649,12 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
       <a href="https://www.linkedin.com/in/daniel-bempah-quansah/" target="_blank">LinkedIn</a>
       <!-- EDIT 1a: replace "#" with PDF path when one-pager is ready -->
       <a href="#">Download One-Pager</a>
-      <a href="mailto:kwaku.bempah@gmail.com">Contact</a>
+      <a href="/cdn-cgi/l/email-protection#462d31272d336824232b36272e06212b272f2a6825292b">Contact</a>
     </div>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── DATA ──────────────────────────────────────────────────────────────────
 
 const OBJECTIVES = [
@@ -1028,9 +1028,4 @@ const sections = document.querySelectorAll('section[id], div.timeline-strip');
 const navLinks = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
   let cur = '';
-  document.querySelectorAll('section[id]').forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
-  navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
-}, { passive: true });
-</script>
-</body>
-</html>
+  document.querySelectorAll('section[id]').forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id
