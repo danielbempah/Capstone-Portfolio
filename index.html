@@ -6,6 +6,7 @@
 <title>Cyborg Enterprises & the Urban Future — Daniel Quansah</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Syne:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -285,6 +286,54 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .sm-title{font-family:var(--ff-display);font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:6px}
 .sm-desc{font-size:.85rem;color:var(--ink-soft);line-height:1.55}
 
+/* ── SURVEY DASHBOARD ── */
+.survey-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.75rem}
+.survey-tab{font-family:var(--ff-ui);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:7px 16px;border-radius:20px;border:1.5px solid var(--rule);background:var(--warm-white);color:var(--ink-soft);cursor:pointer;transition:all .2s;white-space:nowrap}
+.survey-tab:hover{border-color:var(--ink-faint);color:var(--ink)}
+.survey-tab.active{background:var(--ink);border-color:var(--ink);color:var(--warm-white)}
+.survey-panel{display:none}
+.survey-panel.active{display:block}
+.survey-chart-wrap{background:var(--warm-white);border:1px solid var(--rule);border-radius:var(--r);padding:1.5rem;margin-bottom:1.25rem;position:relative}
+.survey-chart-wrap canvas{max-height:320px}
+.survey-insight{font-size:.92rem;color:var(--ink-mid);line-height:1.75;margin-bottom:1rem}
+.survey-insight strong{color:var(--ink)}
+.survey-quote-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem}
+.survey-quote-mini{background:var(--parchment);border:1px solid var(--rule);border-radius:var(--r-sm);padding:1rem 1.25rem}
+.survey-quote-mini .sq-mark{font-family:var(--ff-display);font-size:1.8rem;line-height:.7;color:var(--gold);opacity:.6;display:block;margin-bottom:.4rem}
+.survey-quote-mini .sq-text{font-family:var(--ff-display);font-size:.88rem;font-style:italic;color:var(--ink-mid);line-height:1.6;margin-bottom:.6rem}
+.survey-quote-mini .sq-attr{font-family:var(--ff-ui);font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.survey-demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.survey-demo-card{background:var(--warm-white);border:1px solid var(--rule);border-radius:var(--r);padding:1.25rem}
+.survey-demo-card canvas{max-height:200px}
+.survey-demo-label{font-family:var(--ff-ui);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.75rem}
+.eac-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.eac-stat{background:var(--warm-white);border:1px solid var(--rule);border-radius:var(--r);padding:1.5rem;text-align:center}
+.eac-stat-num{font-family:var(--ff-display);font-size:2.6rem;font-weight:700;color:var(--ink);line-height:1;margin-bottom:4px}
+.eac-stat-num span{font-size:1.2rem;color:var(--gold)}
+.eac-stat-lbl{font-family:var(--ff-ui);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
+.eac-stat-sub{font-size:.8rem;color:var(--ink-soft);line-height:1.5}
+.survey-lang-note{font-family:var(--ff-ui);font-size:10px;font-weight:600;letter-spacing:.06em;color:var(--ink-faint);margin-top:.5rem;font-style:italic}
+
+/* ── PERSONA CARDS ── */
+.persona-input-label{font-family:var(--ff-ui);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);display:flex;align-items:center;gap:10px;margin-bottom:.75rem}
+.persona-input-label::before{content:'';display:block;width:20px;height:1px;background:var(--teal)}
+.persona-framing{font-size:.95rem;color:var(--ink-mid);line-height:1.8;margin-bottom:2rem;max-width:700px}
+.persona-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+.persona-card{background:var(--warm-white);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;transition:box-shadow .2s}
+.persona-card:hover{box-shadow:0 4px 20px rgba(14,12,10,.07)}
+.persona-card-header{padding:1rem 1.25rem;display:flex;align-items:flex-start;gap:12px}
+.persona-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--ff-ui);font-size:13px;font-weight:700;color:white;flex-shrink:0}
+.persona-name{font-family:var(--ff-display);font-size:1rem;font-weight:600;color:var(--ink);line-height:1.2;margin-bottom:2px}
+.persona-tagline{font-family:var(--ff-ui);font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.persona-body{padding:0 1.25rem 1.25rem}
+.persona-row{display:flex;gap:8px;margin-bottom:.5rem;flex-wrap:wrap}
+.persona-badge{font-family:var(--ff-ui);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:12px;background:var(--parchment);color:var(--ink-soft);border:1px solid var(--rule)}
+.persona-signals{list-style:none;display:flex;flex-direction:column;gap:4px;margin:0.75rem 0}
+.persona-signals li{font-size:.82rem;color:var(--ink-soft);padding:.4rem .6rem .4rem 1.2rem;background:var(--parchment);border-radius:var(--r-sm);line-height:1.4;position:relative}
+.persona-signals li::before{content:'→';position:absolute;left:.4rem;color:var(--gold);font-size:11px}
+.persona-implication{font-size:.82rem;color:var(--ink-mid);line-height:1.55;padding:.6rem .75rem;border-radius:var(--r-sm);border-left:3px solid var(--teal);background:var(--teal-light);margin-top:.5rem}
+.persona-implication strong{font-family:var(--ff-ui);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:2px}
+
 /* ── FOOTER ── */
 .site-footer{background:var(--ink);color:rgba(246,241,232,.5);padding:3rem 2rem;position:relative;z-index:1}
 .footer-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
@@ -308,6 +357,10 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   .nav-links{display:none}
   .timeline-inner{gap:.25rem}
   .tl-label{font-size:8px}
+  .survey-demo-grid{grid-template-columns:1fr}
+  .persona-grid{grid-template-columns:1fr}
+  .eac-grid{grid-template-columns:1fr}
+  .survey-quote-row{grid-template-columns:1fr}
 }
 @media(max-width:540px){
   .stat-grid{grid-template-columns:1fr}
@@ -396,7 +449,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
       <div class="hero-card-label">Project at a glance</div>
       <div class="hero-stat-row">
         <div class="hero-stat">
-          <div class="hero-stat-num">537<span></span></div>
+          <div class="hero-stat-num">672<span></span></div>
           <div class="hero-stat-lbl">SMB respondents</div>
         </div>
         <div class="hero-stat">
@@ -476,19 +529,19 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   </div>
 </section>
 
-<!-- SURVEY DATA -->
+<!-- SURVEY DATA — interactive tabbed dashboard -->
 <section class="section" id="survey-data">
   <div class="section-inner">
     <div class="section-label">Survey Data &amp; Findings</div>
-    <h2 class="section-title">What 537 small businesses <em>actually said</em></h2>
-    <p class="survey-synthesis">Between January and April 2025, structured needs assessments reached <strong>537 small business owners</strong> across 25 NYS Entrepreneurship Assistance Centers — surveyed in English, Spanish, and Chinese. The findings map both the challenges these businesses are navigating and the specific barriers standing between them and meaningful AI adoption. Every curriculum design decision follows from this data, not from assumption.</p>
-    <!-- EDIT 2: Fixed impact study URL -->
+    <h2 class="section-title">What 672 small businesses <em>actually said</em></h2>
+    <p class="survey-synthesis">Between January and April 2025, structured needs assessments reached <strong>672 small business owners</strong> across 25 NYS Entrepreneurship Assistance Centers — surveyed in English (n=586), Spanish (n=40), and Chinese (n=46), alongside 25 EAC staff. Every curriculum design decision follows from this data, not from assumption.</p>
     <a href="https://welcometochinatown.com/impact-study" target="_blank" class="survey-source-link">Welcome to Chinatown Impact Study — further context on community need and programme reach</a>
-    <div class="stat-grid" id="statGrid"></div>
-    <div class="survey-callout">
-      <div class="survey-callout-icon">💬</div>
-      <div class="survey-callout-text">The open-text responses revealed something the checkboxes couldn't hold. The core issue isn't rejection of AI — it's a <strong>missing on-ramp</strong>. Business owners described feeling overwhelmed by the pace and volume of new tools, not afraid of the technology itself. For Spanish- and Chinese-speaking owners, the language gap is specifically about <strong>training access</strong> — not tool interfaces. They lack self-directed learning resources in their own languages: videos, guides, tutorials they can work through independently. For artisan and maker businesses, the barrier cuts deeper still: a sense that AI belongs to a corporate world that doesn't speak to their craft. These nuances don't appear in the multiple-choice data. They shaped the curriculum's design at every level.</div>
-    </div>
+
+    <!-- Tab navigation -->
+    <div class="survey-tabs" id="surveyTabs"></div>
+
+    <!-- Tab panels -->
+    <div id="surveyPanels"></div>
   </div>
 </section>
 
@@ -527,12 +580,16 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   </div>
 </section>
 
-<!-- EDIT 3: CURRICULUM SCOPE & SEQUENCE (new section between Chapters and Theory of Change) -->
+<!-- EDIT: CURRICULUM SCOPE & SEQUENCE with persona input block -->
 <section class="section" id="curriculum">
   <div class="section-inner">
     <div class="section-label">Curriculum Scope &amp; Sequence</div>
     <h2 class="section-title">Six modules. Three phases. <em>One pathway.</em></h2>
     <p class="section-intro">The full AI training curriculum grounded in Kolb's Experiential Learning Cycle and Fink's Taxonomy of Significant Learning. Each module maps to specific Kolb stages and Fink dimensions — chosen deliberately for this learner population, not by convention. Expand any module to see learning outcomes, tools, delivery mode, equity notes, and assessment activity.</p>
+
+    <!-- Persona profiles — curriculum development input -->
+    <div id="personaBlock"></div>
+
     <div id="curriculumList"></div>
   </div>
 </section>
@@ -610,10 +667,10 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
         <div class="sm-title">Overview, Survey Data &amp; Curriculum</div>
         <div class="sm-desc">Executive summary, objectives, survey findings, chapter blueprint, full curriculum scope &amp; sequence, and interactive theory of change.</div>
       </div>
-      <div class="sitemap-cell coming-cell">
-        <span class="sm-status sm-building">Building</span>
+      <div class="sitemap-cell active-cell">
+        <span class="sm-status sm-live">Live</span>
         <div class="sm-title">Survey Data Dashboard</div>
-        <div class="sm-desc">Full interactive visualisations from the EAC and SMB survey — 537 businesses, 3 languages, 25 centers, across challenges, barriers, and AI readiness.</div>
+        <div class="sm-desc">Full interactive visualisations from EAC and SMB surveys — 672 businesses, 3 languages, 25 centers — with tabbed charts across challenges, AI tools, barriers, and demographics.</div>
       </div>
       <div class="sitemap-cell coming-cell">
         <span class="sm-status sm-building">Building</span>
@@ -665,15 +722,159 @@ const OBJECTIVES = [
 ];
 
 const SURVEY_STATS = [
-  { num:"59", sup:"%", label:"Customer acquisition", sub:"of all 537 SMBs cited getting more customers as their top challenge — the single most consistent signal across all three language communities.", color:"c-gold" },
-  { num:"78", sup:"%", label:"ChatGPT adoption", sub:"of English-speaking SMBs have tried ChatGPT — the dominant entry point. The curriculum builds on familiar tools rather than introducing new platforms.", color:"c-teal" },
-  { num:"47–76", sup:"%", label:"Cost as a barrier", sub:"cited cost as a concern — ranging from 47% among English speakers to 76% among Chinese-speaking businesses, the highest barrier for any group.", color:"c-rust" },
-  { num:"64", sup:"%", label:"Micro-enterprises", sub:"employ 5 or fewer people; 39% are solo operators. This is overwhelmingly a micro-enterprise program — a fact shaping every curriculum decision.", color:"c-slate" },
-  { num:"71", sup:"%", label:"Digitally comfortable", sub:"are comfortable with digital tools, and smartphones are near-universal. Mobile-first delivery is the right default — not a workaround.", color:"c-ink" },
+  { num:"57", sup:"%", label:"Customer acquisition", sub:"of English-speaking SMBs cited getting more customers as their #1 challenge — consistent across all three language communities surveyed.", color:"c-gold" },
+  { num:"78", sup:"%", label:"ChatGPT adoption", sub:"of English-speaking SMBs have tried ChatGPT — the dominant AI entry point. The curriculum builds on familiar tools rather than introducing new platforms.", color:"c-teal" },
+  { num:"47–76", sup:"%", label:"Cost as a barrier", sub:"cited cost as a concern — ranging from 47% among English speakers to 76% among Chinese-speaking businesses, the highest of any group.", color:"c-rust" },
+  { num:"63", sup:"%", label:"Micro-enterprises", sub:"employ 5 or fewer people; 43% are solo operators. This is overwhelmingly a micro-enterprise program — a fact shaping every curriculum decision.", color:"c-slate" },
+  { num:"75", sup:"%", label:"Digitally comfortable", sub:"report being comfortable or very comfortable using digital tools — mobile-first delivery is the right default, not a workaround.", color:"c-ink" },
   { num:"56", sup:"%", label:"EAC pilot interest", sub:"of EAC directors expressed strong interest in an AI training pilot — a clear signal of institutional readiness the curriculum is designed to activate.", color:"c-sage" }
 ];
 
-// EDIT 1: word count (ch.words) removed from CHAPTERS array and renderChapters()
+// SURVEY_DATA — all chart data sourced directly from CSV analysis
+// EN n=586, ES n=40, ZH n=46, EAC n=25
+const SURVEY_DATA = {
+  tabs: [
+    { id:"challenges", label:"Top Challenges" },
+    { id:"tools",      label:"AI Tools Tried" },
+    { id:"barriers",   label:"Barriers & Concerns" },
+    { id:"unlocks",    label:"What Unlocks Adoption" },
+    { id:"eac",        label:"EAC Readiness" },
+    { id:"who",        label:"Who Was Surveyed" }
+  ],
+  challenges: {
+    insight: "<strong>Getting more customers (57%)</strong> is the single most consistent challenge across all three language communities — the sharpest and most immediate pain point. Marketing, time poverty, and financial management follow closely, pointing to exactly the workflow domains the curriculum targets.",
+    quote: { text:"I spend so much time on social media and I still can't figure out how to actually reach new customers. I need something that works, not something that takes more time.", attr:"English-speaking SMB respondent · Professional services" },
+    labels: ["Getting more customers","Marketing & social media","Finding time for everything","Managing finances / cash flow","Rising costs","Technology & digital tools","Keeping up with operations","Hiring or managing staff"],
+    values: [57, 47, 31, 31, 27, 23, 22, 17]
+  },
+  tools: {
+    insight: "<strong>ChatGPT dominates across all groups</strong> at 78% among English speakers — making it the natural curriculum entry point. Google Gemini (45%), Canva AI (35%), and Claude (32%) follow. Chinese-speaking respondents show notably lower overall tool adoption, reinforcing the language-access barrier.",
+    quote: { text:"I used ChatGPT once to write an email and it was great. Then I forgot about it. I just don't know how to make it part of my regular day.", attr:"English-speaking SMB respondent · Personal services" },
+    labels: ["ChatGPT","Google Gemini","Microsoft Copilot","Canva AI","Claude","Translation tools","Grammarly"],
+    datasets: [
+      { label:"English (n=586)", data:[78,45,36,35,32,31,31], color:"#0E0C0A" },
+      { label:"Spanish (n=40)",  data:[65,35,20,28,10,45,18], color:"#1A6E68" },
+      { label:"Chinese (n=46)",  data:[52,30,18,22,8,65,12],  color:"#C4933A" }
+    ]
+  },
+  barriers: {
+    insight: "<strong>Privacy and cost are the twin blockers</strong> — but their order flips by community. English and Spanish speakers rank privacy first (55%); Chinese speakers rank cost first (76%). Language barriers emerge as a significant concern for 22% of Chinese speakers and 12% of Spanish speakers — invisible in aggregate data.",
+    quote: { text:"¿Es segura esta herramienta? I worry about my customer data. I don't know who has access.", attr:"Spanish-speaking SMB respondent · Food service" },
+    labels: ["Privacy & data security","Cost of AI tools","Accuracy of outputs","Don't know where to start","No time to learn","Language barriers","Not relevant to my business"],
+    datasets: [
+      { label:"English (n=586)", data:[55,47,39,25,21,3,14],  color:"#0E0C0A" },
+      { label:"Spanish (n=40)",  data:[55,52,20,15,10,12,8],  color:"#1A6E68" },
+      { label:"Chinese (n=46)",  data:[52,76,35,33,28,22,10], color:"#C4933A" }
+    ]
+  },
+  unlocks: {
+    insight: "<strong>Peer proof and practical support</strong> unlock adoption more than technology alone. Seeing examples from similar businesses (57%), free or low-cost tools (49%), and having someone walk them through it (48%) are the top three motivators — all of which the curriculum addresses by design.",
+    quote: { text:"Show me one business like mine — same neighbourhood, same size — that uses AI every week and saves four hours. That might be enough.", attr:"English-speaking SMB respondent · Retail" },
+    labels: ["Seeing examples from businesses like mine","Free or low-cost tools","Having someone walk me through it","Knowing it's safe and private","Proof it will save me time","Available in my language"],
+    values: [57, 49, 48, 45, 43, 16]
+  },
+  eac: {
+    pilotInterest: [
+      { label:"Very interested", value:56, color:"#1A6E68" },
+      { label:"Maybe — need more info", value:40, color:"#C4933A" },
+      { label:"Not at this time", value:4,  color:"#DDD6CA" }
+    ],
+    stats: [
+      { num:"56%", label:"Very interested in AI pilot", sub:"of EAC directors are ready to participate in a structured AI training pilot immediately" },
+      { num:"96%", label:"Open to AI programming", sub:"of EAC directors expressed at least some interest — only 1 center not interested at this time" },
+      { num:"25",  label:"EACs surveyed", sub:"across New York State — representing the full geographic reach of the NYS EAC Program" }
+    ],
+    insight: "<strong>Institutional readiness is high.</strong> 96% of EAC directors expressed some interest in AI programming, with 56% ready to pilot immediately. The bottleneck isn't willingness — it's facilitator capacity and curriculum infrastructure, which this research directly addresses."
+  },
+  who: {
+    bizType: {
+      labels: ["Professional services","Restaurants & Food Service","Personal Services","Healthcare & Wellness","Arts & Creative","Retail","E-commerce & Online","Education & Training","Construction & Trades","Home-based Businesses","Manufacturing","Agriculture & Farming","Tourism & Hospitality","Childcare","Transportation & Logistics","Other services"],
+      values:  [137, 54, 53, 52, 50, 48, 42, 39, 36, 32, 24, 21, 19, 18, 11, 36]
+    },
+    firmSize: {
+      labels: ["Just me","2–5","6–10","11–25","26–50","51–100","100+"],
+      values:  [43, 20, 6, 13, 12, 6, 1]
+    },
+    ownerAge: {
+      labels: ["Under 25","25–34","35–44","45–54","55–64","65+","Prefer not to say"],
+      values:  [2, 17, 30, 26, 16, 5, 2]
+    }
+  }
+};
+
+// PERSONAS — derived from Persona_Profiles_Report.html and survey data (n=672)
+const PERSONAS = [
+  {
+    num: "1", color:"#B84030", bgLight:"#F5DDD9",
+    name: "The Structurally Excluded",
+    tagline: "Proximity, not aptitude, is the barrier.",
+    rogers: "Laggard (structural)",
+    bcg: "Information Assistance",
+    barrier: "Access & Language — first-order, material divide",
+    share: "~20% of sample",
+    signals: [
+      "Struggles with or actively avoids digital tools",
+      "Has tried no AI tools, or Google Translate only",
+      "Prefers non-English language — Spanish or Chinese",
+      "Business sector: personal services, food/retail — high operational load",
+      "Learning mode: in-person, one-on-one, in native language"
+    ],
+    implication: "Requires bilingual, in-person, community-anchored delivery. Cannot be reached by self-paced digital content alone. The door must be opened — in their language, in their neighbourhood."
+  },
+  {
+    num: "2", color:"#2D4A6A", bgLight:"#D6E4F0",
+    name: "The Cautious Pragmatist",
+    tagline: "Aware. Not yet committed. Waiting for proof.",
+    rogers: "Early / Late Majority",
+    bcg: "Task Assistance → early Delegation",
+    barrier: "Motivational divide — belief AI could help, but no proof yet",
+    share: "~45% of sample — the most populous persona",
+    signals: [
+      "Digitally comfortable — can figure most things out",
+      "Has tried 1–2 tools (ChatGPT, Grammarly, or Canva AI) episodically",
+      "Top motivator: seeing examples from businesses like mine",
+      "Primary concern: accuracy of outputs and data privacy",
+      "Learning preference: in-person workshop, one-on-one coaching"
+    ],
+    implication: "Peer-to-peer examples are the most effective unlocking mechanism. Curriculum must begin with live business use cases — not definitions. The 'so what for my business' must be immediate and visible."
+  },
+  {
+    num: "3", color:"#1A6E68", bgLight:"#D5EDEB",
+    name: "The Emergent Adopter",
+    tagline: "Experimenting at the edges. Ready to go further.",
+    rogers: "Early Adopter",
+    bcg: "Delegation",
+    barrier: "Skills gap (second-order) — access is not the problem",
+    share: "~25% of sample",
+    signals: [
+      "Very comfortable with technology — enjoys it",
+      "Uses 3+ tools (ChatGPT, Claude, Canva AI, Grammarly, Gemini)",
+      "AI uses: writing, research, social media, customer communications",
+      "Motivator: having someone walk me through it + free tools",
+      "Learning preference: self-paced videos, virtual workshops, coaching"
+    ],
+    implication: "Needs guided scaffolding and workflow integration, not basic literacy. Curriculum Modules 3–5 are the core value for this persona. Can also serve as a peer model for the Cautious Pragmatist cohort."
+  },
+  {
+    num: "4", color:"#5E3D6B", bgLight:"#E8DDEF",
+    name: "The Embedded Practitioner",
+    tagline: "AI is not a tool. It is infrastructure.",
+    rogers: "Innovator",
+    bcg: "Semi-autonomous Collaboration",
+    barrier: "Output quality and advanced workflow integration only",
+    share: "~10% of sample",
+    signals: [
+      "Uses AI daily across multiple workflows — it is embedded, not episodic",
+      "Primary concern: output quality, not access or trust",
+      "Interested in automation, agentic workflows, and AI-to-AI integration",
+      "Can articulate specific limitations of current tools",
+      "Acts as informal AI advisor to peers in their network"
+    ],
+    implication: "Module 6 (AI with Intention) and advanced facilitation tracks are the primary curriculum value. This persona is also a critical program asset — as a community facilitator, peer trainer, or pilot feedback contributor."
+  }
+];
+
+
 const CHAPTERS = [
   { color:"#5B4FD9", bg:"#EAE8FA", num:"Chapter 1", title:"Introduction: AI at the Urban Frontier",
     job:"This chapter opens at the widest frame — rapid urbanisation, the double-edged nature of AI, and the specific vulnerability of immigrant-owned small businesses navigating both — and narrows progressively to this research's particular site: New York City's Chinatown, the NYS EAC program, and the dual role of researcher and practitioner this project inhabits. It states the central research question and four objectives directly, and closes with a 300-word methodological note that explains the practice-based capstone form and establishes the researcher's positionality.",
@@ -842,17 +1043,226 @@ function renderObjectives() {
   });
 }
 
-function renderStats() {
-  const g = document.getElementById('statGrid');
-  SURVEY_STATS.forEach(s => {
-    const d = document.createElement('div');
-    d.className = `stat-card ${s.color}`;
-    d.innerHTML = `<div class="stat-num">${s.num}<sup>${s.sup}</sup></div><div class="stat-label">${s.label}</div><div class="stat-sub">${s.sub}</div>`;
-    g.appendChild(d);
+
+// renderStats kept for backwards compat (statGrid no longer in DOM but harmless)
+function renderStats() {}
+
+// ── SURVEY DASHBOARD ──────────────────────────────────────────────────────
+const _charts = {};
+
+function renderSurveyDashboard() {
+  const tabsEl   = document.getElementById('surveyTabs');
+  const panelsEl = document.getElementById('surveyPanels');
+  if (!tabsEl || !panelsEl) return;
+
+  const C = { ink:'#0E0C0A', gold:'#C4933A', teal:'#1A6E68', rust:'#B84030', slate:'#2D4A6A', sage:'#4A6B45', plum:'#5E3D6B', faint:'#DDD6CA' };
+  const baseOpts = {
+    responsive:true, maintainAspectRatio:true,
+    plugins:{ legend:{ labels:{ font:{ family:"'Syne',system-ui,sans-serif", size:11 }, color:C.ink, boxWidth:12, padding:16 }}},
+    scales:{
+      x:{ grid:{ color:'rgba(14,12,10,0.05)' }, ticks:{ font:{ family:"'Syne',system-ui,sans-serif", size:11 }, color:'#6E675F', callback:v => v+'%' }},
+      y:{ grid:{ display:false }, ticks:{ font:{ family:"'Syne',system-ui,sans-serif", size:11 }, color:'#3A3530' }}
+    }
+  };
+
+  SURVEY_DATA.tabs.forEach((tab, i) => {
+    // Tab button
+    const btn = document.createElement('button');
+    btn.className = 'survey-tab' + (i===0 ? ' active' : '');
+    btn.textContent = tab.label;
+    btn.addEventListener('click', () => {
+      tabsEl.querySelectorAll('.survey-tab').forEach(b => b.classList.remove('active'));
+      panelsEl.querySelectorAll('.survey-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-'+tab.id).classList.add('active');
+      if (!_charts[tab.id]) drawChart(tab.id, C, baseOpts);
+    });
+    tabsEl.appendChild(btn);
+
+    // Panel
+    const panel = document.createElement('div');
+    panel.className = 'survey-panel' + (i===0 ? ' active' : '');
+    panel.id = 'panel-'+tab.id;
+    panel.innerHTML = buildPanelHTML(tab.id);
+    panelsEl.appendChild(panel);
+  });
+
+  // Draw first chart immediately
+  drawChart('challenges', C, baseOpts);
+}
+
+function buildPanelHTML(id) {
+  const d = SURVEY_DATA;
+  if (id === 'challenges') {
+    return `<div class="survey-chart-wrap"><canvas id="chart-challenges"></canvas></div>
+    <p class="survey-insight">${d.challenges.insight}</p>
+    <div class="survey-quote-row"><div class="survey-quote-mini"><span class="sq-mark">"</span><p class="sq-text">${d.challenges.quote.text}</p><div class="sq-attr">${d.challenges.quote.attr}</div></div></div>`;
+  }
+  if (id === 'tools') {
+    return `<p class="survey-lang-note">Percentages reflect share of respondents within each language group who have tried each tool.</p>
+    <div class="survey-chart-wrap"><canvas id="chart-tools"></canvas></div>
+    <p class="survey-insight">${d.tools.insight}</p>
+    <div class="survey-quote-row"><div class="survey-quote-mini"><span class="sq-mark">"</span><p class="sq-text">${d.tools.quote.text}</p><div class="sq-attr">${d.tools.quote.attr}</div></div></div>`;
+  }
+  if (id === 'barriers') {
+    return `<p class="survey-lang-note">Percentages reflect share of respondents within each language group selecting each concern. Multiple selections permitted.</p>
+    <div class="survey-chart-wrap"><canvas id="chart-barriers"></canvas></div>
+    <p class="survey-insight">${d.barriers.insight}</p>
+    <div class="survey-quote-row"><div class="survey-quote-mini"><span class="sq-mark">"</span><p class="sq-text">${d.barriers.quote.text}</p><div class="sq-attr">${d.barriers.quote.attr}</div></div></div>`;
+  }
+  if (id === 'unlocks') {
+    return `<div class="survey-chart-wrap"><canvas id="chart-unlocks"></canvas></div>
+    <p class="survey-insight">${d.unlocks.insight}</p>
+    <div class="survey-quote-row"><div class="survey-quote-mini"><span class="sq-mark">"</span><p class="sq-text">${d.unlocks.quote.text}</p><div class="sq-attr">${d.unlocks.quote.attr}</div></div></div>`;
+  }
+  if (id === 'eac') {
+    const statsHTML = d.eac.stats.map(s => `<div class="eac-stat"><div class="eac-stat-num">${s.num}</div><div class="eac-stat-lbl">${s.label}</div><div class="eac-stat-sub">${s.sub}</div></div>`).join('');
+    return `<div class="eac-grid">${statsHTML}</div>
+    <div class="survey-chart-wrap" style="margin-top:1rem"><canvas id="chart-eac"></canvas></div>
+    <p class="survey-insight" style="margin-top:1rem">${d.eac.insight}</p>`;
+  }
+  if (id === 'who') {
+    return `
+      <div class="survey-chart-wrap">
+        <div class="survey-demo-label">Business Sector — reclassified from all three surveys (n=672)</div>
+        <div style="position:relative;height:420px"><canvas id="chart-biztype"></canvas></div>
+      </div>
+      <div class="survey-demo-grid" style="margin-top:1rem">
+        <div class="survey-demo-card"><div class="survey-demo-label">Firm Size by Employee Count</div><canvas id="chart-firmsize"></canvas></div>
+        <div class="survey-demo-card"><div class="survey-demo-label">Owner Age Distribution (EN, n=586)</div><canvas id="chart-age"></canvas></div>
+        <div class="survey-demo-card" style="display:flex;flex-direction:column;justify-content:center;padding:1.5rem">
+          <div class="survey-demo-label">Survey Composition</div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:.75rem">
+            <div style="display:flex;align-items:center;gap:10px;font-size:.85rem;color:#3A3530"><span style="width:10px;height:10px;border-radius:50%;background:#0E0C0A;flex-shrink:0"></span>English respondents — 586</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:.85rem;color:#3A3530"><span style="width:10px;height:10px;border-radius:50%;background:#1A6E68;flex-shrink:0"></span>Spanish respondents — 40</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:.85rem;color:#3A3530"><span style="width:10px;height:10px;border-radius:50%;background:#C4933A;flex-shrink:0"></span>Chinese respondents — 46</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:.85rem;color:#3A3530"><span style="width:10px;height:10px;border-radius:50%;background:#2D4A6A;flex-shrink:0"></span>EAC staff — 25</div>
+            <div style="margin-top:.5rem;padding-top:.5rem;border-top:1px solid #DDD6CA;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B0A99E">Total: 697 respondents</div>
+          </div>
+        </div>
+
+      </div>`;
+  }
+  return '';
+}
+
+function drawChart(id, C, baseOpts) {
+  _charts[id] = true;
+  const d = SURVEY_DATA;
+  const mk = (canvasId, type, data, opts) => {
+    const el = document.getElementById(canvasId);
+    if (!el) return;
+    new Chart(el, { type, data, options: opts });
+  };
+
+  if (id === 'challenges') {
+    mk('chart-challenges','bar',{
+      labels: d.challenges.labels,
+      datasets:[{ data:d.challenges.values, backgroundColor:C.ink, hoverBackgroundColor:C.gold, borderRadius:3, borderSkipped:false }]
+    },{ ...baseOpts, indexAxis:'y', plugins:{...baseOpts.plugins,legend:{display:false}},
+      scales:{ x:{...baseOpts.scales.x, max:70}, y:{...baseOpts.scales.y} }});
+  }
+  if (id === 'tools') {
+    mk('chart-tools','bar',{
+      labels: d.tools.labels,
+      datasets: d.tools.datasets.map(ds => ({ label:ds.label, data:ds.data, backgroundColor:ds.color, borderRadius:3, borderSkipped:false }))
+    },{ ...baseOpts, indexAxis:'y', scales:{ x:{...baseOpts.scales.x, max:90}, y:{...baseOpts.scales.y} }});
+  }
+  if (id === 'barriers') {
+    mk('chart-barriers','bar',{
+      labels: d.barriers.labels,
+      datasets: d.barriers.datasets.map(ds => ({ label:ds.label, data:ds.data, backgroundColor:ds.color, borderRadius:3, borderSkipped:false }))
+    },{ ...baseOpts, indexAxis:'y', scales:{ x:{...baseOpts.scales.x, max:90}, y:{...baseOpts.scales.y} }});
+  }
+  if (id === 'unlocks') {
+    mk('chart-unlocks','bar',{
+      labels: d.unlocks.labels,
+      datasets:[{ data:d.unlocks.values, backgroundColor:C.teal, hoverBackgroundColor:C.gold, borderRadius:3, borderSkipped:false }]
+    },{ ...baseOpts, indexAxis:'y', plugins:{...baseOpts.plugins,legend:{display:false}},
+      scales:{ x:{...baseOpts.scales.x, max:70}, y:{...baseOpts.scales.y} }});
+  }
+  if (id === 'eac') {
+    mk('chart-eac','doughnut',{
+      labels: d.eac.pilotInterest.map(p=>p.label),
+      datasets:[{ data:d.eac.pilotInterest.map(p=>p.value), backgroundColor:d.eac.pilotInterest.map(p=>p.color), borderWidth:0, hoverOffset:4 }]
+    },{ responsive:true, maintainAspectRatio:true,
+      plugins:{ legend:{ position:'right', labels:{ font:{family:"'Syne',system-ui,sans-serif",size:11}, color:C.ink, boxWidth:12, padding:16 }}}});
+  }
+  if (id === 'who') {
+    const pie = (canvasId, labels, values, colors) => mk(canvasId,'doughnut',{
+      labels, datasets:[{ data:values, backgroundColor:colors, borderWidth:0, hoverOffset:3 }]
+    },{ responsive:true, maintainAspectRatio:true,
+      plugins:{ legend:{ position:'bottom', labels:{ font:{family:"'Syne',system-ui,sans-serif",size:10}, color:C.ink, boxWidth:10, padding:10 }}}});
+    const PIE_PALETTE = [C.ink,C.teal,C.gold,C.rust,C.slate,C.sage,C.plum,'#8B6914','#6B8E6B'];
+
+    // Business sector — horizontal bar (16 categories, too many for a doughnut)
+    const bizEl = document.getElementById('chart-biztype');
+    if (bizEl) {
+      new Chart(bizEl, {
+        type: 'bar',
+        data: {
+          labels: d.who.bizType.labels,
+          datasets:[{ data:d.who.bizType.values, backgroundColor:C.teal, hoverBackgroundColor:C.gold, borderRadius:3, borderSkipped:false }]
+        },
+        options:{
+          indexAxis:'y', responsive:true, maintainAspectRatio:false,
+          plugins:{ legend:{ display:false }},
+          scales:{
+            x:{ grid:{ color:'rgba(14,12,10,0.05)' }, ticks:{ font:{family:"'Syne',system-ui,sans-serif",size:10}, color:'#6E675F' }},
+            y:{ grid:{ display:false }, ticks:{ font:{family:"'Syne',system-ui,sans-serif",size:10}, color:'#3A3530' }}
+          }
+        }
+      });
+    }
+
+    pie('chart-firmsize', d.who.firmSize.labels, d.who.firmSize.values, PIE_PALETTE);
+    pie('chart-age', d.who.ownerAge.labels, d.who.ownerAge.values, PIE_PALETTE);
+  }
+}
+
+// ── PERSONAS ──────────────────────────────────────────────────────────────
+function renderPersonas() {
+  const container = document.getElementById('personaBlock');
+  if (!container) return;
+
+  container.innerHTML = `
+    <div style="margin-bottom:2rem;padding:1.75rem;background:var(--warm-white);border:1px solid var(--rule);border-radius:var(--r)">
+      <div class="persona-input-label">Curriculum Development Input — Learner Personas</div>
+      <p class="persona-framing">The curriculum design is grounded in four empirically derived learner personas developed from survey data (n=672), needs assessment interviews, and digital literacy theory. Rather than treating the target population as a monolith, the personas map meaningful variation in digital comfort, AI attitudes, and structural barriers — ensuring that each module's design choices serve the full range of learners the EAC program actually reaches, not just the most visible or vocal ones.</p>
+      <div class="persona-grid" id="personaGrid"></div>
+    </div>`;
+
+  const grid = document.getElementById('personaGrid');
+  PERSONAS.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'persona-card';
+    card.style.borderLeft = `3px solid ${p.color}`;
+    card.innerHTML = `
+      <div class="persona-card-header">
+        <div class="persona-num" style="background:${p.color}">${p.num}</div>
+        <div>
+          <div class="persona-name">${p.name}</div>
+          <div class="persona-tagline">${p.tagline}</div>
+        </div>
+      </div>
+      <div class="persona-body">
+        <div class="persona-row">
+          <span class="persona-badge">Rogers: ${p.rogers}</span>
+          <span class="persona-badge">BCG: ${p.bcg}</span>
+          <span class="persona-badge">${p.share}</span>
+        </div>
+        <ul class="persona-signals">
+          ${p.signals.map(s=>`<li>${s}</li>`).join('')}
+        </ul>
+        <div class="persona-implication">
+          <strong>Curriculum implication</strong>${p.implication}
+        </div>
+      </div>`;
+    grid.appendChild(card);
   });
 }
 
-// EDIT 1: renderChapters — ch-words span removed
+
 function renderChapters() {
   const list = document.getElementById('chapterList');
   CHAPTERS.forEach((ch, i) => {
@@ -1019,6 +1429,8 @@ function renderTOC() {
 // ── INIT ──────────────────────────────────────────────────────────────────
 renderObjectives();
 renderStats();
+renderSurveyDashboard();
+renderPersonas();
 renderChapters();
 renderCurriculum();
 renderTOC();
