@@ -334,6 +334,57 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .persona-implication{font-size:.82rem;color:var(--ink-mid);line-height:1.55;padding:.6rem .75rem;border-radius:var(--r-sm);border-left:3px solid var(--teal);background:var(--teal-light);margin-top:.5rem}
 .persona-implication strong{font-family:var(--ff-ui);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:2px}
 
+/* ── UPGRADED CURRICULUM CARDS ── */
+.mod-item-v2{background:var(--warm-white);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;margin-bottom:1.25rem;transition:box-shadow .2s}
+.mod-item-v2:hover{box-shadow:0 4px 20px rgba(14,12,10,.07)}
+.mod-top-v2{padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:1.25rem;border-bottom:1px solid var(--rule);position:relative;cursor:pointer;user-select:none}
+.mod-accent-bar{position:absolute;top:0;left:0;bottom:0;width:4px}
+.mod-hd{flex:1}
+.mod-title-v2{font-family:var(--ff-display);font-size:1.05rem;font-weight:600;color:var(--ink);line-height:1.25;margin-bottom:3px}
+.mod-tagline-v2{font-size:.84rem;color:var(--ink-soft);line-height:1.5;font-style:italic}
+.mod-chips-row{display:flex;flex-wrap:wrap;gap:6px;flex-shrink:0;margin-top:2px}
+.mod-chip{font-family:var(--ff-ui);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:12px;white-space:nowrap}
+.mc-sync{background:var(--plum-light);color:var(--plum)}
+.mc-async{background:var(--teal-light);color:var(--teal)}
+.mc-person{background:var(--gold-light);color:var(--gold)}
+.mc-dur{background:var(--rule);color:var(--ink-mid)}
+.mod-arrow-v2{font-size:14px;color:var(--ink-faint);transition:transform .25s;flex-shrink:0;margin-top:3px}
+.mod-item-v2.open .mod-arrow-v2{transform:rotate(180deg)}
+.mod-body-v2{display:none;padding:1.25rem 1.5rem}
+.mod-item-v2.open .mod-body-v2{display:block}
+
+.mod-body-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.mod-body-full{grid-column:1/-1}
+.mod-cell-lbl{font-family:var(--ff-ui);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.45rem;display:flex;align-items:center;gap:6px}
+.mod-cell-lbl::before{content:'';display:block;width:12px;height:1px;background:var(--gold)}
+.mod-lo-list-v2{list-style:none;display:flex;flex-direction:column;gap:5px}
+.mod-lo-list-v2 li{font-size:.83rem;color:var(--ink-mid);padding:.45rem .65rem .45rem 1.3rem;background:var(--parchment);border-radius:5px;line-height:1.5;position:relative}
+.mod-lo-list-v2 li::before{content:'✓';position:absolute;left:.45rem;color:var(--teal);font-size:10px;top:.5rem}
+.mod-lo-tag{color:var(--rust);font-size:.75rem;font-style:italic}
+.mod-pills-v2{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.6rem}
+.mod-pill-v2{font-family:var(--ff-ui);font-size:9px;font-weight:600;padding:3px 8px;border-radius:10px;border:1px solid var(--rule);background:var(--parchment);color:var(--ink-soft)}
+.mod-pill-v2.on{background:var(--gold-light);border-color:rgba(196,147,58,.3);color:var(--gold)}
+.mod-ic{background:var(--parchment);border:1px solid var(--rule);border-radius:6px;padding:.8rem 1rem;font-size:.82rem;color:var(--ink-mid);line-height:1.6}
+.mod-ic strong{font-family:var(--ff-ui);font-size:8.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:3px}
+.mod-ic.mod-equity{border-left:3px solid var(--teal);background:var(--teal-light)}
+.mod-ic.mod-equity strong{color:var(--teal)}
+.mod-ic.mod-assess{border-left:3px solid var(--gold)}
+.mod-ic.mod-reflect{border-left:3px solid var(--plum);background:var(--plum-light)}
+.mod-ic.mod-reflect strong{color:var(--plum)}
+.mod-ic + .mod-ic{margin-top:.6rem}
+.mod-further-lbl{font-family:var(--ff-ui);font-size:8.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);display:block;margin-top:.65rem;margin-bottom:3px}
+
+/* ── FIELD NOTES & REFLECTIONS ── */
+.field-notes-block{margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--rule)}
+.fn-label{font-family:var(--ff-ui);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px;margin-bottom:1.75rem}
+.fn-label::before{content:'';display:block;width:24px;height:1px;background:var(--gold)}
+.fn-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.fn-card{background:var(--parchment);border:1px solid var(--rule);border-radius:var(--r);padding:1.75rem;border-left:3px solid var(--teal)}
+.fn-card-label{font-family:var(--ff-display);font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:1rem;line-height:1.3}
+.fn-text{font-size:.9rem;color:var(--ink-mid);line-height:1.8;margin-bottom:.9rem}
+.fn-text:last-child{margin-bottom:0}
+@media(max-width:860px){.fn-grid{grid-template-columns:1fr}}
+
 /* ── FOOTER ── */
 .site-footer{background:var(--ink);color:rgba(246,241,232,.5);padding:3rem 2rem;position:relative;z-index:1}
 .footer-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
@@ -379,6 +430,39 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .hero-tags{animation:fadeUp .6s .3s ease both}
 .hero-actions{animation:fadeUp .6s .4s ease both}
 .hero-card{animation:fadeUp .7s .3s ease both}
+
+
+/* ── FURTHER READING STRIP ── */
+.further-reading-strip{background:var(--ink);border-radius:var(--r);padding:2.5rem;margin-top:3rem}
+.fr-label{font-family:var(--ff-ui);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(196,147,58,.8);display:flex;align-items:center;gap:10px;margin-bottom:1.75rem}
+.fr-label::before{content:'';display:block;width:24px;height:1px;background:rgba(196,147,58,.5)}
+.fr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.fr-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:background .2s,border-color .2s}
+.fr-card:hover{background:rgba(255,255,255,.09);border-color:rgba(196,147,58,.4)}
+.fr-thumb{height:90px;display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0}
+.fr-thumb-video{background:linear-gradient(135deg,rgba(184,64,48,.3),rgba(184,64,48,.15))}
+.fr-thumb-article{background:linear-gradient(135deg,rgba(26,110,104,.3),rgba(26,110,104,.15))}
+.fr-thumb-report{background:linear-gradient(135deg,rgba(196,147,58,.3),rgba(196,147,58,.15))}
+.fr-play{width:36px;height:36px;background:rgba(184,64,48,.7);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;color:white;padding-left:2px}
+.fr-icon{font-size:1.75rem}
+.fr-body{padding:1rem 1.25rem;flex:1;display:flex;flex-direction:column;gap:4px}
+.fr-source{font-family:var(--ff-ui);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(196,147,58,.7)}
+.fr-title{font-family:var(--ff-display);font-size:.95rem;color:rgba(246,241,232,.9);line-height:1.4;flex:1}
+.fr-arrow{font-family:var(--ff-ui);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(196,147,58,.6);margin-top:.5rem}
+
+/* ── POLICY RECOMMENDATION CARDS ── */
+.policy-example-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:1rem}
+.policy-example{background:var(--parchment);border:1px solid var(--rule);border-radius:var(--r-sm);padding:.9rem 1rem}
+.pe-country{font-family:var(--ff-ui);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.pe-name{font-family:var(--ff-display);font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:4px}
+.pe-desc{font-size:.82rem;color:var(--ink-soft);line-height:1.5;margin-bottom:6px}
+.pe-implication{font-size:.8rem;color:var(--teal);line-height:1.4;font-style:italic}
+
+/* ── PAGE SWITCHING ARCHITECTURE ── */
+.page-view{display:none;animation:pageIn .25s ease both}
+.page-view.active{display:block}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.nav-links a.active{color:var(--ink);border-bottom-color:var(--gold)}
 </style>
 </head>
 <body>
@@ -387,13 +471,14 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 <nav class="site-nav">
   <div class="nav-inner">
     <a class="nav-brand" href="#"><span>DQ</span> · Capstone Portfolio</a>
-    <ul class="nav-links">
-      <li><a href="#executive-summary">Overview</a></li>
-      <li><a href="#survey-data">Survey Data</a></li>
-      <li><a href="#chapter-outline">Chapters</a></li>
-      <li><a href="#curriculum">Curriculum</a></li>
-      <li><a href="#theory-of-change">Theory of Change</a></li>
-      <li><a href="#about">About</a></li>
+    <ul class="nav-links" id="mainNav">
+      <li><a href="#" data-page="page-overview" class="nav-page-link active">Overview</a></li>
+      <li><a href="#" data-page="page-survey" class="nav-page-link">Survey Data</a></li>
+      <li><a href="#" data-page="page-chapters" class="nav-page-link">Chapters</a></li>
+      <li><a href="#" data-page="page-curriculum" class="nav-page-link">Curriculum</a></li>
+      <li><a href="#" data-page="page-toc" class="nav-page-link">Theory of Change</a></li>
+      <li><a href="#" data-page="page-policy" class="nav-page-link">Policy</a></li>
+      <li><a href="#" data-page="page-about" class="nav-page-link">About</a></li>
     </ul>
     <a href="https://www.linkedin.com/in/daniel-bempah-quansah/" target="_blank" class="nav-linkedin">LinkedIn ↗</a>
   </div>
@@ -407,16 +492,16 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   3. Gradient overlay, controls, text shifts activate automatically.
   While no photos are set, hero renders on the flat parchment bg.
 -->
-<section class="hero" id="heroSection">
+<section class="hero has-photos" id="heroSection">
   <div class="hero-slideshow" id="heroSlideshow">
     <!-- PHOTO SLOT 1: Workshop or training session -->
-    <div class="slide active" id="slide-0" style="background-image:none"></div>
+    <div class="slide active" id="slide-0" style="background-image:url('slideshow1.jpg')"></div>
     <!-- PHOTO SLOT 2: EAC center or community space -->
-    <div class="slide" id="slide-1" style="background-image:none"></div>
+    <div class="slide" id="slide-1" style="background-image:url('slideshow2.jpg')"></div>
     <!-- PHOTO SLOT 3: Small business owner at work -->
-    <div class="slide" id="slide-2" style="background-image:none"></div>
+    <div class="slide" id="slide-2" style="background-image:url('slideshow3.jpg')"></div>
     <!-- PHOTO SLOT 4: NYC Chinatown streetscape or storefront -->
-    <div class="slide" id="slide-3" style="background-image:none"></div>
+    <div class="slide" id="slide-3" style="background-image:url('slideshow4.jpg')"></div>
   </div>
   <div class="hero-bg"></div>
   <div class="hero-grid-lines"></div>
@@ -425,7 +510,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
       <div class="hero-eyebrow">Bard College · Master's Capstone · 2026</div>
       <h1 class="hero-title">Cyborg Enterprises<br>and the <em>Urban Future</em></h1>
       <p class="hero-subtitle">
-        How can AI adoption for workflow optimization be designed to enhance the economic resilience of immigrant-owned small businesses — and under what conditions can those gains scale into something larger? This research lives at that intersection, built across 25 New York State Entrepreneurship Assistance Centers, grounded in 537 real businesses.
+        How can AI adoption for workflow optimization be designed to enhance the economic resilience of immigrant-owned small businesses — and under what conditions can those gains scale into something larger? This research lives at that intersection, built across 25 New York State Entrepreneurship Assistance Centers, grounded in 672 real businesses.
       </p>
       <div class="hero-tags">
         <span class="tag">AI Equity</span>
@@ -436,8 +521,8 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
         <span class="tag">Welcome to Chinatown</span>
       </div>
       <div class="hero-actions">
-        <a href="#theory-of-change" class="btn-primary">Theory of Change ↓</a>
-        <a href="#survey-data" class="btn-secondary">Survey Findings</a>
+        <a href="#" class="btn-primary nav-page-link" data-page="page-toc">Theory of Change →</a>
+        <a href="#" class="btn-secondary nav-page-link" data-page="page-survey">Survey Findings</a>
         <!-- EDIT 1a: Download one-pager CTA — replace "#" with PDF path when ready -->
         <a href="#" class="btn-ghost">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
@@ -496,20 +581,22 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
       <div class="tl-label done">Curriculum<br>Design</div>
     </div>
     <div class="tl-stage">
+      <div class="tl-dot tl-dot-done">✓</div>
+      <div class="tl-label done">Pilot<br>Delivery</div>
+    </div>
+    <div class="tl-stage">
+      <div class="tl-dot tl-dot-done">✓</div>
+      <div class="tl-label done">Analysis &amp;<br>Writing</div>
+    </div>
+    <div class="tl-stage">
       <div class="tl-dot tl-dot-active">●</div>
-      <div class="tl-label active">Pilot<br>Delivery</div>
-    </div>
-    <div class="tl-stage">
-      <div class="tl-dot tl-dot-pending">○</div>
-      <div class="tl-label">Analysis &amp;<br>Writing</div>
-    </div>
-    <div class="tl-stage">
-      <div class="tl-dot tl-dot-pending">○</div>
-      <div class="tl-label">Submission<br>May 2026</div>
+      <div class="tl-label active">Submission<br>May 2026</div>
     </div>
   </div>
 </div>
 
+<!-- PAGE: Overview -->
+<div class="page-view active" id="page-overview">
 <!-- EXECUTIVE SUMMARY -->
 <section class="section section-alt" id="executive-summary">
   <div class="section-inner">
@@ -529,6 +616,11 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   </div>
 </section>
 
+
+</div>
+
+<!-- PAGE: Survey Data -->
+<div class="page-view" id="page-survey">
 <!-- SURVEY DATA — interactive tabbed dashboard -->
 <section class="section" id="survey-data">
   <div class="section-inner">
@@ -570,6 +662,11 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   </div>
 </div>
 
+
+</div>
+
+<!-- PAGE: Chapters -->
+<div class="page-view" id="page-chapters">
 <!-- CHAPTER OUTLINE — EDIT 1: Word counts removed from accordion headers -->
 <section class="section section-alt" id="chapter-outline">
   <div class="section-inner">
@@ -580,6 +677,11 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   </div>
 </section>
 
+
+</div>
+
+<!-- PAGE: Curriculum -->
+<div class="page-view" id="page-curriculum">
 <!-- EDIT: CURRICULUM SCOPE & SEQUENCE with persona input block -->
 <section class="section" id="curriculum">
   <div class="section-inner">
@@ -594,6 +696,11 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   </div>
 </section>
 
+
+</div>
+
+<!-- PAGE: Theory of Change -->
+<div class="page-view" id="page-toc">
 <!-- THEORY OF CHANGE -->
 <section class="toc-section" id="theory-of-change">
   <div class="toc-inner">
@@ -611,6 +718,62 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   </div>
 </section>
 
+
+</div>
+
+<!-- PAGE: Policy Recommendations -->
+<div class="page-view" id="page-policy">
+<section class="section section-alt" id="policy-recommendations">
+  <div class="section-inner">
+    <div class="section-label">Policy Recommendations</div>
+    <h2 class="section-title">What should change — <em>and who should change it</em></h2>
+    <p class="section-intro">Translating research findings into structured, evidence-grounded recommendations addressed to four distinct audiences: EAC program coordinators, city and state government, funders, and future researchers. Each recommendation names the actor, specifies the action, and points to at least one measurable indicator of success.</p>
+
+    <div class="chapter-list" id="policyList"></div>
+
+    <!-- Further Reading Strip -->
+    <div class="further-reading-strip">
+      <div class="fr-label">Further Reading</div>
+      <div class="fr-grid">
+        <a href="https://www.youtube.com/watch?v=9g6t1ql67ic" target="_blank" class="fr-card">
+          <div class="fr-thumb fr-thumb-video">
+            <div class="fr-play">▶</div>
+          </div>
+          <div class="fr-body">
+            <div class="fr-source">TED Talk · Gina Raimondo</div>
+            <div class="fr-title">A Plan to Stop AI from Automating Our Decline</div>
+            <div class="fr-arrow">Watch ↗</div>
+          </div>
+        </a>
+        <a href="https://www.bcg.com/publications/2025/ai-adoption-puzzle-why-usage-up-impact-not#" target="_blank" class="fr-card">
+          <div class="fr-thumb fr-thumb-article">
+            <div class="fr-icon">📄</div>
+          </div>
+          <div class="fr-body">
+            <div class="fr-source">Boston Consulting Group · 2025</div>
+            <div class="fr-title">Why AI Usage Is Up But Business Impact Is Not</div>
+            <div class="fr-arrow">Read ↗</div>
+          </div>
+        </a>
+        <a href="https://www.humanetech.com/ai-roadmap" target="_blank" class="fr-card">
+          <div class="fr-thumb fr-thumb-report">
+            <div class="fr-icon">🗺</div>
+          </div>
+          <div class="fr-body">
+            <div class="fr-source">Center for Humane Technology</div>
+            <div class="fr-title">A Responsible AI Roadmap</div>
+            <div class="fr-arrow">Explore ↗</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- PAGE: About -->
+<div class="page-view" id="page-about">
 <!-- ABOUT -->
 <section class="section section-alt" id="about">
   <div class="section-inner">
@@ -637,7 +800,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
         <h2 class="about-name">Daniel Kwaku<br>Bempah Quansah</h2>
         <div class="about-title">Economic Researcher &amp; Curriculum Designer · Brooklyn, NY</div>
         <div class="about-bio">
-          <p>Some researchers study a problem from a distance. Daniel arrived inside one. As a <strong>Research &amp; Curriculum Development Intern at Welcome to Chinatown</strong>, he has spent the past year working directly with 537 immigrant-owned small business owners across New York State — designing and delivering AI training that meets people where they are, not where the technology assumes they should be.</p>
+          <p>Some researchers study a problem from a distance. Daniel arrived inside one. As a <strong>Research &amp; Curriculum Development Intern at Welcome to Chinatown</strong>, he has spent the past year working directly with 672 immigrant-owned small business owners across New York State — designing and delivering AI training that meets people where they are, not where the technology assumes they should be.</p>
           <p>His capstone research, <em>Cyborg Enterprises and the Urban Future</em>, investigates how AI adoption shapes economic resilience among New York City's most vulnerable small businesses, and builds the curriculum infrastructure to close the gap between AI's potential and its actual reach. The question, at its core, is not technical. It is institutional, pedagogical, and deeply human.</p>
           <p>Before graduate school, Daniel co-founded <strong>Munchies Grill &amp; Bar</strong> in Accra — scaling from start-up to 1,000 meals a day with 25 staff — and led a play-based education curriculum reaching 400 students in rural Ghana's cocoa communities. He has worked as a Research Assistant to Prof. Gayatri Spivak at Columbia University, and coordinated writing pedagogy for 1,400+ students annually at Ashesi University. The throughline in all of it: a conviction that good design, grounded in real context, changes what is possible.</p>
         </div>
@@ -652,8 +815,28 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
         </div>
       </div>
     </div>
+
+    <!-- FIELD NOTES & REFLECTIONS -->
+    <div class="field-notes-block">
+      <div class="fn-label">Field Notes &amp; Reflections from the Researcher</div>
+      <div class="fn-grid">
+        <div class="fn-card">
+          <div class="fn-card-label">On Positionality</div>
+          <p class="fn-text">The position of the scholar-practitioner is not one I am a stranger to. I have long straddled academia and industry, but this project marked the first time I wore both hats simultaneously. It was an experience defined by tension — each perspective pressing against the other, each insisting on its own logic. As the academic embedded within a community support organisation operating under resource constraints, I encountered a world where speed is law and learning happens through motion — fast, imperfect, iterative. This stood in friction with the part of me that seeks theory, that leans on frameworks, that moves with deliberation and methodological care.</p>
+          <p class="fn-text">But the tension proved generative. The academic lent the practitioner rigour and gave shape, language, and structure to instinct. The practitioner, in turn, taught the academic speed, intuition sharpened by necessity, and clarity forged in action.</p>
+        </div>
+        <div class="fn-card">
+          <div class="fn-card-label">On My Evolving Relationship with AI</div>
+          <p class="fn-text">My interest in artificial intelligence is recent, though my commitment to technological equity is not. I have never been an early adopter; if anything, I tend toward the cautious edge of diffusion. I remember a conversation in 2021 with a friend who was convinced that AI would transform everything. At the time, I met his conviction with scepticism, even mild amusement — another overhyped plaything of tech elites, I thought. Today, that position feels almost untenable.</p>
+          <p class="fn-text">As a small business owner in Accra, I approached this project not only as a researcher, but as a participant. In many ways, I was my own first student. Coming from academia, my initial relationship with AI was marked by resistance — I worried about the erosion of skill, and at times cloaked my intimidation in ethical critique. These concerns were not unfounded, but they were incomplete. They reduced my engagement to a false binary: to accept uncritically or to reject entirely. This project has pushed me toward a third way: to engage critically.</p>
+          <p class="fn-text">To engage AI through the lens of an educator is to recognise that adoption cannot be neutral. It must be accompanied by a commitment to governance, to regulation, and to shaping these tools toward socially beneficial and equitable ends. AI education, in this sense, must be inseparable from civic education. Otherwise, we risk teaching people to use systems they do not understand, cannot influence, and are ultimately subject to. And that has become my newfound conviction.</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
+
 
 <!-- PORTFOLIO ROADMAP -->
 <section class="section" id="coming-soon">
@@ -677,15 +860,15 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
         <div class="sm-title">Downloadable One-Pager</div>
         <div class="sm-desc">A polished PDF executive summary — theory of change, key findings, and bio — designed for funders to forward and grant reviewers to attach.</div>
       </div>
-      <div class="sitemap-cell coming-cell">
-        <span class="sm-status sm-planned">Planned</span>
+      <div class="sitemap-cell active-cell">
+        <span class="sm-status sm-live">Live</span>
         <div class="sm-title">Field Notes &amp; Reflections</div>
-        <div class="sm-desc">Learning log and practitioner reflections — the researcher's own AI adoption journey alongside participants. The Kolb cycle, lived.</div>
+        <div class="sm-desc">Learning log and practitioner reflections — the researcher's positionality, evolving relationship with AI, and the tensions of the scholar-practitioner role.</div>
       </div>
-      <div class="sitemap-cell coming-cell">
-        <span class="sm-status sm-planned">Planned</span>
+      <div class="sitemap-cell active-cell">
+        <span class="sm-status sm-live">Live</span>
         <div class="sm-title">Policy Recommendations</div>
-        <div class="sm-desc">Structured, evidence-grounded recommendations for EAC coordinators, city agencies, and funders considering replication.</div>
+        <div class="sm-desc">Structured, evidence-grounded recommendations for EAC coordinators, city agencies, funders, and future researchers — with historical examples and further reading.</div>
       </div>
       <div class="sitemap-cell coming-cell">
         <span class="sm-status sm-planned">Planned</span>
@@ -695,6 +878,9 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
     </div>
   </div>
 </section>
+
+
+</div>
 
 <!-- FOOTER — EDIT 2: Fixed impact study URL; EDIT 1a: Download link added -->
 <footer class="site-footer">
@@ -876,27 +1062,68 @@ const PERSONAS = [
 
 
 const CHAPTERS = [
-  { color:"#5B4FD9", bg:"#EAE8FA", num:"Chapter 1", title:"Introduction: AI at the Urban Frontier",
-    job:"This chapter opens at the widest frame — rapid urbanisation, the double-edged nature of AI, and the specific vulnerability of immigrant-owned small businesses navigating both — and narrows progressively to this research's particular site: New York City's Chinatown, the NYS EAC program, and the dual role of researcher and practitioner this project inhabits. It states the central research question and four objectives directly, and closes with a 300-word methodological note that explains the practice-based capstone form and establishes the researcher's positionality.",
-    outline:["Opens with a concrete scene — a specific Chinatown business owner confronting AI displacement or opportunity, not an abstraction about technology","Traces the problem cascade: rapid urbanisation → small business vulnerability → COVID disruption → AI as double-edged force → immigrant-owned MSMEs as most exposed","States the central research question and four research objectives clearly and directly","Introduces the EAC / Welcome to Chinatown context as the site of inquiry and establishes the researcher's dual practitioner role","300-word methodological note on sources, positionality, and why a practice-based capstone is the right form for this particular inquiry","Closes with a signposting paragraph that frames what follows as a cumulative argument, not a table of contents"]
+  { color:"#5B4FD9", bg:"#EAE8FA", num:"Chapter 1", title:"Rise of the Cyborgs",
+    job:"This chapter opens with Andrew — a second-generation Chinatown dumpling shop owner whose family business survived COVID-19 but now faces a quieter, more disorienting disruption: the rise of AI-native competitors and the widening gap between digitally equipped firms and those left to navigate the transition alone. From this concrete opening, the chapter scales outward, situating the problem within the global trajectory of urbanisation, the structural role of MSMEs in urban resilience, and the specific vulnerabilities of immigrant-owned small businesses facing the advent of large language models. It closes by stating the research question and four guiding objectives, establishing the EAC/Welcome to Chinatown context as the site of inquiry, and articulating the researcher's dual role as embedded practitioner and scholar.",
+    outline:[
+      "Opens with Andrew's story — a Chinatown dumpling shop navigating COVID recovery and the emerging pressure of AI-native competitors",
+      "Situates the inquiry in global urbanisation trends: from 20% urban in 1950 to 70% projected by 2050; megacities as the frontier of resilience challenges",
+      "Defines urban resilience (Resilient Cities Network) and establishes MSMEs as load-bearing pillars — 90% of businesses, 70% of global employment",
+      "Problem statement: NYC small businesses still recovering from COVID, with net losses of ~5,000 enterprises in Q2 2025 alone; AI widening the gap between digitally equipped and digitally excluded firms",
+      "Research question: How can AI adoption for workflow optimization be designed and implemented to enhance the economic resilience of immigrant-owned MSMEs, and under what conditions can these gains scale into broader urban resilience?",
+      "Four research objectives stated; scope defined through the NYS EAC Program and Welcome to Chinatown's statewide Small Business AI Training initiative",
+      "Significance: practical orientation, replicability, and contribution to urban resilience scholarship",
+      "Roadmap: cumulative five-chapter argument from political economy → methodology → curriculum design → conclusions and recommendations"
+    ]
   },
-  { color:"#1A9E75", bg:"#E0F5ED", num:"Chapter 2", title:"What We Know and What's Missing: Theory, Programs, and the Case for This Project",
-    job:"This chapter builds the intellectual and programmatic case for the project in three layered movements. It begins with the theoretical frameworks — political economy of technology, digital divide theory, AI equity governance — that establish how technology benefits are distributed as a political question, not merely a technical one. It then analyses 3–4 exemplary AI training programs against a consistent evaluative matrix. It concludes by naming the gap that existing programs fail to fill, and presenting the theory of change as the direct, logical response to that gap.",
-    outline:["Section A — Theoretical foundations (600w): Political economy of technology (Autor, Winner, Jasanoff) as the master framework, layered with Digital Divide Theory and AI equity governance literature","Section B — Programmatic landscape (900w): Analysis of 3–4 exemplary programs through a consistent matrix — equity by design, tool-agnosticism, scalability, community embeddedness","Section C — What's missing (300w): Synthesis of the gap — what theory proposes that programs fail to operationalise, and what programs do well but lack scholarly grounding to explain","Section D — Theory of change (400w): The causal pathway the curriculum is designed to activate, framed as the logical 'therefore' of everything above it"]
+  { color:"#1A9E75", bg:"#E0F5ED", num:"Chapter 2", title:"Power, Politics & the Architecture of Change",
+    job:"This chapter lays the theoretical and programmatic foundations of the project across four interconnected movements. It begins with the political economy of technology — drawing on Autor (2022), Acemoglu & Restrepo (2019), and the Center for Humane Technology's AI Roadmap — to argue that the equitable distribution of AI's gains cannot be left to markets alone. It then turns to Jan van Dijk's digital divide theory and the Prosci ADKAR change management model to explain how access barriers operate sequentially and how individual transformation actually occurs. The chapter concludes by assembling these strands into a Theory of Change that traces the causal pathway from curriculum inputs through firm-level outcomes to urban resilience.",
+    outline:[
+      "Political Economy of Technology — Autor (2022): four paradigms (education race, task polarisation, automation–reinstatement, AI uncertainty); technology as institutional choice, not determinism",
+      "Acemoglu & Restrepo (2019): markets favour labour-replacing AI; case for active policy to redirect innovation toward labour-augmenting technologies",
+      "Center for Humane Technology AI Roadmap: transparency, privacy, safety; interventions across norms, law, and product design; equipping small business owners as critical political actors, not passive consumers",
+      "Van Dijk's Digital Divide Theory: four sequential barriers — motivational, material, skills, and usage access; strategic use as the real goal, not mere exposure",
+      "Prosci ADKAR change management model: Awareness → Desire → Knowledge → Ability → Reinforcement; locating change at the individual level; community-embedded delivery as the mechanism for Desire",
+      "Theory of Change: impact defined (immigrant-owned MSMEs as active participants in AI transition), outcomes (12–18 month KPIs, reduced displacement exposure, network diffusion), inputs and activities (EAC infrastructure, survey data, curriculum), outputs (trained owners, trained facilitators, open-access curriculum package)"
+    ]
   },
-  { color:"#C94F2A", bg:"#FAE8E2", num:"Chapter 3", title:"Designing for Transformation: Pedagogical Framework and Curriculum Architecture",
-    job:"This chapter walks through every major design decision in the curriculum and connects it explicitly to the learner population, delivery context, and theory of change. It begins by characterising the target learner through an andragogical lens — adult, experience-rich, time-poor, multilingual, and potentially wary of technology after prior negative encounters. It then makes the case for Kolb's Experiential Learning Cycle and Fink's Taxonomy of Significant Learning as the twin design blueprints, chosen not because they are fashionable but because each directly addresses a specific feature of these learners' reality.",
-    outline:["Design premise: every pedagogical choice reflects a specific understanding of who the learners are and what they actually need","Section A — Who the learners are (400w): Andragogical portrait grounded in EAC survey data — adult, experience-rich, time-poor, multilingual, with prior technology barriers","Section B — Why Kolb (400w): Experiential Learning Cycle as design blueprint, with each of the six modules mapped to specific stages","Section C — Why Fink (400w): Fink's Taxonomy as the aspirational framework — 'caring' and 'human dimension' as especially critical for skeptical learners","Section D — Digital literacy models and blended delivery (400w): Rationale for synchronous, asynchronous, and in-person components, plus equity dimensions","Curriculum overview: one paragraph tying all four frameworks into a coherent, defensible design argument"]
+  { color:"#C94F2A", bg:"#FAE8E2", num:"Chapter 3", title:"Methodology — Translating Theory into Evidence",
+    job:"With the theory of change established, this chapter turns to the empirical methods used to construct the project's evidentiary base. It describes the two complementary survey instruments developed and administered across the NYS EAC network, reaching 672 small business owners and 25 EAC directors. It presents the key findings across five domains: who was surveyed, business challenges, AI tool adoption, barriers and concerns, and conditions for adoption. In parallel, it reports on a comparative analysis of three nationally prominent AI and digital literacy programs — Google/Chamber B(AI)sics, the SBA's Small Business Digital Alliance, and the Public Library Association's DigitalLearn — evaluated against four criteria: equity by design, tool-agnosticism, scalability, and community embeddedness.",
+    outline:[
+      "Two survey instruments administered statewide: one for MSME owners (n=672: English 586, Spanish 40, Chinese 46) and one for EAC directors (n=25); capturing biographical data, business characteristics, digital aptitude, AI attitudes, and learning preferences",
+      "Who was surveyed: professional services dominant (20%, n=137); 63% micro-enterprises with 5 or fewer employees; owner age skews 35–54; previously hidden sectors (real estate, nonprofit, home services, technology) surfaced through reclassification",
+      "Business challenges: getting more customers (57%) the single most consistent signal across all language communities; marketing and social media (47%); time poverty and financial management (31% each)",
+      "AI tool adoption: ChatGPT dominant among English speakers (78%); translation tools the primary AI use case among Chinese speakers (65%); episodic rather than embedded engagement across all groups",
+      "Barriers and concerns: privacy leads for English and Spanish speakers (55%); cost leads for Chinese speakers (76%); language barriers undercounted — those excluded by inaccessibility are absent from the data",
+      "Conditions for adoption: social, economic, and relational — peer proof (57%), free/low-cost tools (49%), trusted facilitator guidance (48%); three design imperatives confirmed: community-relevant examples, trusted delivery, explicit upfront treatment of privacy and cost",
+      "Comparative program analysis: Google B(AI)sics (strong pedagogy, proprietary ecosystem limits tool-agnosticism); SBA SBDA (ambitious reach, outsourced pedagogy limits relevance); PLA DigitalLearn (facilitator-centred, bilingual, equity-oriented but no domain-specific AI/business application) — taken together, revealing a persistent tension between scale and equity"
+    ]
   },
-  { color:"#B06A10", bg:"#FAF0E0", num:"Chapter 4", title:"What Should Change: Recommendations for Programs, Policy, and Research",
-    job:"This chapter translates the research findings into a structured set of actionable, evidence-grounded recommendations addressed to four distinct audiences: EAC program coordinators, city and state agencies, funders, and future researchers. Each recommendation names the actor, specifies the action, and identifies one measurable indicator of success — a format designed to be immediately legible to program officers, grant reviewers, and policy advisors reading under time pressure.",
-    outline:["Brief framing: what the preceding analysis now makes it possible to recommend — and why specificity matters more than volume","Recommendations for EAC coordinators: curriculum integration, facilitator training, multilingual delivery, internal admin AI tools","Recommendations for city and state agencies: policy frameworks, language access provisions, and procurement equity","Recommendations for funders: what a scaled model looks like, what investment it requires, what success indicators to track","Recommendations for future research: longitudinal tracking, cross-city comparison, platform dependency risks, community of practice effects","Each recommendation: actor named, action specified, one measurable success indicator identified"]
+  { color:"#B06A10", bg:"#FAF0E0", num:"Chapter 4", title:"Designing for Transformation — Pedagogical Framework & Curriculum Architecture",
+    job:"This chapter translates the theoretical foundations and empirical insights of the preceding chapters into a learner-centred curriculum design. Opening with William Pinar's maxim that curriculum is \"the lived experience of the learner in relationship with the world,\" it establishes four student-centred design principles before developing four participant personas derived from the survey data — grounded in Rogers' Diffusion of Innovations, Van Dijk's Digital Divide theory, BCG's AI adoption stages, and Lynn Curry's Onion Model of learning styles. It then details the pedagogical architecture: Fink's Taxonomy of Significant Learning as the framework for setting integrated learning goals and educative assessment, and Kolb's Experiential Learning Cycle as the structure for learning activities across three curriculum phases.",
+    outline:[
+      "Opening premise (Pinar 2004): curriculum as lived experience; four student-centred design principles — differentiation, learner agency, active capacity-building, reflexive ongoing practice",
+      "Participant personas — four archetypes derived from survey data, grounded in Rogers' Diffusion of Innovations, Van Dijk's Digital Divide, BCG's AI adoption stages, and Curry's Onion Model:",
+      "→ The Structurally Excluded: Rogers Laggard (structural, not temperamental); BCG ceiling = Information Assistance; requires in-person, language-accessible, community-anchored delivery",
+      "→ The Cautious Pragmatist: Rogers Early/Late Majority; BCG Stage 2–3; motivational divide is the operative barrier; needs immediate, visible 'so what for my business'",
+      "→ The Emergent Adopter: Rogers Early Adopter; BCG Stage 3 (Delegation); skills gap is the barrier; learns by doing, needs scaffolding and iteration opportunities",
+      "→ The Embedded Practitioner: Rogers Innovator; BCG Stage 4 (Semi-autonomous Collaboration); barriers = output quality only; serves as peer model and proof of concept for the program",
+      "Fink's Taxonomy: integrated course design moving through situational factors → learning goals (Foundational Knowledge, Integration, Application, Caring, Learning-how-to-learn) → educative assessment (forward-looking assessments grounded in workflow realities; self-assessments building metacognitive capacity)",
+      "Kolb's Experiential Learning Cycle: concrete experience → reflective observation → abstract conceptualisation → active experimentation; three curriculum phases — Foundation (Modules 1–2), Application (Modules 3–5), Integration & Reflection (Module 6)"
+    ]
   },
-  { color:"#2068B0", bg:"#E5F0FA", num:"Chapter 5", title:"Reflective Epilogue: Learning in Public",
-    job:"This chapter closes the document by turning the research lens on the researcher. Grounded in Schön's reflective practitioner methodology — establishing this as a legitimate scholarly method, not a personal diary — it documents two parallel journeys: the researcher's own AI adoption process throughout the project, and the tensions and lessons that arose from occupying both practitioner and researcher roles simultaneously. In its very form, this chapter models the kind of reflective learning the curriculum asks of its participants.",
-    outline:["Methodological framing upfront — Schön's reflective practitioner cited to establish this as a legitimate research method","Section A — AI upskilling log (300w): Chronicles the researcher's own journey learning AI tools — honest about what surprised, frustrated, and shifted assumptions","Section B — Practitioner partnership reflections (300w): What working with Welcome to Chinatown taught that the literature simply could not — tensions between researcher and practitioner roles","Structured using the Kolb cycle as the reflective architecture — demonstrating the framework has been genuinely internalised, not just applied"]
+  { color:"#2068B0", bg:"#E5F0FA", num:"Chapter 5", title:"Into the Age of the Cyborgs — Conclusions, Recommendations & Reflection",
+    job:"This chapter synthesises the project's argument and translates its findings into action. It opens by restating the central claim: that effective AI adoption for immigrant-owned MSMEs is not achieved through generalized training or scale alone, but through intentional design that accounts for equity, linguistic diversity, trust, and the lived realities of adult learners. It presents structured programmatic and policy recommendations for four audiences — EAC coordinators, city and state government, funders, and future researchers — including historical precedents from Germany's Kurzarbeit, Singapore's SkillsFuture, and NYC's SBS training grants. The chapter closes with a reflective epilogue in which the researcher examines their positionality as a scholar-practitioner embedded within the project they are studying.",
+    outline:[
+      "Synthesis: AI adoption for MSMEs requires intentional design — equity-driven, linguistically diverse, trust-centred, and grounded in adult learning realities; when these conditions are met, adoption moves from episodic use to strategic integration",
+      "Recommendations for EAC Coordinators: relationship continuity over content delivery; peer learning as explicit program structure; community context assessment before each new site launch; developmental evaluation approach; multilingual facilitator capacity",
+      "Recommendations for City & State Government: extend NYC SBS training grants to AI adoption programming; AI language access provisions for immigrant business districts; state-level AI equity fund for micro-enterprises; policy precedents — Germany's Kurzarbeit (labour retention over replacement), Singapore's SkillsFuture (co-funded training grants), NYC SBS (city-funded, up to 60% reimbursement)",
+      "Recommendations for Funders: multi-year facilitator capacity building; replication in Los Angeles, Chicago, Houston; longitudinal outcome tracking at 12 and 18 months; open-access curriculum package funding",
+      "Recommendations for Future Researchers: longitudinal studies tracking adoption and performance at 6, 12, 18 months; neighbourhood-level resilience effects; platform dependency risks; cross-city comparison; peer diffusion mechanisms",
+      "Reflective epilogue: positionality as scholar-practitioner — the friction between academic deliberation and organisational speed; the epistemic advantage and confirmation risks of embedded research; learning journey structured through the Kolb cycle the curriculum itself enacts"
+    ]
   }
 ];
+
 
 // EDIT 3: Curriculum modules data — sourced from capstone_blueprint_dashboard_1.html
 const KOLB_LABELS = ["Concrete experience","Reflective observation","Abstract conceptualisation","Active experimentation"];
@@ -909,9 +1136,9 @@ const CURRICULUM_MODULES = [
     num:"Module 1",
     title:"AI Demystified: What It Is and Why It Matters for Your Business",
     tagline:"Build foundational AI literacy grounded in real business challenges, not definitions.",
-    duration:"3–4 hrs", format:"Async + group workshop",
+    duration:"2 hrs", format:"Online sync + group workshop",
     kolb:[0,1], fink:[0,4,5],
-    delivery:[{l:"Online async",c:"del-async"},{l:"Group workshop",c:"del-person"}],
+    delivery:[{l:"Online sync",c:"del-sync"},{l:"Group workshop",c:"del-person"}],
     outcomes:["Explain what AI is in plain language and distinguish it from automation and software","Identify at least two ways AI is already affecting their industry or neighbourhood","Articulate one personally relevant reason to engage with AI tools","Reflect on their current relationship with technology and identify comfort or anxiety points"],
     tools:"No tools required. Discussion prompts, video case studies, and peer reflection logs.",
     equity:"Materials available in Cantonese, Spanish, and Mandarin. Opens with a Welcome to Chinatown case study for cultural relevance.",
@@ -923,10 +1150,10 @@ const CURRICULUM_MODULES = [
     num:"Module 2",
     title:"Mapping Your Workflow: Where Does AI Fit in Your Business?",
     tagline:"Apply a structured workflow audit to identify high-value, low-risk AI entry points.",
-    duration:"3–4 hrs", format:"1-on-1 + async",
+    duration:"45–90 mins", format:"1-on-1 + async + small group workshop",
     kolb:[0,1,2], fink:[0,1,2],
-    delivery:[{l:"1-on-1 session",c:"del-person"},{l:"Online async",c:"del-async"}],
-    outcomes:["Map at least 5 core business tasks across marketing, operations, and customer service","Categorise tasks by repetitiveness, time cost, and AI-amenability","Identify one priority workflow domain for AI adoption in their specific business","Complete a Workflow Audit Template to use as reference across Modules 3–5"],
+    delivery:[{l:"1-on-1 session",c:"del-person"},{l:"Online async",c:"del-async"},{l:"Small group workshop",c:"del-person"}],
+    outcomes:["Map at least 5 core business tasks across marketing, operations, and customer service","Categorise tasks by repetitiveness, time cost, and AI-amenability — and map each task type to different AI capabilities and best tools and practices","Identify one priority workflow domain for AI adoption in their specific business","Complete a Workflow Audit Template to use as reference across Modules 3–5"],
     tools:"Workflow Audit Template (provided). Optional: Notion, Google Sheets.",
     equity:"Facilitator-guided 1-on-1 option for low-digital-literacy participants. Template available in simplified and full versions.",
     assess:"Completed Workflow Audit Template with one identified priority domain and rationale."
@@ -936,28 +1163,28 @@ const CURRICULUM_MODULES = [
     color:"#C94F2A", bg:"#FAE8E2",
     num:"Module 3",
     title:"AI for Marketing: Reaching More Customers Without More Time",
-    tagline:"Practice using AI tools for content creation, social media, and customer outreach.",
-    duration:"3–4 hrs", format:"Sync + in-person workshop",
+    tagline:"Practice using AI tools for content creation, social media, and customer outreach — including how to prompt effectively.",
+    duration:"2–3 hrs", format:"Sync + in-person workshop",
     kolb:[0,2,3], fink:[0,1,2,3],
     delivery:[{l:"Live sync session",c:"del-sync"},{l:"In-person workshop",c:"del-person"}],
-    outcomes:["Use an AI writing tool to draft a social media post or promotional email for their business","Evaluate AI-generated content for accuracy, tone, and cultural appropriateness","Identify one marketing workflow where AI saves measurable time or effort","Adapt AI output to reflect their brand voice and community context"],
-    tools:"ChatGPT / Claude (free tier), Canva AI, Google Gemini. Facilitator demo first, then guided practice.",
+    outcomes:["Use an AI writing tool to draft a social media post or promotional email for their business","Write effective prompts for AI tools — understanding how prompt structure, specificity, and context shape output quality","Evaluate AI-generated content for accuracy, tone, and cultural appropriateness","Identify one marketing workflow where AI saves measurable time or effort","Adapt AI output to reflect their brand voice and community context"],
+    tools:"ChatGPT / Claude (free tier), Canva AI, Google Gemini. Facilitator demo first, then guided practice. Further study: open-access step-by-step prompt engineering guides available in English, Spanish, and Chinese — including Learn Prompting (learnprompting.org), OpenAI's prompt guide, and Anthropic's prompt library.",
     equity:"Multilingual prompt templates provided. Examples drawn from immigrant-owned business contexts. Peer pairing for tool-averse participants.",
-    assess:"Live practice: create one piece of marketing content using an AI tool. Group debrief: 'What worked? What needed editing? Why?'"
+    assess:"Live practice: create one piece of marketing content using an AI tool. Group debrief: 'What worked? What needed editing? Why?' Metacognitive reflection: participants note one area where understanding came easily and one where they felt confused or resistant — to be shared and discussed at the opening of Module 4."
   },
   {
     phase:"Phase 2 — Application",
     color:"#B06A10", bg:"#FAF0E0",
     num:"Module 4",
     title:"AI for Operations: Working Smarter on the Back End",
-    tagline:"Explore AI tools that streamline scheduling, inventory, finance, and admin tasks.",
-    duration:"3–4 hrs", format:"Sync + 1-on-1 coaching",
+    tagline:"Explore AI tools that streamline scheduling, inventory, finance, and admin tasks — including an introduction to agentic AI.",
+    duration:"2–3 hrs", format:"Sync + 1-on-1 coaching",
     kolb:[0,2,3], fink:[1,2,3,5],
     delivery:[{l:"Live sync session",c:"del-sync"},{l:"1-on-1 coaching",c:"del-person"}],
-    outcomes:["Identify at least one operational task that can be partially automated using a free or low-cost AI tool","Demonstrate use of one AI-powered tool for scheduling, invoicing, or inventory management","Calculate a rough time-savings estimate for their chosen operational use case","Design a simple adoption plan: tool + task + timeline"],
-    tools:"Notion AI, Google Workspace AI features, Wave (accounting), Calendly. Tool selection guided by participant's business type.",
+    outcomes:["Identify at least one operational task that can be partially automated using a free or low-cost AI tool","Demonstrate use of one AI-powered tool for scheduling, invoicing, or inventory management — and explore the fundamentals of agentic AI through a simple scheduling use case, understanding how AI can take multi-step actions on behalf of a user","Calculate a rough time-savings estimate for their chosen operational use case","Design a simple adoption plan: tool + task + timeline"],
+    tools:"Notion AI, Google Workspace AI features, Wave (accounting), Calendly. Tool selection guided by participant's business type. Further study: open-access step-by-step guides on AI for operations available in English, Spanish, and Chinese — including Google's AI Essentials and Microsoft's AI for Business resources.",
     equity:"Tool recommendations tiered by cost (free / freemium / paid). 1-on-1 coaching available for setup support.",
-    assess:"Adoption plan: 'I will use [tool] to [task] by [date]. I expect this to save approximately [X hours/week].'"
+    assess:"Adoption plan: 'I will use [tool] to [task] by [date]. I expect this to save approximately [X hours/week].' Each participant assigns an accountability partner — from within the cohort or their own social network — to check in on progress before Module 5. Metacognitive reflection: participants note one area where understanding came easily and one where they felt confused or resistant — to be shared and discussed at the opening of Module 5."
   },
   {
     phase:"Phase 2 — Application",
@@ -965,9 +1192,9 @@ const CURRICULUM_MODULES = [
     num:"Module 5",
     title:"AI for Customer Service: Faster Responses, Stronger Relationships",
     tagline:"Build confidence using AI tools to manage customer communication and feedback.",
-    duration:"3–4 hrs", format:"Sync + async",
+    duration:"1.5–3 hrs", format:"Sync + group workshop",
     kolb:[0,1,2,3], fink:[1,2,3,4],
-    delivery:[{l:"Live sync session",c:"del-sync"},{l:"Online async",c:"del-async"}],
+    delivery:[{l:"Live sync session",c:"del-sync"},{l:"Group workshop",c:"del-person"}],
     outcomes:["Draft an AI-assisted customer response template for a common inquiry or complaint","Evaluate the trade-offs between AI-assisted and human-led customer interaction","Set up or configure a basic chatbot or auto-reply workflow","Reflect on how AI use in customer service affects trust, tone, and cultural nuance"],
     tools:"Tidio, ManyChat (free tier), Gmail templates + AI, Google Business reply tools.",
     equity:"Discussion of cultural expectations around customer communication. Emphasis on AI as support, not replacement, for relationship-based business models.",
@@ -977,14 +1204,14 @@ const CURRICULUM_MODULES = [
     phase:"Phase 3 — Integration & Reflection",
     color:"#5E3D6B", bg:"#E8DDEF",
     num:"Module 6",
-    title:"AI with Intention: Ethics, Equity, and Building Your AI Practice",
-    tagline:"Integrate learning across modules, address ethical dimensions, and build a personal AI adoption roadmap.",
-    duration:"3–4 hrs", format:"Group workshop + async",
+    title:"AI with Intention: Ethics, Equity, Policy, and Building Your AI Practice",
+    tagline:"Integrate learning across modules, address ethical and policy dimensions, and build a personal AI adoption roadmap.",
+    duration:"1.5–2 hrs", format:"Group workshop + async",
     kolb:[1,2,3], fink:[2,3,4,5],
     delivery:[{l:"Group workshop",c:"del-person"},{l:"Online async",c:"del-async"}],
-    outcomes:["Identify at least two ethical risks of AI relevant to their business (data privacy, bias, labour displacement)","Articulate how AI adoption could affect their employees, customers, and community","Complete a Personal AI Adoption Roadmap covering tools, timelines, and learning goals","Connect their AI learning journey to a broader vision for business economic resilience"],
-    tools:"Reflection workbook (provided). Optional: revisit tools from Modules 3–5 for roadmap planning.",
-    equity:"Explicit discussion of how AI policy affects immigrant-owned and minority businesses. Policy resources and advocacy pathways shared.",
+    outcomes:["Identify at least two ethical risks of AI relevant to their business (data privacy, bias, labour displacement)","Articulate how AI adoption could affect their employees, customers, and community","Understand the current policy and regulatory landscape governing AI — including key frameworks, rights, and protections relevant to small businesses","Identify concrete ways small businesses and community organisations can engage in AI governance and advocate for equity in AI policy","Complete a Personal AI Adoption Roadmap covering tools, timelines, and learning goals","Connect their AI learning journey to a broader vision for business economic resilience"],
+    tools:"Reflection workbook (provided). Optional: revisit tools from Modules 3–5 for roadmap planning. Additional resources: organisations supporting small businesses to navigate the AI evolution — including AI for Good (aiforgood.itu.int), Small Business Majority's Tech Resources (smallbusinessmajority.org), the AI Now Institute (ainowinstitute.org), and the Center for Humane Technology (humanetech.com).",
+    equity:"Explicit discussion of how AI policy affects immigrant-owned and minority businesses. Policy resources and advocacy pathways shared, including how to engage with city and state AI governance processes.",
     assess:"Personal AI Adoption Roadmap — reviewed in a final 1-on-1 coaching session."
   }
 ];
@@ -992,7 +1219,7 @@ const CURRICULUM_MODULES = [
 const TOC_COLS = [
   { id:"inputs", label:"Inputs", cls:"col-inputs", nodes:[
     { title:"EAC Infrastructure", sub:"25 centers, trained facilitators, established community trust", detail:"The NYS Entrepreneurship Assistance Centers provide the institutional backbone of this program — 25 centers with pre-existing relationships with immigrant-owned small businesses across the state. This infrastructure is what makes community-embedded delivery possible at scale." },
-    { title:"Survey Research", sub:"537 SMB needs assessments across 3 languages", detail:"Structured needs assessments and multilingual survey data from 537 MSME owners provided the empirical foundation for all curriculum design decisions — ensuring the training was built around actual workflow challenges, not assumptions." },
+    { title:"Survey Research", sub:"672 SMB needs assessments across 3 languages", detail:"Structured needs assessments and multilingual survey data from 672 MSME owners provided the empirical foundation for all curriculum design decisions — ensuring the training was built around actual workflow challenges, not assumptions." },
     { title:"Curriculum Design", sub:"6-module, Kolb/Fink framework, blended delivery", detail:"A 6-module AI training curriculum grounded in Kolb's Experiential Learning Cycle and Fink's Taxonomy of Significant Learning — designed for adult, non-technical learners, available in English, Spanish, and Chinese." },
     { title:"Welcome to Chinatown", sub:"Nonprofit anchor, NYC Chinatown community partner", detail:"Welcome to Chinatown provides the practitioner anchor for this research — community credibility, program management infrastructure, and a direct line to the small business owners the curriculum is designed to serve." }
   ]},
@@ -1228,7 +1455,7 @@ function renderPersonas() {
   container.innerHTML = `
     <div style="margin-bottom:2rem;padding:1.75rem;background:var(--warm-white);border:1px solid var(--rule);border-radius:var(--r)">
       <div class="persona-input-label">Curriculum Development Input — Learner Personas</div>
-      <p class="persona-framing">The curriculum design is grounded in four empirically derived learner personas developed from survey data (n=672), needs assessment interviews, and digital literacy theory. Rather than treating the target population as a monolith, the personas map meaningful variation in digital comfort, AI attitudes, and structural barriers — ensuring that each module's design choices serve the full range of learners the EAC program actually reaches, not just the most visible or vocal ones.</p>
+      <p class="persona-framing">The curriculum design is grounded in four empirically derived learner personas — mapped against BCG's AI adoption progression framework<sup><a href="https://www.bcg.com/publications/2025/ai-adoption-puzzle-why-usage-up-impact-not#" target="_blank" style="color:var(--teal);font-size:.7rem;vertical-align:super;text-decoration:none" title="BCG: Why AI Usage Is Up But Impact Is Not">↗</a></sup> — developed from survey data (n=672), needs assessment interviews, and digital literacy theory. Rather than treating the target population as a monolith, the personas map meaningful variation in digital comfort, AI attitudes, and structural barriers — ensuring that each module's design choices serve the full range of learners the EAC program actually reaches, not just the most visible or vocal ones.</p>
       <div class="persona-grid" id="personaGrid"></div>
     </div>`;
 
@@ -1283,13 +1510,34 @@ function renderChapters() {
 }
 function toggleChapter(i) { document.querySelectorAll('.chapter-item')[i].classList.toggle('open'); }
 
-// EDIT 3: renderCurriculum
+// EDIT: renderCurriculum — upgraded to match blueprint visual treatment
 function renderCurriculum() {
   const container = document.getElementById('curriculumList');
+  if (!container) return;
   let currentPhase = '';
 
+  const chipClass = { 'del-sync':'mc-sync', 'del-async':'mc-async', 'del-person':'mc-person' };
+
+  function splitAssess(assess) {
+    const marker = 'Metacognitive reflection:';
+    const idx = assess.indexOf(marker);
+    if (idx === -1) return { main: assess, reflect: null };
+    return { main: assess.slice(0, idx).trim(), reflect: assess.slice(idx + marker.length).trim() };
+  }
+
+  function splitTools(tools) {
+    const m1 = 'Further study:'; const m2 = 'Additional resources:';
+    let idx = tools.indexOf(m1); let lbl = 'Further Study — Open Access';
+    if (idx === -1) { idx = tools.indexOf(m2); lbl = 'Organisations Supporting SMBs in the AI Evolution'; }
+    if (idx === -1) return { primary: tools, further: null, furtherLabel: null };
+    const markerLen = tools.indexOf(m1) !== -1 ? m1.length : m2.length;
+    return { primary: tools.slice(0, idx).trim(), further: tools.slice(idx + markerLen).trim(), furtherLabel: lbl };
+  }
+
+  const kolbLabels = ['Concrete experience','Reflective observation','Abstract conceptualisation','Active experimentation'];
+  const finkLabels = ['Foundational knowledge','Application','Integration','Human dimension','Caring','Learning how to learn'];
+
   CURRICULUM_MODULES.forEach((mod, i) => {
-    // Phase label
     if (mod.phase !== currentPhase) {
       currentPhase = mod.phase;
       const phaseEl = document.createElement('div');
@@ -1298,65 +1546,79 @@ function renderCurriculum() {
       container.appendChild(phaseEl);
     }
 
-    const kolbPills = KOLB_LABELS.map((l, idx) =>
-      `<span class="mod-pill ${mod.kolb.includes(idx) ? 'active' : ''}">${l}</span>`).join('');
-    const finkPills = FINK_LABELS.map((l, idx) =>
-      `<span class="mod-pill ${mod.fink.includes(idx) ? 'active' : ''}">${l}</span>`).join('');
-    const delivChips = mod.delivery.map(d =>
-      `<span class="del-chip ${d.c}">${d.l}</span>`).join('');
+    const kolbPills = kolbLabels.map((l,idx) =>
+      `<span class="mod-pill-v2${mod.kolb.includes(idx)?' on':''}">${l}</span>`).join('');
+    const finkPills = finkLabels.map((l,idx) =>
+      `<span class="mod-pill-v2${mod.fink.includes(idx)?' on':''}">${l}</span>`).join('');
+    const chips = mod.delivery.map(d =>
+      `<span class="mod-chip ${chipClass[d.c]||'mc-person'}">${d.l}</span>`).join('');
+    const durChip = `<span class="mod-chip mc-dur">${mod.duration}</span>`;
+
+    const { main: assessMain, reflect: assessReflect } = splitAssess(mod.assess);
+    const { primary: toolsPrimary, further: toolsFurther, furtherLabel } = splitTools(mod.tools);
+
+    const outcomesHTML = mod.outcomes.map(o => {
+      let out = o;
+      if (o.includes('prompt structure, specificity')) out += ' <span class="mod-lo-tag">[Prompt engineering]</span>';
+      if (o.includes('agentic AI')) out += ' <span class="mod-lo-tag">[Agentic AI]</span>';
+      if (o.includes('policy and regulatory landscape')) out += ' <span class="mod-lo-tag">[AI policy literacy]</span>';
+      if (o.includes('engage in AI governance')) out += ' <span class="mod-lo-tag">[AI governance]</span>';
+      return `<li>${out}</li>`;
+    }).join('');
+
+    const toolsHTML = `<div class="mod-ic">
+      <strong>Primary tools &amp; resources</strong>${toolsPrimary}
+      ${toolsFurther ? `<span class="mod-further-lbl">${furtherLabel}</span>${toolsFurther}` : ''}
+    </div>`;
+
+    const assessHTML = `<div class="mod-ic mod-assess"><strong>Assessment activity</strong>${assessMain}</div>
+    ${assessReflect ? `<div class="mod-ic mod-reflect"><strong>Metacognitive reflection</strong>${assessReflect}</div>` : ''}`;
 
     const item = document.createElement('div');
-    item.className = 'mod-item';
+    item.className = 'mod-item-v2';
     item.innerHTML = `
-      <div class="mod-header" onclick="toggleMod(${i})">
+      <div class="mod-top-v2" onclick="toggleMod(${i})">
+        <div class="mod-accent-bar" style="background:${mod.color}"></div>
         <span class="mod-badge" style="background:${mod.bg};color:${mod.color}">${mod.num}</span>
-        <span class="mod-title">${mod.title}</span>
-        <div class="mod-meta">
-          <span class="mod-tag">${mod.duration}</span>
-          <span class="mod-arrow">▾</span>
+        <div class="mod-hd">
+          <div class="mod-title-v2">${mod.title}</div>
+          <div class="mod-tagline-v2">${mod.tagline}</div>
         </div>
+        <div class="mod-chips-row">${durChip}${chips}</div>
+        <span class="mod-arrow-v2">▾</span>
       </div>
-      <div class="mod-body">
-        <p class="mod-tagline">${mod.tagline}</p>
-        <div class="mod-grid">
-          <div>
-            <div class="mod-section-label">Kolb Stages</div>
-            <div class="mod-pills">${kolbPills}</div>
-            <div class="mod-section-label" style="margin-top:.75rem">Fink Dimensions</div>
-            <div class="mod-pills">${finkPills}</div>
+      <div class="mod-body-v2">
+        <div class="mod-body-grid">
+          <div class="mod-body-full">
+            <div class="mod-cell-lbl">Learning Outcomes</div>
+            <ul class="mod-lo-list-v2">${outcomesHTML}</ul>
           </div>
           <div>
-            <div class="mod-section-label">Delivery Mode</div>
-            <div class="mod-deliver-chips">${delivChips}</div>
-            <div class="mod-info-card" style="margin-top:.75rem">
-              <strong>Format</strong>${mod.format}
-            </div>
-          </div>
-          <div class="mod-full-row">
-            <div class="mod-section-label">Learning Outcomes</div>
-            <ul class="mod-lo-list">${mod.outcomes.map(o=>`<li>${o}</li>`).join('')}</ul>
+            <div class="mod-cell-lbl">Kolb Stages</div>
+            <div class="mod-pills-v2">${kolbPills}</div>
+            <div class="mod-cell-lbl" style="margin-top:.75rem">Fink Dimensions</div>
+            <div class="mod-pills-v2">${finkPills}</div>
           </div>
           <div>
-            <div class="mod-info-card">
-              <strong>Tools &amp; Resources</strong>${mod.tools}
-            </div>
+            <div class="mod-cell-lbl">Delivery Mode</div>
+            <div class="mod-chips-row" style="margin-bottom:.75rem">${chips}</div>
+            <div class="mod-cell-lbl">Tools &amp; Resources</div>
+            ${toolsHTML}
           </div>
-          <div>
-            <div class="mod-info-card">
-              <strong>Assessment Activity</strong>${mod.assess}
-            </div>
+          <div class="mod-body-full">
+            <div class="mod-cell-lbl">Equity Note</div>
+            <div class="mod-ic mod-equity"><strong>Design for inclusion</strong>${mod.equity}</div>
           </div>
-          <div class="mod-full-row">
-            <div class="mod-info-card" style="border-left:3px solid var(--teal)">
-              <strong>Equity Note</strong>${mod.equity}
-            </div>
+          <div class="mod-body-full">
+            <div class="mod-cell-lbl">Assessment</div>
+            ${assessHTML}
           </div>
         </div>
       </div>`;
     container.appendChild(item);
   });
 }
-function toggleMod(i) { document.querySelectorAll('.mod-item')[i].classList.toggle('open'); }
+function toggleMod(i) { document.querySelectorAll('.mod-item-v2')[i].classList.toggle('open'); }
 
 function renderTOC() {
   const map = document.getElementById('tocMap');
@@ -1396,6 +1658,139 @@ function renderTOC() {
   });
 }
 
+
+// ── POLICY RECOMMENDATIONS DATA ──────────────────────────────────────────
+const POLICY_RECS = [
+  {
+    audience: "EAC Program Coordinators",
+    color: "#1A6E68", bg: "#D5EDEB",
+    summary: "The EAC network's singular asset is the pre-existing trust between coordinators and immigrant business owners. Program design and implementation must lean into this. Facilitators should prioritise relationship continuity and sustained engagement over content delivery as a checkbox. Participants should always be treated as whole actors embedded in community networks — not decontextualized learners.",
+    items: [
+      "Integrate the 6-module AI curriculum into existing EAC programming cycles — beginning with facilitator training before participant delivery",
+      "Establish peer learning components as explicit program structure, not incidental side effect: schedule regular cohort exchanges and cross-EAC practitioner networks",
+      "Conduct a structured community context assessment before program launch at each new site — capturing assets, needs, trust histories, and structural conditions unique to that community",
+      "Embed participant input into curriculum iteration through routine co-reflection sessions and developmental evaluation cycles",
+      "Develop multilingual facilitator materials (English, Spanish, Chinese) and ensure at least one bilingual facilitator per cohort where possible",
+      "Adopt a developmental evaluation approach — integrating continuous data collection and regular learning cycles rather than relying on a single end-of-program assessment"
+    ]
+  },
+  {
+    audience: "City & State Government",
+    color: "#2D4A6A", bg: "#D6E4F0",
+    summary: "Equitable technological transitions do not emerge organically from markets. They are shaped through policy choices that align firm incentives with social outcomes. For place-based interventions like this project to achieve system-wide impact, they must be embedded within a broader policy architecture that actively steers innovation toward labor-augmenting, inclusive growth.",
+    items: [
+      "Expand NYC Department of Small Business Services training grant coverage to explicitly include AI adoption programming — building on the existing model that reimburses up to 60% of training costs",
+      "Develop AI language access provisions for immigrant business districts: require that publicly funded AI tools and programs be available in the top 5 spoken languages of each borough",
+      "Establish a state-level AI equity fund that subsidises tool costs for micro-enterprises with 5 or fewer employees — directly addressing the 47–76% cost barrier identified across language communities",
+      "Invest in strengthening workforce intermediaries — including the EAC network — through training, resource support, and robust inter-organizational infrastructure",
+      "Create regulatory clarity around AI data privacy for small businesses, with plain-language guidance addressing the top concern raised by 52–55% of respondents across all communities"
+    ],
+    examples: [
+      { country: "Germany", name: "Kurzarbeit", desc: "Social insurance mechanism that subsidises the labor cost of retaining workers rather than the capital cost of replacing them — covering wages when firms reduce hours instead of laying off employees.", implication: "Shows that state incentives can steer firms toward labor-augmenting decisions even during disruption." },
+      { country: "Singapore", name: "SkillsFuture", desc: "Training levy system that pools employer contributions and redistributes them as co-funded training grants — rewarding firms that invest in upskilling, not those that substitute capital for labor.", implication: "Demonstrates sustained productivity growth alongside employment stability through structured public investment in workforce development." },
+      { country: "New York City", name: "NYC SBS Training Grants", desc: "City-funded grants administered by the NYC Department of Small Business Services that reimburse up to 60% of training costs for small businesses.", implication: "An existing city mechanism ready to be extended to AI adoption programming — the infrastructure is already there." }
+    ]
+  },
+  {
+    audience: "Funders",
+    color: "#B84030", bg: "#F5DDD9",
+    summary: "Scale and replicability are indispensable to achieving system-wide transformation. The program has demonstrated institutional readiness — 96% of EAC directors expressed interest in AI programming — but translating pilot results into durable infrastructure requires sustained, multi-year investment in the intermediary layer, not just the content.",
+    items: [
+      "Fund multi-year facilitator capacity building at the EAC level — the bottleneck is not curriculum content but trained, trusted facilitators who can sustain delivery",
+      "Support adaptation of the curriculum for at least three additional U.S. cities with significant immigrant-owned MSME populations: Los Angeles, Chicago, and Houston are the highest-priority candidates",
+      "Invest in longitudinal outcome tracking across pilot cohorts — 12- and 18-month follow-up surveys measuring business performance indicators, tool adoption rates, and network diffusion effects",
+      "Fund a practitioner report and open-access curriculum package that can be adopted by any community organisation without requiring proprietary licensing",
+      "Prioritise workforce intermediaries that combine sector expertise, community embeddedness, and labor market intelligence — these produce the strongest outcomes and the most durable adoption (Giloth 2004)"
+    ]
+  },
+  {
+    audience: "Future Researchers",
+    color: "#5E3D6B", bg: "#E8DDEF",
+    summary: "This research establishes a baseline — but the questions it opens are as important as the ones it answers. The relationship between AI adoption and economic resilience at the firm level, the conditions under which firm-level gains aggregate into neighbourhood-level outcomes, and the risks of platform dependency all require sustained longitudinal inquiry.",
+    items: [
+      "Design longitudinal studies tracking AI tool adoption and business performance among program completers at 6, 12, and 18 months — using the Workflow Audit Template from Module 2 as a baseline instrument",
+      "Investigate neighbourhood-level economic resilience effects: do business districts with higher program participation rates show measurable differences in vacancy rates, revenue density, or employment stability?",
+      "Examine platform dependency risks: as ChatGPT and similar tools become embedded in MSME workflows, what happens to businesses if pricing changes, tool quality degrades, or access is restricted?",
+      "Extend the research to compare outcomes across city contexts — particularly in cities where the EAC equivalent operates under different governance and funding structures",
+      "Investigate peer diffusion effects within immigrant business communities: does AI adoption spread through social networks beyond formal training cohorts, and if so, at what rate and through what mechanisms?"
+    ]
+  }
+];
+
+// ── RENDER POLICY ──────────────────────────────────────────────────────────
+function renderPolicy() {
+  const list = document.getElementById('policyList');
+  if (!list) return;
+
+  POLICY_RECS.forEach((rec, i) => {
+    const item = document.createElement('div');
+    item.className = 'chapter-item';
+    item.style.borderLeft = `3px solid ${rec.color}`;
+
+    let examplesHTML = '';
+    if (rec.examples) {
+      const cards = rec.examples.map(e => `
+        <div class="policy-example">
+          <div class="pe-country">${e.country}</div>
+          <div class="pe-name">${e.name}</div>
+          <div class="pe-desc">${e.desc}</div>
+          <div class="pe-implication">What it shows: ${e.implication}</div>
+        </div>`).join('');
+      examplesHTML = `<div style="margin-top:1rem"><div class="mod-section-label" style="margin-bottom:.5rem">Policy Precedents</div><div class="policy-example-row">${cards}</div></div>`;
+    }
+
+    item.innerHTML = `
+      <div class="chapter-header" onclick="togglePolicy(${i})">
+        <span class="ch-num" style="background:${rec.bg};color:${rec.color}">Audience ${String(i+1).padStart(2,'0')}</span>
+        <span class="ch-title">${rec.audience}</span>
+        <span class="ch-arrow">▾</span>
+      </div>
+      <div class="chapter-body">
+        <p class="ch-job">${rec.summary}</p>
+        <ul class="ch-outline">
+          ${rec.items.map(it => `<li>${it}</li>`).join('')}
+        </ul>
+        ${examplesHTML}
+      </div>`;
+    list.appendChild(item);
+  });
+}
+function togglePolicy(i) { document.querySelectorAll('#policyList .chapter-item')[i].classList.toggle('open'); }
+
+// ── PAGE SWITCHING ─────────────────────────────────────────────────────────
+function initPageSwitching() {
+  const allPages = document.querySelectorAll('.page-view');
+  const allLinks = document.querySelectorAll('.nav-page-link');
+
+  function showPage(pageId) {
+    allPages.forEach(p => p.classList.remove('active'));
+    allLinks.forEach(l => l.classList.remove('active'));
+    const target = document.getElementById(pageId);
+    if (target) target.classList.add('active');
+    allLinks.forEach(l => {
+      if (l.dataset.page === pageId) l.classList.add('active');
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Re-init charts if survey page
+    if (pageId === 'page-survey' && typeof renderSurveyDashboard === 'function') {
+      const tabs = document.getElementById('surveyTabs');
+      if (tabs && tabs.children.length === 0) renderSurveyDashboard();
+    }
+  }
+
+  allLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const pageId = link.dataset.page;
+      if (pageId) showPage(pageId);
+    });
+  });
+
+  // Show overview by default
+  showPage('page-overview');
+}
+
+
 // ── SLIDESHOW ─────────────────────────────────────────────────────────────
 (function initSlideshow() {
   const hero    = document.getElementById('heroSection');
@@ -1434,15 +1829,10 @@ renderPersonas();
 renderChapters();
 renderCurriculum();
 renderTOC();
+renderPolicy();
+initPageSwitching();
 
-// Active nav on scroll
-const sections = document.querySelectorAll('section[id], div.timeline-strip');
-const navLinks = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
-  let cur = '';
-  document.querySelectorAll('section[id]').forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
-  navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
-}, { passive: true });
+// Nav active state handled by initPageSwitching()
 </script>
 </body>
 </html>
