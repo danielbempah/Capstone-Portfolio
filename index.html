@@ -314,25 +314,55 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .eac-stat-sub{font-size:.8rem;color:var(--ink-soft);line-height:1.5}
 .survey-lang-note{font-family:var(--ff-ui);font-size:10px;font-weight:600;letter-spacing:.06em;color:var(--ink-faint);margin-top:.5rem;font-style:italic}
 
-/* ── PERSONA CARDS ── */
+/* ── PERSONA FLIP CARDS ── */
 .persona-input-label{font-family:var(--ff-ui);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);display:flex;align-items:center;gap:10px;margin-bottom:.75rem}
 .persona-input-label::before{content:'';display:block;width:20px;height:1px;background:var(--teal)}
-.persona-framing{font-size:.95rem;color:var(--ink-mid);line-height:1.8;margin-bottom:2rem;max-width:700px}
-.persona-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
-.persona-card{background:var(--warm-white);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;transition:box-shadow .2s}
-.persona-card:hover{box-shadow:0 4px 20px rgba(14,12,10,.07)}
-.persona-card-header{padding:1rem 1.25rem;display:flex;align-items:flex-start;gap:12px}
-.persona-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--ff-ui);font-size:13px;font-weight:700;color:white;flex-shrink:0}
-.persona-name{font-family:var(--ff-display);font-size:1rem;font-weight:600;color:var(--ink);line-height:1.2;margin-bottom:2px}
-.persona-tagline{font-family:var(--ff-ui);font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
-.persona-body{padding:0 1.25rem 1.25rem}
-.persona-row{display:flex;gap:8px;margin-bottom:.5rem;flex-wrap:wrap}
-.persona-badge{font-family:var(--ff-ui);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:12px;background:var(--parchment);color:var(--ink-soft);border:1px solid var(--rule)}
-.persona-signals{list-style:none;display:flex;flex-direction:column;gap:4px;margin:0.75rem 0}
-.persona-signals li{font-size:.82rem;color:var(--ink-soft);padding:.4rem .6rem .4rem 1.2rem;background:var(--parchment);border-radius:var(--r-sm);line-height:1.4;position:relative}
-.persona-signals li::before{content:'→';position:absolute;left:.4rem;color:var(--gold);font-size:11px}
-.persona-implication{font-size:.82rem;color:var(--ink-mid);line-height:1.55;padding:.6rem .75rem;border-radius:var(--r-sm);border-left:3px solid var(--teal);background:var(--teal-light);margin-top:.5rem}
-.persona-implication strong{font-family:var(--ff-ui);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:2px}
+.persona-framing{font-size:.95rem;color:var(--ink-mid);line-height:1.8;margin-bottom:1.5rem;max-width:700px}
+.persona-hint{font-family:var(--ff-ui);font-size:10px;font-weight:600;letter-spacing:.06em;color:var(--ink-faint);margin-bottom:1rem;display:flex;align-items:center;gap:6px}
+.persona-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
+/* Flip card container */
+.pc{perspective:900px;height:360px;cursor:pointer}
+.pc-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.pc.flipped .pc-inner{transform:rotateY(180deg)}
+.pc-front,.pc-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--r);overflow-y:auto;border:1px solid var(--rule)}
+.pc-back{transform:rotateY(180deg)}
+/* Front */
+.pc-front{background:var(--warm-white);display:flex;flex-direction:column}
+.pc-front-top{padding:1rem 1.1rem .75rem;flex:1}
+.pc-accent{height:3px;width:100%;flex-shrink:0}
+.pc-num-lg{font-family:var(--ff-display);font-size:1.6rem;font-weight:700;line-height:1;margin:0 0 6px}
+.pc-name-lg{font-family:var(--ff-display);font-size:.95rem;font-weight:600;color:var(--ink);line-height:1.2;margin-bottom:4px}
+.pc-tagline-lg{font-size:.78rem;color:var(--ink-soft);font-style:italic;line-height:1.4;margin-bottom:.75rem}
+.pc-badges-lg{display:flex;flex-direction:column;gap:4px}
+.pc-badge-lg{font-family:var(--ff-ui);font-size:8.5px;font-weight:600;padding:2px 7px;border-radius:10px;border:1px solid var(--rule);color:var(--ink-soft);display:inline-block;width:fit-content}
+.pc-signals-lg{list-style:none;padding:.75rem 1.1rem 0;display:flex;flex-direction:column;gap:3px;border-top:1px solid var(--rule)}
+.pc-signals-lg li{font-size:.73rem;color:var(--ink-soft);padding:.3rem .5rem .3rem 1rem;background:var(--parchment);border-radius:3px;line-height:1.35;position:relative}
+.pc-signals-lg li::before{content:'·';position:absolute;left:.35rem;color:var(--gold)}
+.pc-flip-hint{font-family:var(--ff-ui);font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);padding:.6rem 1.1rem;display:flex;align-items:center;gap:5px;border-top:1px solid var(--rule);margin-top:auto;flex-shrink:0}
+/* Back */
+.pc-back{display:flex;flex-direction:column}
+.pc-back-top{padding:.85rem 1.1rem .65rem;flex-shrink:0}
+.pc-back-badge{font-family:var(--ff-ui);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:12px;display:inline-block;margin-bottom:.5rem;color:white}
+.pc-back-focus{font-family:var(--ff-display);font-size:.88rem;font-weight:600;line-height:1.25;margin-bottom:.3rem}
+.pc-back-sub{font-size:.75rem;color:var(--ink-soft);line-height:1.4;font-style:italic}
+.pc-back-section{padding:.5rem 1.1rem;border-top:1px solid var(--rule);flex-shrink:0}
+.pc-back-lbl{font-family:var(--ff-ui);font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem}
+.pc-back-list{list-style:none;display:flex;flex-direction:column;gap:3px}
+.pc-back-list li{font-size:.73rem;color:var(--ink-mid);padding:.3rem .5rem .3rem 1rem;background:rgba(255,255,255,.5);border-radius:3px;line-height:1.35;position:relative}
+.pc-back-list li::before{content:'✓';position:absolute;left:.3rem;color:var(--teal);font-size:9px}
+.pc-back-flip{font-family:var(--ff-ui);font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);padding:.55rem 1.1rem;border-top:1px solid var(--rule);margin-top:auto;flex-shrink:0;display:flex;align-items:center;gap:5px}
+/* Learning Goals */
+.lg-section{margin-bottom:2rem;padding:1.75rem;background:var(--warm-white);border:1px solid var(--rule);border-radius:var(--r)}
+.lg-section-label{font-family:var(--ff-ui);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px;margin-bottom:.75rem}
+.lg-section-label::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.lg-section-intro{font-size:.88rem;color:var(--ink-soft);line-height:1.7;margin-bottom:1.25rem;max-width:640px}
+.lg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border-radius:var(--r-sm);overflow:hidden}
+.lg-card{background:var(--parchment);padding:1rem 1.1rem}
+.lg-badge{font-family:var(--ff-ui);font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:10px;display:inline-block;margin-bottom:.5rem}
+.lg-heading{font-family:var(--ff-display);font-size:.88rem;font-weight:600;color:var(--ink);margin-bottom:.45rem;line-height:1.3}
+.lg-items{list-style:none;display:flex;flex-direction:column;gap:3px}
+.lg-items li{font-size:.78rem;color:var(--ink-mid);padding:.3rem .55rem .3rem 1.1rem;background:var(--warm-white);border-radius:3px;line-height:1.4;position:relative}
+.lg-items li::before{content:'→';position:absolute;left:.35rem;color:var(--gold);font-size:9px}
 
 /* ── UPGRADED CURRICULUM CARDS ── */
 .mod-item-v2{background:var(--warm-white);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;margin-bottom:1.25rem;transition:box-shadow .2s}
@@ -406,10 +436,13 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   .about-grid{grid-template-columns:1fr}
   .sitemap-grid{grid-template-columns:1fr 1fr}
   .nav-links{display:none}
+  .nav-hamburger{display:flex}
   .timeline-inner{gap:.25rem}
   .tl-label{font-size:8px}
   .survey-demo-grid{grid-template-columns:1fr}
-  .persona-grid{grid-template-columns:1fr}
+  .persona-grid{grid-template-columns:1fr 1fr}
+  .pc{height:360px}
+  .lg-grid{grid-template-columns:1fr}
   .eac-grid{grid-template-columns:1fr}
   .survey-quote-row{grid-template-columns:1fr}
 }
@@ -417,7 +450,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   .stat-grid{grid-template-columns:1fr}
   .sitemap-grid{grid-template-columns:1fr}
   .section{padding:3rem 1.25rem}
-  .hero{padding:3rem 1.25rem 5rem}
+  .hero{padding:3rem 1.25rem 5rem;min-height:68vh}
   .voice-strip{padding:3rem 1.25rem}
   .timeline-strip{padding:1rem 1.25rem}
 }
@@ -462,7 +495,200 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .page-view{display:none;animation:pageIn .25s ease both}
 .page-view.active{display:block}
 @keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.nav-links a.active{color:var(--ink);border-bottom-color:var(--gold)}
+
+/* Enhanced active nav — background pill + underline so it reads at a glance */
+.nav-links a.active{
+  color:var(--ink);
+  border-bottom-color:var(--gold);
+  background:rgba(196,147,58,.08);
+  border-radius:var(--r-sm) var(--r-sm) 0 0;
+}
+
+/* ── SECTION IDENTITY BANNER ── */
+/* Sits sticky between the timeline and page content.
+   Invisible on hero (default), fades in on page switch,
+   always tells the viewer exactly where they are.        */
+.section-banner{
+  position:sticky;
+  top:56px; /* flush under the nav bar */
+  z-index:98;
+  background:var(--ink);
+  border-bottom:1px solid rgba(196,147,58,.18);
+  overflow:hidden;
+  max-height:0;
+  opacity:0;
+  transition:max-height .3s ease, opacity .25s ease;
+  pointer-events:none;
+}
+.section-banner.visible{
+  max-height:48px;
+  opacity:1;
+  pointer-events:auto;
+}
+.section-banner-inner{
+  max-width:1080px;
+  margin:0 auto;
+  padding:0 2rem;
+  height:48px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.sb-label{
+  font-family:var(--ff-ui);
+  font-size:10px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);
+  white-space:nowrap;flex-shrink:0;
+}
+.sb-divider{
+  width:1px;height:14px;
+  background:rgba(255,255,255,.15);
+  flex-shrink:0;
+}
+.sb-desc{
+  font-family:var(--ff-ui);
+  font-size:11px;
+  color:rgba(246,241,232,.45);
+  white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;
+}
+.sb-back{
+  margin-left:auto;
+  font-family:var(--ff-ui);font-size:10px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(246,241,232,.3);
+  text-decoration:none;
+  white-space:nowrap;flex-shrink:0;
+  transition:color .2s;
+}
+.sb-back:hover{color:var(--gold)}
+
+/* ── HAMBURGER BUTTON ── */
+.nav-hamburger{
+  display:none;
+  flex-direction:column;justify-content:center;align-items:center;
+  gap:5px;width:36px;height:36px;
+  background:none;border:1.5px solid var(--rule);
+  border-radius:var(--r-sm);cursor:pointer;
+  padding:0;flex-shrink:0;
+  transition:border-color .2s;
+}
+.nav-hamburger:hover{border-color:var(--ink-faint)}
+.nav-hamburger span{
+  display:block;width:16px;height:1.5px;
+  background:var(--ink);border-radius:2px;
+  transition:transform .25s ease, opacity .25s ease;
+}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* ── MOBILE DRAWER ── */
+.mobile-drawer{
+  display:none;
+  position:fixed;inset:0;z-index:200;
+}
+.mobile-drawer.open{display:block}
+.drawer-backdrop{
+  position:absolute;inset:0;
+  background:rgba(14,12,10,.6);
+  backdrop-filter:blur(4px);
+  animation:drawerFadeIn .2s ease both;
+}
+@keyframes drawerFadeIn{from{opacity:0}to{opacity:1}}
+.drawer-panel{
+  position:absolute;top:0;right:0;bottom:0;
+  width:min(300px,82vw);
+  background:var(--parchment);
+  border-left:1px solid var(--rule);
+  display:flex;flex-direction:column;
+  animation:drawerSlideIn .25s ease both;
+  overflow-y:auto;
+}
+@keyframes drawerSlideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.drawer-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 1.5rem;
+  border-bottom:1px solid var(--rule);
+  flex-shrink:0;
+}
+.drawer-brand{
+  font-family:var(--ff-ui);font-size:11px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
+}
+.drawer-brand span{color:var(--gold)}
+.drawer-close{
+  width:32px;height:32px;border-radius:var(--r-sm);
+  background:none;border:1.5px solid var(--rule);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;line-height:1;color:var(--ink-soft);
+  cursor:pointer;transition:border-color .2s,color .2s;
+}
+.drawer-close:hover{border-color:var(--ink);color:var(--ink)}
+.drawer-nav{
+  list-style:none;padding:1rem 0;flex:1;
+}
+.drawer-nav li a{
+  display:flex;align-items:center;gap:14px;
+  font-family:var(--ff-ui);font-size:12px;font-weight:600;
+  letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-soft);text-decoration:none;
+  padding:.9rem 1.5rem;
+  border-left:3px solid transparent;
+  transition:color .15s,border-color .15s,background .15s;
+}
+.drawer-nav li a:hover,
+.drawer-nav li a.active{
+  color:var(--ink);
+  border-left-color:var(--gold);
+  background:rgba(196,147,58,.05);
+}
+.drawer-nav-num{
+  font-family:var(--ff-display);
+  font-size:1.1rem;font-weight:700;
+  color:var(--rule);flex-shrink:0;
+  width:24px;line-height:1;
+  transition:color .15s;
+}
+.drawer-nav li a:hover .drawer-nav-num,
+.drawer-nav li a.active .drawer-nav-num{color:rgba(196,147,58,.4)}
+.drawer-footer{
+  padding:1.25rem 1.5rem;
+  border-top:1px solid var(--rule);
+  flex-shrink:0;
+}
+.drawer-linkedin{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  font-family:var(--ff-ui);font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--warm-white);background:var(--ink);
+  padding:12px 20px;border-radius:var(--r-sm);
+  text-decoration:none;transition:background .2s;width:100%;
+}
+.drawer-linkedin:hover{background:var(--teal)}
+
+/* ── SCROLL CUE ── */
+.scroll-cue{
+  position:absolute;bottom:2.25rem;left:50%;
+  transform:translateX(-50%);
+  z-index:3;display:flex;flex-direction:column;
+  align-items:center;gap:5px;
+  opacity:.55;
+  transition:opacity .4s ease;
+  animation:scrollBob 2.4s ease-in-out infinite;
+  pointer-events:none;
+}
+.scroll-cue.hidden{opacity:0}
+@keyframes scrollBob{
+  0%,100%{transform:translateX(-50%) translateY(0)}
+  50%{transform:translateX(-50%) translateY(6px)}
+}
+.scroll-cue-line{width:1px;height:24px;background:var(--gold)}
+.scroll-cue-label{
+  font-family:var(--ff-ui);font-size:8px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+}
 </style>
 </head>
 <body>
@@ -481,8 +707,49 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
       <li><a href="#" data-page="page-about" class="nav-page-link">About</a></li>
     </ul>
     <a href="https://www.linkedin.com/in/daniel-bempah-quansah/" target="_blank" class="nav-linkedin">LinkedIn ↗</a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- SECTION IDENTITY BANNER -->
+<!-- Appears below nav once viewer navigates away from Overview,
+     updating on every page switch to announce where they are.  -->
+<div class="section-banner" id="sectionBanner">
+  <div class="section-banner-inner">
+    <span class="sb-label" id="sbLabel">Overview</span>
+    <div class="sb-divider"></div>
+    <span class="sb-desc" id="sbDesc">The question behind the research</span>
+    <a href="#" class="sb-back nav-page-link" data-page="page-overview" id="sbBack">← Overview</a>
+  </div>
+</div>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <div class="drawer-panel">
+    <div class="drawer-header">
+      <div class="drawer-brand"><span>DQ</span> · Capstone Portfolio</div>
+      <button class="drawer-close" id="drawerClose" aria-label="Close navigation">×</button>
+    </div>
+    <ul class="drawer-nav" id="drawerNav">
+      <li><a href="#" data-page="page-overview" class="nav-page-link drawer-link"><span class="drawer-nav-num">01</span>Overview</a></li>
+      <li><a href="#" data-page="page-survey" class="nav-page-link drawer-link"><span class="drawer-nav-num">02</span>Survey Data</a></li>
+      <li><a href="#" data-page="page-chapters" class="nav-page-link drawer-link"><span class="drawer-nav-num">03</span>Chapters</a></li>
+      <li><a href="#" data-page="page-curriculum" class="nav-page-link drawer-link"><span class="drawer-nav-num">04</span>Curriculum</a></li>
+      <li><a href="#" data-page="page-toc" class="nav-page-link drawer-link"><span class="drawer-nav-num">05</span>Theory of Change</a></li>
+      <li><a href="#" data-page="page-policy" class="nav-page-link drawer-link"><span class="drawer-nav-num">06</span>Policy</a></li>
+      <li><a href="#" data-page="page-about" class="nav-page-link drawer-link"><span class="drawer-nav-num">07</span>About</a></li>
+    </ul>
+    <div class="drawer-footer">
+      <a href="https://www.linkedin.com/in/daniel-bempah-quansah/" target="_blank" class="drawer-linkedin">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn ↗
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- HERO
   SLIDESHOW ACTIVATION:
@@ -566,6 +833,10 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
     <button class="slide-arrow" id="slidePrev" aria-label="Previous">‹</button>
     <div class="slide-dots" id="slideDots"></div>
     <button class="slide-arrow" id="slideNext" aria-label="Next">›</button>
+  </div>
+  <div class="scroll-cue" id="scrollCue">
+    <div class="scroll-cue-line"></div>
+    <div class="scroll-cue-label">Scroll</div>
   </div>
 </section>
 
@@ -991,72 +1262,94 @@ const SURVEY_DATA = {
 // PERSONAS — derived from Persona_Profiles_Report.html and survey data (n=672)
 const PERSONAS = [
   {
-    num: "1", color:"#B84030", bgLight:"#F5DDD9",
-    name: "The Structurally Excluded",
-    tagline: "Proximity, not aptitude, is the barrier.",
-    rogers: "Laggard (structural)",
-    bcg: "Information Assistance",
-    barrier: "Access & Language — first-order, material divide",
-    share: "~20% of sample",
-    signals: [
+    num:"1", color:"#B84030", bg:"#F5DDD9",
+    name:"The Structurally Excluded",
+    tagline:"Proximity, not aptitude, is the barrier.",
+    rogers:"Laggard (structural)", bcg:"Information Assistance", share:"~20% of sample",
+    signals:[
       "Struggles with or actively avoids digital tools",
       "Has tried no AI tools, or Google Translate only",
       "Prefers non-English language — Spanish or Chinese",
       "Business sector: personal services, food/retail — high operational load",
       "Learning mode: in-person, one-on-one, in native language"
     ],
-    implication: "Requires bilingual, in-person, community-anchored delivery. Cannot be reached by self-paced digital content alone. The door must be opened — in their language, in their neighbourhood."
+    focus:"Phase 1 — Foundation",
+    focusSub:"Prioritise Modules 1 and 2. Move slowly. Build trust before building skills.",
+    objectives:[
+      "Help them understand AI and distinguish it from regular internet use",
+      "Show how businesses like theirs are using AI in simple, familiar ways",
+      "Demonstrate simple AI use through a guided prompt engineering exercise",
+      "Begin a workflow audit only if some AI familiarity is already present"
+    ],
+    sessionGoal:"The session goal is not tool use — it is trust. Success means the participant leaves curious rather than overwhelmed."
   },
   {
-    num: "2", color:"#2D4A6A", bgLight:"#D6E4F0",
-    name: "The Cautious Pragmatist",
-    tagline: "Aware. Not yet committed. Waiting for proof.",
-    rogers: "Early / Late Majority",
-    bcg: "Task Assistance → early Delegation",
-    barrier: "Motivational divide — belief AI could help, but no proof yet",
-    share: "~45% of sample — the most populous persona",
-    signals: [
+    num:"2", color:"#2D4A6A", bg:"#D6E4F0",
+    name:"The Cautious Pragmatist",
+    tagline:"Aware. Not yet committed. Waiting for proof.",
+    rogers:"Early / Late Majority", bcg:"Task Assistance → Delegation", share:"~45% of sample",
+    signals:[
       "Digitally comfortable — can figure most things out",
       "Has tried 1–2 tools (ChatGPT, Grammarly, or Canva AI) episodically",
       "Top motivator: seeing examples from businesses like mine",
       "Primary concern: accuracy of outputs and data privacy",
       "Learning preference: in-person workshop, one-on-one coaching"
     ],
-    implication: "Peer-to-peer examples are the most effective unlocking mechanism. Curriculum must begin with live business use cases — not definitions. The 'so what for my business' must be immediate and visible."
+    focus:"Modules 1, 2 &amp; 6",
+    focusSub:"Focus on ethical grounding and responsible AI practice, not technical depth.",
+    objectives:[
+      "Show how other businesses like theirs are using AI — peer proof is the unlock",
+      "Demonstrate how prompt engineering improves the quality of AI output",
+      "Show what responsible AI practice looks like and why it matters",
+      "Share organisations that support responsible, equitable AI innovation"
+    ],
+    sessionGoal:"Session goal: get them to a place where they are willing to do a Workflow Audit. That willingness is the conversion moment."
   },
   {
-    num: "3", color:"#1A6E68", bgLight:"#D5EDEB",
-    name: "The Emergent Adopter",
-    tagline: "Experimenting at the edges. Ready to go further.",
-    rogers: "Early Adopter",
-    bcg: "Delegation",
-    barrier: "Skills gap (second-order) — access is not the problem",
-    share: "~25% of sample",
-    signals: [
+    num:"3", color:"#1A6E68", bg:"#D5EDEB",
+    name:"The Emergent Adopter",
+    tagline:"Experimenting at the edges. Ready to go further.",
+    rogers:"Early Adopter", bcg:"Delegation (Stage 3)", share:"~25% of sample",
+    signals:[
       "Very comfortable with technology — enjoys it",
       "Uses 3+ tools (ChatGPT, Claude, Canva AI, Grammarly, Gemini)",
       "AI uses: writing, research, social media, customer communications",
       "Motivator: having someone walk me through it + free tools",
       "Learning preference: self-paced videos, virtual workshops, coaching"
     ],
-    implication: "Needs guided scaffolding and workflow integration, not basic literacy. Curriculum Modules 3–5 are the core value for this persona. Can also serve as a peer model for the Cautious Pragmatist cohort."
+    focus:"Phase 2 — Application",
+    focusSub:"Expand AI use into new operational domains. Introduce more sophisticated use cases.",
+    objectives:[
+      "Expand AI use beyond marketing into operations and customer service",
+      "Introduce more specialised tools or advanced use cases as appropriate",
+      "Explain the types of AI — GenAI, RAG, and Agentic — and their distinct use cases",
+      "End with a short-term adoption roadmap for new tools and skills",
+      "Touch on ethical AI practice as a counterweight to rapid adoption"
+    ],
+    sessionGoal:"Move them from task-level AI use toward workflow-level integration. End with a concrete next-steps plan."
   },
   {
-    num: "4", color:"#5E3D6B", bgLight:"#E8DDEF",
-    name: "The Embedded Practitioner",
-    tagline: "AI is not a tool. It is infrastructure.",
-    rogers: "Innovator",
-    bcg: "Semi-autonomous Collaboration",
-    barrier: "Output quality and advanced workflow integration only",
-    share: "~10% of sample",
-    signals: [
-      "Uses AI daily across multiple workflows — it is embedded, not episodic",
+    num:"4", color:"#5E3D6B", bg:"#E8DDEF",
+    name:"The Embedded Practitioner",
+    tagline:"AI is not a tool. It is infrastructure.",
+    rogers:"Innovator", bcg:"Semi-autonomous Collaboration (Stage 4)", share:"~10% of sample",
+    signals:[
+      "Uses AI daily across multiple workflows — embedded, not episodic",
       "Primary concern: output quality, not access or trust",
       "Interested in automation, agentic workflows, and AI-to-AI integration",
       "Can articulate specific limitations of current tools",
       "Acts as informal AI advisor to peers in their network"
     ],
-    implication: "Module 6 (AI with Intention) and advanced facilitation tracks are the primary curriculum value. This persona is also a critical program asset — as a community facilitator, peer trainer, or pilot feedback contributor."
+    focus:"Phase 3 — Module 6",
+    focusSub:"This persona benefits most from the Integration & Reflection phase. They are also a program asset.",
+    objectives:[
+      "Devise strategy against platform dependency — what happens if a tool changes?",
+      "Develop a long-term organisational AI strategy covering data governance and privacy",
+      "Reflect critically on current practice — take stock of risks and opportunities",
+      "Document their journey as a testimonial for other businesses in the cohort",
+      "Explore how they can engage in AI governance and policy advocacy"
+    ],
+    sessionGoal:"Position them as co-facilitators and peer models. Their story is the most compelling proof of concept the program has."
   }
 ];
 
@@ -1447,44 +1740,103 @@ function drawChart(id, C, baseOpts) {
   }
 }
 
-// ── PERSONAS ──────────────────────────────────────────────────────────────
+// ── PERSONAS + LEARNING GOALS ─────────────────────────────────────────────
 function renderPersonas() {
   const container = document.getElementById('personaBlock');
   if (!container) return;
 
   container.innerHTML = `
+    <!-- Learning Goals -->
+    <div class="lg-section">
+      <div class="lg-section-label">Learning Goals</div>
+      <p class="lg-section-intro">Derived from Fink's Taxonomy of Significant Learning. These goals move beyond information transmission toward application, integration, self-awareness, and the development of new values — designed to reinforce one another across the six modules.</p>
+      <div class="lg-grid" id="lgGrid"></div>
+    </div>
+
+    <!-- Persona Profiles -->
     <div style="margin-bottom:2rem;padding:1.75rem;background:var(--warm-white);border:1px solid var(--rule);border-radius:var(--r)">
       <div class="persona-input-label">Curriculum Development Input — Learner Personas</div>
-      <p class="persona-framing">The curriculum design is grounded in four empirically derived learner personas — mapped against BCG's AI adoption progression framework<sup><a href="https://www.bcg.com/publications/2025/ai-adoption-puzzle-why-usage-up-impact-not#" target="_blank" style="color:var(--teal);font-size:.7rem;vertical-align:super;text-decoration:none" title="BCG: Why AI Usage Is Up But Impact Is Not">↗</a></sup> — developed from survey data (n=672), needs assessment interviews, and digital literacy theory. Rather than treating the target population as a monolith, the personas map meaningful variation in digital comfort, AI attitudes, and structural barriers — ensuring that each module's design choices serve the full range of learners the EAC program actually reaches, not just the most visible or vocal ones.</p>
+      <p class="persona-framing">The curriculum design is grounded in four empirically derived learner personas — mapped against BCG's AI adoption progression framework<sup><a href="https://www.bcg.com/publications/2025/ai-adoption-puzzle-why-usage-up-impact-not#" target="_blank" style="color:var(--teal);font-size:.7rem;vertical-align:super;text-decoration:none" title="BCG: Why AI Usage Is Up But Impact Is Not">↗</a></sup> — developed from survey data (n=672), needs assessment interviews, and digital literacy theory. Rather than treating the target population as a monolith, the personas map meaningful variation in digital comfort, AI attitudes, and structural barriers — ensuring that each module's design choices serve the full range of learners the EAC program actually reaches.</p>
+      <div style="font-family:var(--ff-ui);font-size:10px;font-weight:600;letter-spacing:.06em;color:var(--ink-faint);margin-bottom:1rem;display:flex;align-items:center;gap:6px">↕ Click any card to see facilitator guidance for that persona</div>
       <div class="persona-grid" id="personaGrid"></div>
     </div>`;
 
-  const grid = document.getElementById('personaGrid');
+  // Render learning goals
+  const LG = [
+    { badge:"Foundational Knowledge", bg:"#EAE8FA", col:"#5B4FD9",
+      heading:"Understanding and using AI in simple, informed ways",
+      items:["Understand the different types of AI — generative AI, retrieval-augmented generation, agentic systems — and how they work in plain terms","Use common AI tools at varying levels of sophistication and make informed decisions about which tools to use for different tasks"]
+    },
+    { badge:"Integration Goals", bg:"#E0F5ED", col:"#1A9E75",
+      heading:"Connecting AI to business realities",
+      items:["Understand how AI is already shaping their lives, businesses, and industries — and how this may evolve","Identify where AI can be meaningfully integrated into their own workflows"]
+    },
+    { badge:"Application Goals", bg:"#F5DDD9", col:"#B84030",
+      heading:"Evaluating risk and building strategy",
+      items:["Evaluate the risks and implications of AI use — including accuracy, privacy, labour displacement, and bias","Develop strategies for incorporating AI in ways that augment, rather than replace, human effort and ingenuity"]
+    },
+    { badge:"Caring Goals", bg:"#D6E4F0", col:"#2D4A6A",
+      heading:"Developing responsibility and civic agency",
+      items:["Develop a sense of responsibility around AI use and understand their role in shaping how these technologies are developed and governed"]
+    },
+    { badge:"Learning How to Learn", bg:"#E8DDEF", col:"#5E3D6B",
+      heading:"Building capacity beyond the program",
+      items:["Build the capacity to continue developing knowledge and practical use of AI independently beyond the duration of this program"]
+    },
+    { badge:"Assessment Approach", bg:"#F5E9CF", col:"#B06A10",
+      heading:"Educative, not auditive",
+      items:["Forward-looking — apply knowledge to realistic, future-facing situations anchored in real business workflows","Self-assessment — metacognitive reflection at the close of each module; shared at the opening of the next"]
+    }
+  ];
+
+  const lgGrid = document.getElementById("lgGrid");
+  LG.forEach(g => {
+    const card = document.createElement("div");
+    card.className = "lg-card";
+    card.innerHTML = `<span class="lg-badge" style="background:${g.bg};color:${g.col}">${g.badge}</span><div class="lg-heading">${g.heading}</div><ul class="lg-items">${g.items.map(i=>`<li>${i}</li>`).join("")}</ul>`;
+    lgGrid.appendChild(card);
+  });
+
+  // Render flip card personas
+  const grid = document.getElementById("personaGrid");
   PERSONAS.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'persona-card';
-    card.style.borderLeft = `3px solid ${p.color}`;
+    const card = document.createElement("div");
+    card.className = "pc";
     card.innerHTML = `
-      <div class="persona-card-header">
-        <div class="persona-num" style="background:${p.color}">${p.num}</div>
-        <div>
-          <div class="persona-name">${p.name}</div>
-          <div class="persona-tagline">${p.tagline}</div>
+      <div class="pc-inner">
+        <div class="pc-front">
+          <div class="pc-accent" style="background:${p.color}"></div>
+          <div class="pc-front-top">
+            <div class="pc-num-lg" style="color:${p.color}20;-webkit-text-stroke:1px ${p.color}40">${p.num}</div>
+            <div class="pc-name-lg" style="color:${p.color}">${p.name}</div>
+            <div class="pc-tagline-lg">${p.tagline}</div>
+            <div class="pc-badges-lg">
+              <span class="pc-badge-lg" style="background:${p.bg};color:${p.color};border-color:${p.color}30">Rogers: ${p.rogers}</span>
+              <span class="pc-badge-lg" style="background:${p.bg};color:${p.color};border-color:${p.color}30">BCG: ${p.bcg}</span>
+              <span class="pc-badge-lg">${p.share}</span>
+            </div>
+          </div>
+          <ul class="pc-signals-lg">${p.signals.map(s=>`<li>${s}</li>`).join("")}</ul>
+          <div class="pc-flip-hint">↕ Facilitator view</div>
         </div>
-      </div>
-      <div class="persona-body">
-        <div class="persona-row">
-          <span class="persona-badge">Rogers: ${p.rogers}</span>
-          <span class="persona-badge">BCG: ${p.bcg}</span>
-          <span class="persona-badge">${p.share}</span>
-        </div>
-        <ul class="persona-signals">
-          ${p.signals.map(s=>`<li>${s}</li>`).join('')}
-        </ul>
-        <div class="persona-implication">
-          <strong>Curriculum implication</strong>${p.implication}
+        <div class="pc-back" style="background:${p.bg}">
+          <div class="pc-back-top">
+            <span class="pc-back-badge" style="background:${p.color}">${p.name}</span>
+            <div class="pc-back-focus" style="color:${p.color}">${p.focus}</div>
+            <div class="pc-back-sub">${p.focusSub}</div>
+          </div>
+          <div class="pc-back-section">
+            <div class="pc-back-lbl">Session objectives</div>
+            <ul class="pc-back-list">${p.objectives.map(o=>`<li>${o}</li>`).join("")}</ul>
+          </div>
+          <div class="pc-back-section">
+            <div class="pc-back-lbl">Session goal</div>
+            <div style="font-size:.73rem;color:var(--ink-mid);line-height:1.5;font-style:italic;padding:.3rem .5rem;background:rgba(255,255,255,.5);border-radius:4px">${p.sessionGoal}</div>
+          </div>
+          <div class="pc-back-flip">↕ Back to profile</div>
         </div>
       </div>`;
+    card.addEventListener("click", () => card.classList.toggle("flipped"));
     grid.appendChild(card);
   });
 }
@@ -1757,20 +2109,80 @@ function renderPolicy() {
 }
 function togglePolicy(i) { document.querySelectorAll('#policyList .chapter-item')[i].classList.toggle('open'); }
 
+// ── PAGE METADATA ─────────────────────────────────────────────────────────
+const PAGE_META = {
+  'page-overview':    { label: 'Overview',          desc: 'The question behind the research',              title: 'Overview' },
+  'page-survey':      { label: 'Survey Data',        desc: 'What 672 small businesses actually said',       title: 'Survey Data' },
+  'page-chapters':    { label: 'Chapter Blueprint',  desc: 'The architecture of the argument',              title: 'Chapters' },
+  'page-curriculum':  { label: 'Curriculum',         desc: 'Six modules. Three phases. One pathway.',       title: 'Curriculum' },
+  'page-toc':         { label: 'Theory of Change',   desc: 'From a single classroom to urban resilience',   title: 'Theory of Change' },
+  'page-policy':      { label: 'Policy',             desc: 'Institutional conditions for scale',            title: 'Policy' },
+  'page-about':       { label: 'About',              desc: 'Daniel Kwaku Bempah Quansah · Researcher & Curriculum Designer', title: 'About' },
+};
+const BASE_TITLE = 'Cyborg Enterprises & the Urban Future — Daniel Quansah';
+
 // ── PAGE SWITCHING ─────────────────────────────────────────────────────────
 function initPageSwitching() {
-  const allPages = document.querySelectorAll('.page-view');
-  const allLinks = document.querySelectorAll('.nav-page-link');
+  const allPages   = document.querySelectorAll('.page-view');
+  const allLinks   = document.querySelectorAll('.nav-page-link');
+  const banner     = document.getElementById('sectionBanner');
+  const sbLabel    = document.getElementById('sbLabel');
+  const sbDesc     = document.getElementById('sbDesc');
+  const scrollCue  = document.getElementById('scrollCue');
 
-  function showPage(pageId) {
+  // The content anchor — the element immediately after the timeline strip.
+  // Every page switch scrolls the viewer to this point so fresh content
+  // is the first thing they see, not the unchanging hero.
+  const contentAnchor = document.querySelector('.page-view');
+
+  function getContentTop() {
+    // Recalculate on every call in case layout has shifted
+    if (!contentAnchor) return 0;
+    const navH    = 56;
+    const bannerH = 48;
+    return contentAnchor.getBoundingClientRect().top + window.scrollY - navH - bannerH - 8;
+  }
+
+  function showPage(pageId, fromInit) {
     allPages.forEach(p => p.classList.remove('active'));
     allLinks.forEach(l => l.classList.remove('active'));
+
     const target = document.getElementById(pageId);
     if (target) target.classList.add('active');
+
     allLinks.forEach(l => {
       if (l.dataset.page === pageId) l.classList.add('active');
     });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // ── Update section identity banner ──
+    const meta = PAGE_META[pageId];
+    if (meta && sbLabel && sbDesc) {
+      sbLabel.textContent = meta.label;
+      sbDesc.textContent  = meta.desc;
+    }
+
+    // Show banner on all pages except overview; hide on overview
+    const isOverview = pageId === 'page-overview';
+    if (banner) banner.classList.toggle('visible', !isOverview);
+
+    // Update browser tab title
+    if (meta) {
+      document.title = isOverview
+        ? BASE_TITLE
+        : meta.title + ' · Daniel Quansah';
+    }
+
+    // ── Scroll behaviour ──
+    // On init (page load): don't scroll at all — let the hero breathe.
+    // On navigation: scroll to just below the timeline, revealing fresh content.
+    if (!fromInit) {
+      const top = getContentTop();
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    }
+
+    // Hide scroll cue once viewer has navigated
+    if (!fromInit && scrollCue) scrollCue.classList.add('hidden');
+
     // Re-init charts if survey page
     if (pageId === 'page-survey' && typeof renderSurveyDashboard === 'function') {
       const tabs = document.getElementById('surveyTabs');
@@ -1782,12 +2194,55 @@ function initPageSwitching() {
     link.addEventListener('click', e => {
       e.preventDefault();
       const pageId = link.dataset.page;
-      if (pageId) showPage(pageId);
+      if (pageId) showPage(pageId, false);
     });
   });
 
-  // Show overview by default
-  showPage('page-overview');
+  // Show overview on load — no scroll, no banner
+  showPage('page-overview', true);
+}
+
+// ── HAMBURGER / DRAWER ─────────────────────────────────────────────────────
+function initDrawer() {
+  const hamburger = document.getElementById('navHamburger');
+  const drawer    = document.getElementById('mobileDrawer');
+  const backdrop  = document.getElementById('drawerBackdrop');
+  const closeBtn  = document.getElementById('drawerClose');
+  if (!hamburger || !drawer) return;
+
+  function openDrawer() {
+    drawer.classList.add('open');
+    hamburger.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', openDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  backdrop.addEventListener('click', closeDrawer);
+
+  // Close on any drawer link tap — navigation handles the rest
+  document.querySelectorAll('.drawer-link').forEach(a => {
+    a.addEventListener('click', closeDrawer);
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+  });
+}
+
+// ── SCROLL CUE FADE ───────────────────────────────────────────────────────
+function initScrollCue() {
+  const cue = document.getElementById('scrollCue');
+  if (!cue) return;
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) cue.classList.add('hidden');
+  }, { passive: true });
 }
 
 
@@ -1831,6 +2286,8 @@ renderCurriculum();
 renderTOC();
 renderPolicy();
 initPageSwitching();
+initDrawer();
+initScrollCue();
 
 // Nav active state handled by initPageSwitching()
 </script>
