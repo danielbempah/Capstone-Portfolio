@@ -465,6 +465,10 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 }
 .btb-tab.active .btb-label{color:var(--gold)}
 
+/* ── HERO HIDE ON PAGE SWITCH ── */
+.mobile-hero-hidden .hero,
+.mobile-hero-hidden .timeline-strip{display:none !important}
+
 /* ── RESPONSIVE ── */
 @media(max-width:860px){
   .hero-inner{grid-template-columns:1fr;gap:3rem}
@@ -937,7 +941,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 </div>
 
 <!-- PAGE: Overview -->
-<div class="page-view active" id="page-overview" style="display:block">
+<div class="page-view active" id="page-overview">
 <!-- EXECUTIVE SUMMARY -->
 <section class="section section-alt" id="executive-summary">
   <div class="section-inner">
@@ -2270,6 +2274,10 @@ function initPageSwitching() {
     // Show banner on all pages except overview; hide on overview
     const isOverview = pageId === 'page-overview';
     if (banner) banner.classList.toggle('visible', !isOverview);
+
+    // Hide hero + timeline when switching away from overview (all screen sizes)
+    document.body.classList.toggle('mobile-hero-hidden', !isOverview);
+    if (isOverview && !fromInit) window.scrollTo({ top: 0, behavior: 'smooth' });
 
     // Update browser tab title
     if (meta) {
