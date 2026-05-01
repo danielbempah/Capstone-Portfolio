@@ -424,6 +424,47 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .footer-links a{font-family:var(--ff-ui);font-size:11px;color:rgba(246,241,232,.4);text-decoration:none;transition:color .2s}
 .footer-links a:hover{color:var(--gold)}
 
+/* ── BOTTOM TAB BAR BASE (hidden by default, shown via @media below) ── */
+.bottom-tab-bar{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;
+  height:62px;z-index:200;
+  background:var(--ink);
+  border-top:1px solid rgba(255,255,255,.1);
+  padding:0 4px;
+}
+.bottom-tab-bar-inner{
+  display:flex;align-items:stretch;
+  height:100%;
+  width:100%;
+  max-width:100%;
+}
+.btb-tab{
+  flex:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:3px;padding:0 2px;
+  background:none;border:none;cursor:pointer;
+  border-top:2px solid transparent;
+  transition:border-color .15s;
+  -webkit-tap-highlight-color:transparent;
+  min-height:44px;
+}
+.btb-tab.active{border-top-color:var(--gold)}
+.btb-icon{
+  width:20px;height:20px;flex-shrink:0;
+  color:rgba(255,255,255,.4);
+  transition:color .15s;
+}
+.btb-tab.active .btb-icon{color:var(--gold)}
+.btb-label{
+  font-family:var(--ff-ui);font-size:7px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(255,255,255,.4);
+  transition:color .15s;
+  line-height:1;white-space:nowrap;
+}
+.btb-tab.active .btb-label{color:var(--gold)}
+
 /* ── RESPONSIVE ── */
 @media(max-width:860px){
   .hero-inner{grid-template-columns:1fr;gap:3rem}
@@ -458,7 +499,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 @media(max-width:768px){
 
   /* ── Bottom tab bar: show on mobile ── */
-  .bottom-tab-bar{display:block}
+  .bottom-tab-bar{display:flex !important}
   body{padding-bottom:70px}
 
   /* ── Nav: hide hamburger (already hidden), keep brand + linkedin ── */
@@ -607,7 +648,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .pe-implication{font-size:.8rem;color:var(--teal);line-height:1.4;font-style:italic}
 
 /* ── PAGE SWITCHING ARCHITECTURE ── */
-.page-view{display:none;animation:pageIn .25s ease both}
+.page-view{display:none;animation:pageIn .25s ease both;-webkit-overflow-scrolling:touch}
 .page-view.active{display:block}
 @keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
@@ -687,44 +728,6 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .mobile-drawer{display:none}
 
 /* MOBILE: Bottom tab bar */
-.bottom-tab-bar{
-  display:none;
-  position:fixed;bottom:0;left:0;right:0;
-  height:62px;z-index:200;
-  background:var(--ink);
-  border-top:1px solid rgba(255,255,255,.1);
-  padding:0 4px;
-}
-.bottom-tab-bar-inner{
-  display:flex;align-items:stretch;
-  height:100%;
-  max-width:100%;
-}
-.btb-tab{
-  flex:1;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  gap:3px;padding:0 2px;
-  background:none;border:none;cursor:pointer;
-  border-top:2px solid transparent;
-  transition:border-color .15s;
-  -webkit-tap-highlight-color:transparent;
-  min-height:44px;
-}
-.btb-tab.active{border-top-color:var(--gold)}
-.btb-icon{
-  width:20px;height:20px;flex-shrink:0;
-  color:rgba(255,255,255,.4);
-  transition:color .15s;
-}
-.btb-tab.active .btb-icon{color:var(--gold)}
-.btb-label{
-  font-family:var(--ff-ui);font-size:7px;font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;
-  color:rgba(255,255,255,.4);
-  transition:color .15s;
-  line-height:1;white-space:nowrap;
-}
-.btb-tab.active .btb-label{color:var(--gold)}
 
 /* ── SCROLL CUE ── */
 .scroll-cue{
@@ -934,7 +937,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 </div>
 
 <!-- PAGE: Overview -->
-<div class="page-view active" id="page-overview">
+<div class="page-view active" id="page-overview" style="display:block">
 <!-- EXECUTIVE SUMMARY -->
 <section class="section section-alt" id="executive-summary">
   <div class="section-inner">
