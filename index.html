@@ -441,7 +441,6 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   .tl-label{font-size:8px}
   .survey-demo-grid{grid-template-columns:1fr}
   .persona-grid{grid-template-columns:1fr 1fr}
-  .pc{height:360px}
   .lg-grid{grid-template-columns:1fr}
   .eac-grid{grid-template-columns:1fr}
   .survey-quote-row{grid-template-columns:1fr}
@@ -453,6 +452,122 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   .hero{padding:3rem 1.25rem 5rem;min-height:68vh}
   .voice-strip{padding:3rem 1.25rem}
   .timeline-strip{padding:1rem 1.25rem}
+}
+
+/* MOBILE: All changes below activate at ≤768px only */
+@media(max-width:768px){
+
+  /* ── Bottom tab bar: show on mobile ── */
+  .bottom-tab-bar{display:block}
+  body{padding-bottom:70px}
+
+  /* ── Nav: hide hamburger (already hidden), keep brand + linkedin ── */
+  .nav-hamburger{display:none !important}
+
+  /* ── TOC: vertical stack ── */
+  .toc-map{
+    flex-direction:column;
+    min-width:0 !important;
+  }
+  .toc-col{width:100%}
+  .toc-col-head{border-radius:var(--r) var(--r) 0 0}
+  .toc-arrow-col{
+    padding:6px 0;
+    flex-direction:row;
+  }
+  .toc-arrow-sym::before{content:'↓' !important}
+  .toc-arrow-sym{font-size:18px}
+  .toc-map-container{overflow-x:visible}
+
+  /* ── Survey: hide pill tabs, show select ── */
+  .survey-tabs{display:none !important}
+  .survey-tab-select{
+    display:block;
+    width:100%;
+    padding:.75rem 1rem;
+    font-family:var(--ff-ui);
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.04em;
+    background:var(--warm-white);
+    border:1.5px solid var(--rule);
+    border-radius:var(--r-sm);
+    color:var(--ink);
+    margin-bottom:1.5rem;
+    appearance:none;
+    -webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B0A99E' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 1rem center;
+    padding-right:2.5rem;
+    cursor:pointer;
+  }
+  .survey-tab-select:focus{
+    outline:none;
+    border-color:var(--gold);
+  }
+
+  /* ── Persona cards: tap-to-expand, no 3D flip ── */
+  .persona-grid{grid-template-columns:1fr}
+  .pc{
+    height:auto !important;
+    perspective:none;
+  }
+  .pc-inner{
+    transform:none !important;
+    transition:none !important;
+    transform-style:flat;
+    position:relative;
+    height:auto;
+  }
+  .pc-front{
+    position:relative;
+    backface-visibility:visible;
+    transform:none;
+    border-radius:var(--r);
+    overflow:visible;
+    height:auto;
+  }
+  .pc-back{
+    position:relative;
+    backface-visibility:visible;
+    transform:none;
+    border-radius:var(--r);
+    display:none;
+    height:auto;
+    overflow:visible;
+    margin-top:4px;
+  }
+  /* When card is expanded, hide front, show back */
+  .pc.flipped .pc-front{display:none}
+  .pc.flipped .pc-back{display:flex;flex-direction:column}
+  /* Expand hint text */
+  .pc-flip-hint::after{content:' — tap again to flip back'}
+
+  /* ── Touch targets ── */
+  .chapter-header{min-height:44px}
+  .mod-top-v2{min-height:44px}
+  .survey-tab{min-height:44px}
+  .btb-tab{min-height:44px}
+
+  /* ── Section padding consistency ── */
+  .toc-section{padding:3rem 1.25rem}
+  .voice-strip{padding:2.5rem 1.25rem}
+  .further-reading-strip{padding:2rem 1.25rem}
+  .fw-strip{padding:1.25rem}
+  .fw-inner{grid-template-columns:1fr 1fr}
+
+  /* ── Hero bottom padding for tab bar ── */
+  .hero{padding-bottom:5rem}
+
+  /* ── Eac grid ── */
+  .eac-grid{grid-template-columns:1fr !important}
+
+  /* ── Policy example row ── */
+  .policy-example-row{grid-template-columns:1fr}
+
+  /* ── Further reading grid ── */
+  .fr-grid{grid-template-columns:1fr}
 }
 
 /* ── ANIMATIONS ── */
@@ -565,108 +680,51 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .sb-back:hover{color:var(--gold)}
 
 /* ── HAMBURGER BUTTON ── */
-.nav-hamburger{
-  display:none;
-  flex-direction:column;justify-content:center;align-items:center;
-  gap:5px;width:36px;height:36px;
-  background:none;border:1.5px solid var(--rule);
-  border-radius:var(--r-sm);cursor:pointer;
-  padding:0;flex-shrink:0;
-  transition:border-color .2s;
-}
-.nav-hamburger:hover{border-color:var(--ink-faint)}
-.nav-hamburger span{
-  display:block;width:16px;height:1.5px;
-  background:var(--ink);border-radius:2px;
-  transition:transform .25s ease, opacity .25s ease;
-}
-.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
-.nav-hamburger.open span:nth-child(2){opacity:0}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+/* MOBILE: Hamburger hidden — replaced by bottom tab bar */
+.nav-hamburger{display:none}
 
-/* ── MOBILE DRAWER ── */
-.mobile-drawer{
+/* MOBILE: Drawer kept in DOM but hidden — tab bar replaces it */
+.mobile-drawer{display:none}
+
+/* MOBILE: Bottom tab bar */
+.bottom-tab-bar{
   display:none;
-  position:fixed;inset:0;z-index:200;
+  position:fixed;bottom:0;left:0;right:0;
+  height:62px;z-index:200;
+  background:var(--ink);
+  border-top:1px solid rgba(255,255,255,.1);
+  padding:0 4px;
 }
-.mobile-drawer.open{display:block}
-.drawer-backdrop{
-  position:absolute;inset:0;
-  background:rgba(14,12,10,.6);
-  backdrop-filter:blur(4px);
-  animation:drawerFadeIn .2s ease both;
+.bottom-tab-bar-inner{
+  display:flex;align-items:stretch;
+  height:100%;
+  max-width:100%;
 }
-@keyframes drawerFadeIn{from{opacity:0}to{opacity:1}}
-.drawer-panel{
-  position:absolute;top:0;right:0;bottom:0;
-  width:min(300px,82vw);
-  background:var(--parchment);
-  border-left:1px solid var(--rule);
-  display:flex;flex-direction:column;
-  animation:drawerSlideIn .25s ease both;
-  overflow-y:auto;
+.btb-tab{
+  flex:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:3px;padding:0 2px;
+  background:none;border:none;cursor:pointer;
+  border-top:2px solid transparent;
+  transition:border-color .15s;
+  -webkit-tap-highlight-color:transparent;
+  min-height:44px;
 }
-@keyframes drawerSlideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
-.drawer-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1.1rem 1.5rem;
-  border-bottom:1px solid var(--rule);
-  flex-shrink:0;
-}
-.drawer-brand{
-  font-family:var(--ff-ui);font-size:11px;font-weight:700;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
-}
-.drawer-brand span{color:var(--gold)}
-.drawer-close{
-  width:32px;height:32px;border-radius:var(--r-sm);
-  background:none;border:1.5px solid var(--rule);
-  display:flex;align-items:center;justify-content:center;
-  font-size:18px;line-height:1;color:var(--ink-soft);
-  cursor:pointer;transition:border-color .2s,color .2s;
-}
-.drawer-close:hover{border-color:var(--ink);color:var(--ink)}
-.drawer-nav{
-  list-style:none;padding:1rem 0;flex:1;
-}
-.drawer-nav li a{
-  display:flex;align-items:center;gap:14px;
-  font-family:var(--ff-ui);font-size:12px;font-weight:600;
-  letter-spacing:.09em;text-transform:uppercase;
-  color:var(--ink-soft);text-decoration:none;
-  padding:.9rem 1.5rem;
-  border-left:3px solid transparent;
-  transition:color .15s,border-color .15s,background .15s;
-}
-.drawer-nav li a:hover,
-.drawer-nav li a.active{
-  color:var(--ink);
-  border-left-color:var(--gold);
-  background:rgba(196,147,58,.05);
-}
-.drawer-nav-num{
-  font-family:var(--ff-display);
-  font-size:1.1rem;font-weight:700;
-  color:var(--rule);flex-shrink:0;
-  width:24px;line-height:1;
+.btb-tab.active{border-top-color:var(--gold)}
+.btb-icon{
+  width:20px;height:20px;flex-shrink:0;
+  color:rgba(255,255,255,.4);
   transition:color .15s;
 }
-.drawer-nav li a:hover .drawer-nav-num,
-.drawer-nav li a.active .drawer-nav-num{color:rgba(196,147,58,.4)}
-.drawer-footer{
-  padding:1.25rem 1.5rem;
-  border-top:1px solid var(--rule);
-  flex-shrink:0;
+.btb-tab.active .btb-icon{color:var(--gold)}
+.btb-label{
+  font-family:var(--ff-ui);font-size:7px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(255,255,255,.4);
+  transition:color .15s;
+  line-height:1;white-space:nowrap;
 }
-.drawer-linkedin{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  font-family:var(--ff-ui);font-size:11px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;
-  color:var(--warm-white);background:var(--ink);
-  padding:12px 20px;border-radius:var(--r-sm);
-  text-decoration:none;transition:background .2s;width:100%;
-}
-.drawer-linkedin:hover{background:var(--teal)}
+.btb-tab.active .btb-label{color:var(--gold)}
 
 /* ── SCROLL CUE ── */
 .scroll-cue{
@@ -726,30 +784,39 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 </div>
 
 <!-- MOBILE DRAWER -->
-<div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation">
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
-  <div class="drawer-panel">
-    <div class="drawer-header">
-      <div class="drawer-brand"><span>DQ</span> · Capstone Portfolio</div>
-      <button class="drawer-close" id="drawerClose" aria-label="Close navigation">×</button>
-    </div>
-    <ul class="drawer-nav" id="drawerNav">
-      <li><a href="#" data-page="page-overview" class="nav-page-link drawer-link"><span class="drawer-nav-num">01</span>Overview</a></li>
-      <li><a href="#" data-page="page-survey" class="nav-page-link drawer-link"><span class="drawer-nav-num">02</span>Survey Data</a></li>
-      <li><a href="#" data-page="page-chapters" class="nav-page-link drawer-link"><span class="drawer-nav-num">03</span>Chapters</a></li>
-      <li><a href="#" data-page="page-curriculum" class="nav-page-link drawer-link"><span class="drawer-nav-num">04</span>Curriculum</a></li>
-      <li><a href="#" data-page="page-toc" class="nav-page-link drawer-link"><span class="drawer-nav-num">05</span>Theory of Change</a></li>
-      <li><a href="#" data-page="page-policy" class="nav-page-link drawer-link"><span class="drawer-nav-num">06</span>Policy</a></li>
-      <li><a href="#" data-page="page-about" class="nav-page-link drawer-link"><span class="drawer-nav-num">07</span>About</a></li>
-    </ul>
-    <div class="drawer-footer">
-      <a href="https://www.linkedin.com/in/daniel-bempah-quansah/" target="_blank" class="drawer-linkedin">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-        LinkedIn ↗
-      </a>
-    </div>
+<!-- MOBILE: Bottom tab bar — replaces drawer navigation -->
+<nav class="bottom-tab-bar" id="bottomTabBar" aria-label="Main navigation">
+  <div class="bottom-tab-bar-inner">
+    <button class="btb-tab active" data-page="page-overview" aria-label="Overview">
+      <svg class="btb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span class="btb-label">Overview</span>
+    </button>
+    <button class="btb-tab" data-page="page-survey" aria-label="Survey Data">
+      <svg class="btb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      <span class="btb-label">Survey</span>
+    </button>
+    <button class="btb-tab" data-page="page-chapters" aria-label="Chapters">
+      <svg class="btb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      <span class="btb-label">Chapters</span>
+    </button>
+    <button class="btb-tab" data-page="page-curriculum" aria-label="Curriculum">
+      <svg class="btb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="4" rx="1"/><rect x="2" y="10" width="20" height="4" rx="1"/><rect x="2" y="17" width="20" height="4" rx="1"/></svg>
+      <span class="btb-label">Curriculum</span>
+    </button>
+    <button class="btb-tab" data-page="page-toc" aria-label="Theory of Change">
+      <svg class="btb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 8l-1 8M17 8l1 8"/></svg>
+      <span class="btb-label">Theory</span>
+    </button>
+    <button class="btb-tab" data-page="page-policy" aria-label="Policy">
+      <svg class="btb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+      <span class="btb-label">Policy</span>
+    </button>
+    <button class="btb-tab" data-page="page-about" aria-label="About">
+      <svg class="btb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span class="btb-label">About</span>
+    </button>
   </div>
-</div>
+</nav>
 
 <!-- HERO
   SLIDESHOW ACTIVATION:
@@ -777,7 +844,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
       <div class="hero-eyebrow">Bard College · Master's Capstone · 2026</div>
       <h1 class="hero-title">Cyborg Enterprises<br>and the <em>Urban Future</em></h1>
       <p class="hero-subtitle">
-        How can AI adoption for workflow optimization be designed to enhance the economic resilience of immigrant-owned small businesses — and under what conditions can those gains scale into something larger? This research lives at that intersection, built across 25 New York State Entrepreneurship Assistance Centers, grounded in 672 real businesses.
+        Hundreds of thousands of immigrant-owned businesses are navigating the AI transition alone. This research asks: what does it actually take to bring them with us? Built across 25 New York State Entrepreneurship Assistance Centers, grounded in 672 real businesses.
       </p>
       <div class="hero-tags">
         <span class="tag">AI Equity</span>
@@ -874,9 +941,9 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
     <div class="section-label">Executive Summary</div>
     <h2 class="section-title">The question behind the research</h2>
     <div class="exec-full">
-      <p>The city has always been a site of reinvention. Immigrants arrive, build, adapt — and in doing so, become load-bearing pillars of the urban economy. <strong>New York City's immigrant-owned micro and small enterprises</strong> are no exception: they are the connective tissue of neighbourhood economies, absorbing economic shocks in ways that large firms simply cannot. But today they face a disruption unlike any that came before — not a recession, not a pandemic, but the quiet, compounding force of artificial intelligence reshaping how business is done at every level.</p>
-      <p>This project investigates how <strong>AI adoption for workflow optimization can be designed to enhance the economic resilience</strong> of immigrant-owned MSMEs in New York City, and develops a tailored AI training curriculum — designed, piloted, and refined through the NYS Entrepreneurship Assistance Centers Program with Welcome to Chinatown. It asks not just whether these businesses can adopt AI, but what institutional conditions, pedagogical frameworks, and support structures are required to make that adoption durable, equitable, and ultimately scalable into broader urban resilience.</p>
-      <p>The answer is not simply "more training." It is <strong>training designed with and for the learner</strong> — grounded in Kolb's experiential learning cycle, Fink's taxonomy of significant learning, and the lived reality of time-constrained, multilingual adult entrepreneurs who have already survived more disruptions than most. The curriculum this research produces is, in that sense, both a scholarly artifact and a practitioner's wager: that the gap between knowing AI exists and actually using it can be closed, one workflow at a time.</p>
+      <p>The city has always been a site of reinvention. Immigrants arrive, build, adapt — and in doing so, become load-bearing pillars of the urban economy. <strong>New York City's immigrant-owned micro and small enterprises</strong> are no exception: they are the connective tissue of neighbourhood economies, absorbing economic shocks in ways that large firms simply cannot. But today they face a disruption that is quieter, more diffuse, and harder to organise against — not a recession, not a pandemic, but the quiet, compounding force of artificial intelligence reshaping how business is done at every level.</p>
+      <p>This project investigates how <strong>AI adoption can be designed to build economic resilience</strong> among New York City's immigrant-owned small businesses — and what it takes to make that adoption last. The curriculum was built, piloted, and refined through the NYS Entrepreneurship Assistance Centers Program with Welcome to Chinatown.</p>
+      <p>The answer is not simply "more training." It is <strong>training designed with and for the learner</strong> — grounded in the lived reality of time-constrained, multilingual adult entrepreneurs who have already survived more than most (and informed by Kolb's experiential learning cycle and Fink's taxonomy of significant learning). The curriculum this research produces is, in that sense, both a scholarly artifact and a practitioner's wager: that the gap between knowing AI exists and actually using it can be closed, one workflow at a time.</p>
     </div>
     <div class="rq-single">
       <div class="rq-single-label">Central Research Question</div>
@@ -897,7 +964,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   <div class="section-inner">
     <div class="section-label">Survey Data &amp; Findings</div>
     <h2 class="section-title">What 672 small businesses <em>actually said</em></h2>
-    <p class="survey-synthesis">Between January and April 2025, structured needs assessments reached <strong>672 small business owners</strong> across 25 NYS Entrepreneurship Assistance Centers — surveyed in English (n=586), Spanish (n=40), and Chinese (n=46), alongside 25 EAC staff. Every curriculum design decision follows from this data, not from assumption.</p>
+    <p class="survey-synthesis">Between January and April 2025, we surveyed <strong>672 small business owners</strong> across 25 NYS Entrepreneurship Assistance Centers — in English (n=586), Spanish (n=40), and Chinese (n=46) — alongside 25 EAC program directors. Every curriculum design decision follows from this data, not from assumption.</p>
     <a href="https://welcometochinatown.com/impact-study" target="_blank" class="survey-source-link">Welcome to Chinatown Impact Study — further context on community need and programme reach</a>
 
     <!-- Tab navigation -->
@@ -943,7 +1010,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   <div class="section-inner">
     <div class="section-label">Chapter Blueprint</div>
     <h2 class="section-title">The architecture of the argument</h2>
-    <p class="section-intro">Five chapters and an appendix, each doing a distinct piece of intellectual work. The logic moves from problem to theory to design to action to reflection — cumulative by design, not by accident.</p>
+    <p class="section-intro">Five chapters. Each one building on the last. The argument moves from problem to theory to design to action to reflection — and nothing is incidental.</p>
     <div class="chapter-list" id="chapterList"></div>
   </div>
 </section>
@@ -958,7 +1025,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   <div class="section-inner">
     <div class="section-label">Curriculum Scope &amp; Sequence</div>
     <h2 class="section-title">Six modules. Three phases. <em>One pathway.</em></h2>
-    <p class="section-intro">The full AI training curriculum grounded in Kolb's Experiential Learning Cycle and Fink's Taxonomy of Significant Learning. Each module maps to specific Kolb stages and Fink dimensions — chosen deliberately for this learner population, not by convention. Expand any module to see learning outcomes, tools, delivery mode, equity notes, and assessment activity.</p>
+    <p class="section-intro">Six modules. Three phases. Built for the actual people in the room — not a generic learner. The pedagogy draws on Kolb's Experiential Learning Cycle and Fink's Taxonomy of Significant Learning, chosen because they address the specific realities of adult, time-poor, multilingual entrepreneurs. Expand any module to see outcomes, tools, equity notes, and assessment.</p>
 
     <!-- Persona profiles — curriculum development input -->
     <div id="personaBlock"></div>
@@ -977,7 +1044,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   <div class="toc-inner">
     <div class="section-label">Theory of Change</div>
     <h2 class="section-title">From a single classroom to <em>urban resilience</em></h2>
-    <p class="section-intro">The causal logic connecting curriculum inputs to firm-level outcomes to citywide resilience. Click any node to explore the pathway in detail.</p>
+    <p class="section-intro">From a training workshop in Chinatown to a more resilient city — this map shows how. Click any node to explore the pathway.</p>
     <div class="toc-map-container"><div class="toc-map" id="tocMap"></div></div>
     <div class="toc-detail" id="tocDetail">
       <div class="toc-detail-label">Select any node above</div>
@@ -998,7 +1065,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   <div class="section-inner">
     <div class="section-label">Policy Recommendations</div>
     <h2 class="section-title">What should change — <em>and who should change it</em></h2>
-    <p class="section-intro">Translating research findings into structured, evidence-grounded recommendations addressed to four distinct audiences: EAC program coordinators, city and state government, funders, and future researchers. Each recommendation names the actor, specifies the action, and points to at least one measurable indicator of success.</p>
+    <p class="section-intro">Research without action is just description. These recommendations are addressed to the four groups who can actually change things: EAC coordinators, city and state government, funders, and future researchers. Each names the actor, specifies the action, and identifies a measurable indicator of success.</p>
 
     <div class="chapter-list" id="policyList"></div>
 
@@ -1073,7 +1140,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
         <div class="about-bio">
           <p>Some researchers study a problem from a distance. Daniel arrived inside one. As a <strong>Research &amp; Curriculum Development Intern at Welcome to Chinatown</strong>, he has spent the past year working directly with 672 immigrant-owned small business owners across New York State — designing and delivering AI training that meets people where they are, not where the technology assumes they should be.</p>
           <p>His capstone research, <em>Cyborg Enterprises and the Urban Future</em>, investigates how AI adoption shapes economic resilience among New York City's most vulnerable small businesses, and builds the curriculum infrastructure to close the gap between AI's potential and its actual reach. The question, at its core, is not technical. It is institutional, pedagogical, and deeply human.</p>
-          <p>Before graduate school, Daniel co-founded <strong>Munchies Grill &amp; Bar</strong> in Accra — scaling from start-up to 1,000 meals a day with 25 staff — and led a play-based education curriculum reaching 400 students in rural Ghana's cocoa communities. He has worked as a Research Assistant to Prof. Gayatri Spivak at Columbia University, and coordinated writing pedagogy for 1,400+ students annually at Ashesi University. The throughline in all of it: a conviction that good design, grounded in real context, changes what is possible.</p>
+          <p>Before graduate school, Daniel co-founded <strong>Munchies Grill &amp; Bar</strong> in Accra, scaling to 1,000 meals a day with 25 staff. He has led play-based education programmes in rural Ghana, worked as a Research Assistant to Prof. Gayatri Spivak at Columbia University, and coordinated writing pedagogy for 1,400+ students annually at Ashesi University. The common thread: good design, grounded in real context, changes what is possible.</p>
         </div>
         <div class="about-links">
           <a href="https://www.linkedin.com/in/daniel-bempah-quansah/" target="_blank" class="about-link about-link-primary">
@@ -1093,7 +1160,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
       <div class="fn-grid">
         <div class="fn-card">
           <div class="fn-card-label">On Positionality</div>
-          <p class="fn-text">The position of the scholar-practitioner is not one I am a stranger to. I have long straddled academia and industry, but this project marked the first time I wore both hats simultaneously. It was an experience defined by tension — each perspective pressing against the other, each insisting on its own logic. As the academic embedded within a community support organisation operating under resource constraints, I encountered a world where speed is law and learning happens through motion — fast, imperfect, iterative. This stood in friction with the part of me that seeks theory, that leans on frameworks, that moves with deliberation and methodological care.</p>
+          <p class="fn-text">The position of the scholar-practitioner is not one I am a stranger to. I have long straddled academia and industry, but this project marked the first time I wore both hats simultaneously. It was an experience defined by tension — each perspective pressing against the other, each insisting on its own logic. As the academic embedded within a community support organisation running at pace, I encountered a world where speed is law and learning happens through motion — fast, imperfect, iterative. This stood in friction with the part of me that seeks theory, that leans on frameworks, that moves with deliberation and methodological care.</p>
           <p class="fn-text">But the tension proved generative. The academic lent the practitioner rigour and gave shape, language, and structure to instinct. The practitioner, in turn, taught the academic speed, intuition sharpened by necessity, and clarity forged in action.</p>
         </div>
         <div class="fn-card">
@@ -1114,7 +1181,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   <div class="section-inner">
     <div class="section-label">Portfolio Roadmap</div>
     <h2 class="section-title">What's being <em>built</em></h2>
-    <p class="section-intro">This dashboard is the first layer of a public portfolio growing alongside the research itself. Each section represents a page or feature in active development.</p>
+    <p class="section-intro">This portfolio is a live document. It grows as the research does — each section added as insights are generated.</p>
     <div class="sitemap-grid">
       <div class="sitemap-cell active-cell">
         <span class="sm-status sm-live">Live</span>
@@ -1609,6 +1676,42 @@ function renderSurveyDashboard() {
 
   // Draw first chart immediately
   drawChart('challenges', C, baseOpts);
+
+  // MOBILE: inject dropdown select for survey tabs
+  const existingSelect = document.getElementById('surveyTabSelect');
+  if (!existingSelect) {
+    const select = document.createElement('select');
+    select.id = 'surveyTabSelect';
+    select.className = 'survey-tab-select';
+    select.setAttribute('aria-label', 'Select survey data view');
+
+    SURVEY_DATA.tabs.forEach((tab, i) => {
+      const opt = document.createElement('option');
+      opt.value = tab.id;
+      opt.textContent = tab.label;
+      if (i === 0) opt.selected = true;
+      select.appendChild(opt);
+    });
+
+    select.addEventListener('change', () => {
+      const id = select.value;
+      // Mirror pill tab switching logic
+      panelsEl.querySelectorAll('.survey-panel').forEach(p => p.classList.remove('active'));
+      const targetPanel = document.getElementById('panel-' + id);
+      if (targetPanel) targetPanel.classList.add('active');
+      if (!_charts[id]) drawChart(id, C, baseOpts);
+      // Also sync pill tabs
+      tabsEl.querySelectorAll('.survey-tab').forEach(b => b.classList.remove('active'));
+      const matchingBtn = Array.from(tabsEl.querySelectorAll('.survey-tab'))
+        .find(b => b.textContent.trim() === SURVEY_DATA.tabs.find(t => t.id === id)?.label);
+      if (matchingBtn) matchingBtn.classList.add('active');
+    });
+
+    // Insert before the panels
+    if (panelsEl && panelsEl.parentNode) {
+      panelsEl.parentNode.insertBefore(select, panelsEl);
+    }
+  }
 }
 
 function buildPanelHTML(id) {
@@ -2202,37 +2305,44 @@ function initPageSwitching() {
   showPage('page-overview', true);
 }
 
-// ── HAMBURGER / DRAWER ─────────────────────────────────────────────────────
-function initDrawer() {
-  const hamburger = document.getElementById('navHamburger');
-  const drawer    = document.getElementById('mobileDrawer');
-  const backdrop  = document.getElementById('drawerBackdrop');
-  const closeBtn  = document.getElementById('drawerClose');
-  if (!hamburger || !drawer) return;
+// MOBILE: Bottom tab bar — replaces drawer
+function initBottomTabBar() {
+  const tabs = document.querySelectorAll('.btb-tab');
+  if (!tabs.length) return;
 
-  function openDrawer() {
-    drawer.classList.add('open');
-    hamburger.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeDrawer() {
-    drawer.classList.remove('open');
-    hamburger.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  hamburger.addEventListener('click', openDrawer);
-  closeBtn.addEventListener('click', closeDrawer);
-  backdrop.addEventListener('click', closeDrawer);
-
-  // Close on any drawer link tap — navigation handles the rest
-  document.querySelectorAll('.drawer-link').forEach(a => {
-    a.addEventListener('click', closeDrawer);
+  // Hook each tab into the existing showPage() system
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const pageId = tab.dataset.page;
+      if (!pageId) return;
+      // Use the same nav-page-link click path so showPage() fires correctly
+      const matchingLink = document.querySelector(
+        `.nav-page-link[data-page="${pageId}"]`
+      );
+      if (matchingLink) matchingLink.click();
+    });
   });
 
-  // Close on Escape key
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+  // Keep tab bar active state in sync with page switching
+  // Patch showPage to also update tab bar
+  const origLinks = document.querySelectorAll('.nav-page-link');
+  const observer = new MutationObserver(() => {
+    // Find which nav-page-link is active and mirror to tab bar
+    origLinks.forEach(link => {
+      const pageId = link.dataset.page;
+      const tab = document.querySelector(`.btb-tab[data-page="${pageId}"]`);
+      if (!tab) return;
+      if (link.classList.contains('active')) {
+        tab.classList.add('active');
+      } else {
+        tab.classList.remove('active');
+      }
+    });
+  });
+
+  // Observe the nav links container for class changes
+  origLinks.forEach(link => {
+    observer.observe(link, { attributes: true, attributeFilter: ['class'] });
   });
 }
 
@@ -2286,7 +2396,7 @@ renderCurriculum();
 renderTOC();
 renderPolicy();
 initPageSwitching();
-initDrawer();
+initBottomTabBar();
 initScrollCue();
 
 // Nav active state handled by initPageSwitching()
